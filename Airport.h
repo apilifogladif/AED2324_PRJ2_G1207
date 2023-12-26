@@ -1,3 +1,6 @@
+#ifndef AED2324_PRJ2_AIRPORT_H
+#define AED2324_PRJ2_AIRPORT_H
+
 #include <string>
 #include <utility>
 using namespace std;
@@ -15,12 +18,12 @@ public:
     /**
      *
      * @brief Constructor of the Airport class
-     * @param c : Airport's code
-     * @param n : Airport's name
-     * @param ci : Airport's city
-     * @param co : Airport's country
-     * @param la : Airport's latitude
-     * @param lo : Airport's longitude
+     * @param c Airport's code
+     * @param n Airport's name
+     * @param ci Airport's city
+     * @param co Airport's country
+     * @param la Airport's latitude
+     * @param lo Airport's longitude
      */
     Airport(string c, string n, string ci, string co, float la, float lo);
 
@@ -60,3 +63,5 @@ public:
      */
     float getLongitude();
 };
+
+#endif

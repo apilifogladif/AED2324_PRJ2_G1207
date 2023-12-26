@@ -64,7 +64,7 @@ void csvInfo::createAirportsVector() {
 }
 
 void csvInfo::createFlightsGraph() {
-    flightsGraph.clear();
+    flightsGraph.clean();
     fstream file;
     file.open("../data/flights.csv");
     if (!file.is_open()) {
@@ -82,7 +82,14 @@ void csvInfo::createFlightsGraph() {
         getline(s, source, ',');
         getline(s, dest, ',');
         getline(s, airline);
-        flightsGraph.addEdge(source, dest, airline);
+        Airline al = Airline("", "", "", "");
+        for (auto a : airlinesVector) {
+            if (a.getCode() == airline) {
+                al = a;
+                break;
+            }
+        }
+        flightsGraph.addEdge(source, dest, al);
     }
     file.close();
 }

@@ -84,10 +84,11 @@ class Graph {
     bool dfsIsDAG(Vertex *v) const;
 public:
     Vertex *findVertex(Airport in) const;
+    Vertex *findVertex(string in) const;
     int getNumVertex() const;
     bool addVertex(const Airport &in);
     bool removeVertex(Airport in);
-    bool addEdge(const Airport &sourc, const Airport &dest, Airline airline);
+    bool addEdge(const string &sourc, const string &dest, Airline airline);
     bool removeEdge(const Airport &sourc, const Airport &dest);
     vector<Vertex*> getVertexSet() const;
     vector<Airport> dfs() const;
@@ -96,7 +97,7 @@ public:
     vector<Airport> topsort() const;
     bool isDAG() const;
 
-    bool addEdge(const Airport &sourc, const Airport &dest, double w);
+    void clean();
 };
 
 /****************** Provided constructors and functions ********************/
@@ -214,7 +215,7 @@ bool Graph::addVertex(const Airport &in) {
  * destination vertices and the edge weight (w).
  * Returns true if successful, and false if the source or destination vertex does not exist.
  */
-bool Graph::addEdge(const Airport &sourc, const Airport &dest, Airline airline_) {
+bool Graph::addEdge(const string &sourc, const string &dest, Airline airline_) {
     auto v1 = findVertex(sourc);
     auto v2 = findVertex(dest);
     if (v1 == NULL || v2 == NULL)
@@ -441,6 +442,19 @@ vector<Airport> Graph::topsort() const {
         res.clear();
     }
     return res;
+}
+
+void Graph::clean() {
+    for (auto v : vertexSet) {
+        removeVertex(v->getAirport());
+    }
+}
+
+Vertex *Graph::findVertex(string in) const {
+    for (auto v : vertexSet)
+        if (v->airport.getCode() == in)
+            return v;
+    return NULL;
 }
 
 #endif /* GRAPH_H_ */

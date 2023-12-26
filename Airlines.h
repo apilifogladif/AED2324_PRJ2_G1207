@@ -10,11 +10,12 @@ private:
     string country;
 
 public:
-    Airline(string c, string n, string cs, string co);
     string getCode();
     string getName();
     string getCallsign();
     string getCountry();
+
+    Airline(string c, string n, string cs, string co);
 };
 
 Airline::Airline(string c, string n, string cs, string co) {

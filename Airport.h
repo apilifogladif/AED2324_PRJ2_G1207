@@ -1,6 +1,6 @@
 #include <string>
 #include <utility>
-using namespace  std;
+using namespace std;
 
 class Airport {
 private:
@@ -12,32 +12,51 @@ private:
     float longitude;
 
 public:
+    /**
+     *
+     * @brief Constructor of the Airport class
+     * @param c : Airport's code
+     * @param n : Airport's name
+     * @param ci : Airport's city
+     * @param co : Airport's country
+     * @param la : Airport's latitude
+     * @param lo : Airport's longitude
+     */
     Airport(string c, string n, string ci, string co, float la, float lo);
+
+    /**
+     * @brief Get code of the Airport
+     * @return Returns the value of the Airport's code
+     */
     string getCode();
+
+    /**
+     * @brief Get name of the Airport
+     * @return Returns the value of the Airport's name
+     */
     string getName();
+
+    /**
+     * @brief Get city of the Airport
+     * @return Returns the value of the Airport's city
+     */
     string getCity();
+
+    /**
+     * @brief Get country of the Airport
+     * @return Returns the value of the Airport's country
+     */
     string getCountry();
+
+    /**
+     * @brief Get latitude of the Airport
+     * @return Returns the value of the Airport's latitude
+     */
     float getLatitude();
+
+    /**
+     * @brief Get longitude of the Airport
+     * @return Returns the value of the Airport's longitude
+     */
     float getLongitude();
 };
-
-Airport::Airport(string c, string n, string ci, string co, float la, float lo) {
-    code = std::move(c);
-    name = std::move(n);
-    city = std::move(ci);
-    country = std::move(co);
-    latitude = la;
-    longitude = lo;
-}
-
-string Airport::getCode() {return code;}
-
-string Airport::getName() {return name;}
-
-string Airport::getCity() {return city;}
-
-string Airport::getCountry() {return country;}
-
-float Airport::getLatitude() {return latitude;}
-
-float Airport::getLongitude() {return longitude;}

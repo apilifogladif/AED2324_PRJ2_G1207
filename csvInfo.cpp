@@ -7,32 +7,82 @@ vector<Airport> csvInfo::airportsVector;
 Graph csvInfo::flightsGraph;
 
 void csvInfo::createAirlinesVector() {
-//    airlinesVector.clear();
-//    file.open("../data/classes_per_uc.csv");
-//    if (!file.is_open()) {
-//        cerr << "Error: Unable to open the file." << endl;
-//        return;
-//    }
-//    getline(file, line);
-//    while(getline(file, line)) {
-//        stringstream s(line);
-//        getline(s, UcCode, ',');
-//        getline(s, ClassCode);
-//        if (UcCode == lastUcCode) {
-//            classes.insert(ClassCode);
-//        } else {
-//            ClassesPerUcVector.emplace_back(lastUcCode, classes);
-//            classes.clear();
-//            classes.insert(ClassCode);
-//        }
-//        lastUcCode = UcCode;
-//    }
+    airlinesVector.clear();
+    fstream file;
+    file.open("../data/airlines.csv");
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open the file." << endl;
+        return;
+    }
+    string line;
+    getline(file, line);
+    string code;
+    string name;
+    string callsign;
+    string country;
+    while(getline(file, line)) {
+        stringstream s(line);
+        getline(s, code, ',');
+        getline(s, name, ',');
+        getline(s, callsign, ',');
+        getline(s, country);
+        Airline airline = Airline(code, name, callsign, country);
+        airlinesVector.push_back(airline);
+    }
+    file.close();
 }
 
 void csvInfo::createAirportsVector() {
-
+    airportsVector.clear();
+    fstream file;
+    file.open("../data/airports.csv");
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open the file." << endl;
+        return;
+    }
+    string line;
+    getline(file, line);
+    string code;
+    string name;
+    string city;
+    string country;
+    string latitude;
+    string longitude;
+    while(getline(file, line)) {
+        stringstream s(line);
+        getline(s, code, ',');
+        getline(s, name, ',');
+        getline(s, city, ',');
+        getline(s, country, ',');
+        getline(s, latitude, ',');
+        getline(s, longitude);
+        Airport airport = Airport(code, name, city, country, stof(latitude), stof(longitude));
+        airportsVector.push_back(airport);
+        flightsGraph.addVertex(airport);
+    }
+    file.close();
 }
 
 void csvInfo::createFlightsGraph() {
+    flightsGraph.clear();
+    fstream file;
+    file.open("../data/flights.csv");
+    if (!file.is_open()) {
+        cerr << "Error: Unable to open the file." << endl;
+        return;
+    }
+    string line;
+    getline(file, line);
+    string source;
+    string dest;
+    string airline;
 
+    while(getline(file, line)) {
+        stringstream s(line);
+        getline(s, source, ',');
+        getline(s, dest, ',');
+        getline(s, airline);
+        flightsGraph.addEdge(source, dest, airline);
+    }
+    file.close();
 }

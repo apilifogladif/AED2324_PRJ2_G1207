@@ -4,8 +4,6 @@ using namespace  std;
 
 class Airline {
 private:
-    Airline(int c, int n, int cs, int co);
-
     string code;
     string name;
     string callsign;

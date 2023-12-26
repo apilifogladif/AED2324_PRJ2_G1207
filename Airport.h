@@ -3,6 +3,12 @@
 
 #include <string>
 #include <utility>
+#include <unordered_set>
+#include "Airport.h"
+//#include "Graph.h"
+#include <vector>
+#include <iostream>
+
 using namespace std;
 
 class Airport {
@@ -13,7 +19,6 @@ private:
     string country;
     float latitude;
     float longitude;
-
 public:
     /**
      *
@@ -62,6 +67,41 @@ public:
      * @return Returns the value of the Airport's longitude
      */
     float getLongitude();
+
+    /**
+     * @brief Get the number of flights from this airport
+     * @return Number of flights
+     */
+    //int getNumberOfFlights(Graph &fg);
+
+    /**
+     * @brief Get the number of airlines operating at this airport
+     * @return Number of airlines
+     */
+    //int getNumberOfAirlines(Graph &fg);
+
+    /**
+     * @brief Get the number of destinations from this airport
+     * @return Number of destinations
+     */
+    //int getNumberOfDestinations(Graph &fg);
+
+    /**
+     * @brief Get reachable destinations within a maximum number of stops
+     * @param maxStops Maximum number of stops
+     * @return Vector of reachable destinations
+     */
+    //vector<Airport> getReachableDestinations(Graph &fg, int maxStops);
+
+    /**
+     * @brief Get reachable destinations within a maximum number of stops
+     * @param fg Graph representing flights
+     * @param source Source airport
+     * @param maxStops Maximum number of stops
+     * @param reachableDestinations Vector to store reachable destinations
+     */
+    //void dfsToFindReachableDestinations(Graph &fg, Airport &source, int maxStops, vector<Airport> &reachableDestinations);
+
 };
 
 #endif

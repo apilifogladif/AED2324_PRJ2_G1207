@@ -80,6 +80,13 @@ public:
     * @return True if the airports are not equal, false otherwise.
     */
     bool operator!=(const Airport& other) const;
+
+    /**
+     * @brief Less than operator for comparing two Airport objects.
+     * @param other The Airport object to compare against.
+     * @return True if this Airport is considered less than the other, false otherwise.
+     */
+    bool operator<(const Airport& other) const;
 };
 
 #endif

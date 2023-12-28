@@ -28,3 +28,7 @@ bool Airport::operator==(const Airport& other) const {
 bool Airport::operator!=(const Airport& other) const {
     return !(*this == other);
 }
+
+bool Airport::operator<(const Airport& other) const {
+    return this->getCode() < other.getCode();
+}

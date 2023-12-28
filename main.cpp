@@ -10,7 +10,7 @@ void getInfoMenu();
 void airportMenu();
 int main();
 
-Airport verifyAirport(string basicString);
+Airport verifyAirport(const string& code);
 
 // global variables
 map<std::string, int> m {{"main", 0}, {"getInfo", 1}, {"getFlight", 2}, {"airportInfo", 3},
@@ -19,7 +19,7 @@ map<std::string, int> m {{"main", 0}, {"getInfo", 1}, {"getFlight", 2}, {"airpor
 stack<string> menus;
 bool over = false;
 
-Airport verifyAirport(string code) {
+Airport verifyAirport(const string& code) {
     Airport null = Airport("", "", "", "", 0, 0);
     for (Airport a : csvInfo::airportsVector) {
         if (a.getCode() == code) return a;
@@ -48,10 +48,10 @@ void mainMenu() {
         if (cin >> op) {
             switch (op) {
                 case 1 :
-                    menus.push("getInfo");
+                    menus.emplace("getInfo");
                     return;
                 case 2:
-                    menus.push("getFlight");
+                    menus.emplace("getFlight");
                     return;
                 case 0:
                     menus.pop();
@@ -85,19 +85,19 @@ void getInfoMenu() {
         if (cin >> op) {
             switch (op) {
                 case 1 :
-                    menus.push("airportInfo");
+                    menus.emplace("airportInfo");
                     return;
                 case 2:
-                    menus.push("airlineInfo");
+                    menus.emplace("airlineInfo");
                     return;
                 case 3:
-                    menus.push("cityInfo");
+                    menus.emplace("cityInfo");
                     return;
                 case 4:
-                    menus.push("countryInfo");
+                    menus.emplace("countryInfo");
                     return;
                 case 5:
-                    menus.push("globalInfo");
+                    menus.emplace("globalInfo");
                     return;
                 case 6:
                     menus.pop();
@@ -158,10 +158,10 @@ void airportMenu() {
                     over = true;
                     return;
                 case 2:
-                    menus.push("destX");
+                    menus.emplace("destX");
                     return;
                 case 3:
-                    menus.push("countriesX");
+                    menus.emplace("countriesX");
                     return;
                 case 0:
                     menus.pop();
@@ -220,7 +220,6 @@ int main() {
             over = false;
         }
     }
-    return 0;
 }
 
 

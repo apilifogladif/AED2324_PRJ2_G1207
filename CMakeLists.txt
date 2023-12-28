@@ -11,4 +11,6 @@ add_executable(AED2324_PRJ2_G1207
         csvInfo.cpp
         Graph.h
         main.cpp
-        Airport.cpp)
+        Airport.cpp
+        Graph.cpp
+        Airlines.cpp)

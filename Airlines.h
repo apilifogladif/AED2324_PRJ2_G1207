@@ -14,37 +14,52 @@ private:
 
 public:
     /**
-     * @brief Constructor of the Airline class
-     * @param c Airline's code
-     * @param n Airline's name
-     * @param cs Airline's callsign
-     * @param co Airline's country
+     * @brief Constructor of the Airline class.
+     * @param c Airline's code.
+     * @param n Airline's name.
+     * @param cs Airline's callsign.
+     * @param co Airline's country.
      */
     Airline(string c, string n, string cs, string co);
 
     /**
-     * @brief Get code of the Airline
-     * @return Returns the value of the Airline's code
+     * @brief Get code of the Airline.
+     * @return Returns the value of the Airline's code.
      */
-    string getCode();
+    string getCode() const;
 
     /**
-     * @brief Get name of the Airline
-     * @return Returns the value of the Airline's name
+     * @brief Get name of the Airline.
+     * @return Returns the value of the Airline's name.
      */
-    string getName();
+    string getName() const;
 
     /**
-     * @brief Get callsign of the Airline
-     * @return Returns the value of the Airline's callsign
+     * @brief Get callsign of the Airline.
+     * @return Returns the value of the Airline's callsign.
      */
-    string getCallsign();
+    string getCallsign() const;
 
     /**
-     * @brief Get country of the Airline
-     * @return Returns the value of the Airline's country
+     * @brief Get country of the Airline.
+     * @return Returns the value of the Airline's country.
      */
-    string getCountry();
+    string getCountry() const;
+
+    /**
+     * @brief Equality operator for Airline objects.
+     * @param a The first Airline object.
+     * @param b The second Airline object.
+     * @return True if the Airline objects are equal, false otherwise.
+     */
+    bool operator==(const Airline& other) const;
+
+    /**
+     * @brief Overloaded less-than comparison operator for Airline objects.
+     * @param other The Airline object to compare against.
+     * @return True if this Airline is less than the other, false otherwise.
+     */
+    bool operator<(const Airline& other) const;
 
 };
 

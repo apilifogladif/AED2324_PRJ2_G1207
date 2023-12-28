@@ -7,10 +7,18 @@ Airline::Airline(string c, string n, string cs, string co) {
     country = std::move(co);
 }
 
-string Airline::getCode() {return code;}
+string Airline::getCode() const {return code;}
 
-string Airline::getName() {return name;}
+string Airline::getName() const {return name;}
 
-string Airline::getCallsign() {return callsign;}
+string Airline::getCallsign() const {return callsign;}
 
-string Airline::getCountry() {return country;}
+string Airline::getCountry() const {return country;}
+
+bool Airline::operator==(const Airline& other) const {
+    return this->code == other.getCode() && this->name == other.getName() && this->callsign == other.getCallsign() && this->country == other.getCountry();
+}
+
+bool Airline::operator<(const Airline& other) const {
+    return this->code < other.getCode();
+}

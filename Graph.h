@@ -24,6 +24,9 @@ class Vertex;
 
 /****************** Provided structures  ********************/
 
+/**
+ * @brief Represents a Vertex in the graph.
+ */
 class Vertex {
     Airport airport;                // contents
     vector<Edge> adj;  // list of outgoing edges
@@ -36,7 +39,14 @@ class Vertex {
     void addEdge(Vertex *d, Airline airline_);
     bool removeEdgeTo(Vertex *d);
 public:
+    /**
+     * @brief Constructor for Vertex class.
+     * @param in Airport object to be associated with the vertex.
+     */
     Vertex(Airport in);
+
+    // Getter and setter methods for Vertex properties
+
     Airport getAirport() const;
     void setAirport(Airport in);
     bool isVisited() const;
@@ -45,35 +55,44 @@ public:
     void setProcessing(bool p);
     const vector<Edge> &getAdj() const;
     void setAdj(const vector<Edge> &adj);
-
     int getIndegree() const;
-
     void setIndegree(int indegree);
-
     int getNum() const;
-
     void setNum(int num);
-
     int getLow() const;
-
     void setLow(int low);
 
     friend class Graph;
 };
 
+/**
+ * @brief Represents an Edge connecting two vertices in the graph.
+ */
 class Edge {
     Vertex* dest;      // destination vertex
     Airline airline;         // edge weight
 public:
+    /**
+     * @brief Constructor for Edge class.
+     * @param d Destination vertex.
+     * @param airline_ Airline associated with the edge.
+     */
     Edge(Vertex* d, Airline airline_);
+
+    // Getter and setter methods for Edge properties
+
     Vertex* getDest() const;
     void setDest(Vertex* dest);
     Airline getAirline() const;
     void setAirline(Airline airline_);
+
     friend class Graph;
     friend class Vertex;
 };
 
+/**
+ * @brief Represents a graph.
+ */
 class Graph {
     vector<Vertex*> vertexSet;      // vertex set
     int _index_;                        // auxiliary field
@@ -83,21 +102,137 @@ class Graph {
     void dfsVisit(Vertex *v,  vector<Airport> & res) const;
     bool dfsIsDAG(Vertex *v) const;
 public:
+    /**
+     * @brief Finds a vertex with the given airport in the graph.
+     * @param in Airport to find.
+     * @return Pointer to the found vertex or nullptr if not found.
+     */
     Vertex *findVertex(Airport in) const;
+
+    /**
+     * @brief Finds a vertex with the given code in the graph.
+     * @param in Code of the airport to find.
+     * @return Pointer to the found vertex or nullptr if not found.
+     */
     Vertex *findVertex(string in) const;
+
+    /**
+     * @brief Gets the number of vertices in the graph.
+     * @return Number of vertices.
+     */
     int getNumVertex() const;
+
+    /**
+     * @brief Adds a vertex with a given airport to the graph.
+     * @param in Airport to add.
+     * @return True if the vertex is added successfully, false otherwise.
+     */
     bool addVertex(const Airport &in);
+
+    /**
+     * @brief Removes a vertex with a given airport from the graph.
+     * @param in Airport to remove.
+     * @return True if the vertex is removed successfully, false otherwise.
+     */
     bool removeVertex(Airport in);
+
+    /**
+     * @brief Adds an edge to the graph.
+     * @param sourc Source airport code.
+     * @param dest Destination airport code.
+     * @param airline Airline associated with the edge.
+     * @return True if the edge is added successfully, false otherwise.
+     */
     bool addEdge(const string &sourc, const string &dest, Airline airline);
+
+    /**
+     * @brief Removes an edge from the graph.
+     * @param sourc Source airport.
+     * @param dest Destination airport.
+     * @return True if the edge is removed successfully, false otherwise.
+     */
     bool removeEdge(const Airport &sourc, const Airport &dest);
+
+    /**
+     * @brief Gets the vector of vertices in the graph.
+     * @return Vector of vertices.
+     */
     vector<Vertex*> getVertexSet() const;
+
+    /**
+     * @brief Performs a depth-first search (dfs) traversal in the graph.
+     * @return Vector of airports in dfs order.
+     */
     vector<Airport> dfs() const;
+
+    /**
+     * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
+     * @param source Source airport.
+     * @return Vector of airports in dfs order from the source.
+     */
     vector<Airport> dfs(const Airport & source) const;
+
+    /**
+     * @brief Performs a breadth-first search (bfs) in the graph from a specific source airport.
+     * @param source Source airport.
+     * @return Vector of airports in bfs order from the source.
+     */
     vector<Airport> bfs(const Airport &source) const;
+
+    /**
+     * @brief Performs topological sort on the graph.
+     * @return Vector of airports in topological order.
+     */
     vector<Airport> topsort() const;
+
+    /**
+     * @brief Checks if the graph is a Directed Acyclic Graph (DAG).
+     * @return True if the graph is acyclic, false otherwise.
+     */
     bool isDAG() const;
 
+    /**
+     * @brief Cleans the graph by removing all vertices and edges.
+     */
     void clean();
+
+    /**
+     * @brief Gets the number of flights departing from a given airport.
+     * @param airport Departure airport.
+     * @return Number of flights departing from the airport.
+     */
+    int getNumberOfFlights(Airport& airport) const;
+
+    /**
+    * @brief Gets the number of airlines operating at a given airport.
+    * @param airport Airport of interest.
+    * @return Number of airlines operating at the airport.
+    */
+    int getNumberOfAirlines(const Airport& airport) const;
+
+    /**
+    * @brief Gets the number of destinations reachable from a given airport.
+    * @param airport Source airport.
+    * @return Number of destinations reachable from the source airport.
+    */
+    int getNumberOfDestinations(const Airport &airport) const;
+
+    /**
+     * @brief Gets the reachable destinations from a source airport within a given number of stops.
+     * @param source The source airport.
+     * @param maxStops The maximum number of stops allowed.
+     * @return Vector of airports representing the reachable destinations.
+     */
+    vector<Airport> getReachableDestinations(const Airport& source, int maxStops) const;
+
+    /**
+     * @brief Performs a depth-first search to find reachable destinations within a given number of stops.
+     * @param v The current vertex being explored.
+     * @param stopsLeft The remaining number of stops allowed.
+     * @param visited Vector of visited airports to avoid revisiting.
+     * @param reachableDestinations Vector to store the reachable destinations.
+     */
+    void dfsReachableDestinations(Vertex* v, int stopsLeft, vector<Airport>& visited, vector<Airport>& reachableDestinations) const;
 };
 
 /****************** Provided constructors and functions ********************/

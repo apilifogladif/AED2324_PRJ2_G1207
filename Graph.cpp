@@ -89,13 +89,16 @@ vector<Airline> Graph::getAirlines(Airport airport) {
 
 int Graph::getNumberOfFlights(const Airline& airline) const {
     int numFlights = 0;
+    int c = 0;
     for (auto v : vertexSet) {
         for (const auto& edge : v->getAdj()) {
+            c++;
             if (edge.getAirline() == airline) {
                 numFlights++;
             }
         }
     }
+    cout << "Num edges: " << c << endl;
     return numFlights;
 }
 

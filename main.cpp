@@ -715,6 +715,11 @@ int main() {
     cout << csvInfo::flightsGraph.getVertexSet().size() << endl;
     cout << csvInfo::airportsVector.size() << endl;
     cout << csvInfo::airlinesVector.size() << endl;
+    int c = 0;
+    for (auto v : csvInfo::flightsGraph.getVertexSet()) {
+        c += v->getAdj().size();
+    }
+    cout << c << endl;
 
     menus.emplace("main");
     while (true) {

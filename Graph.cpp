@@ -174,9 +174,7 @@ int Graph::getNumberOfFlightsInCountry(const string& country) const {
     int numFlights = 0;
     for (auto v : getVertexSet()) {
         if (v->getAirport().getCountry() == country) {
-            for (const auto& edge : v->getAdj()) {
-                numFlights += getNumberOfFlights(edge.getAirline());
-            }
+            numFlights += v->getAdj().size();
         }
     }
     return numFlights;

@@ -193,32 +193,6 @@ void destX() {
     int stops = stoi(X);
     auto reachDests = csvInfo::flightsGraph.getReachableDestinations(airport, stops);
     cout << "There are " << reachDests.size() << " reachable destinations from " << airport.getName() << " with the maximum of " << stops << " stops." << endl;
-
-    char user;
-    while (!reachDests.empty()) {
-        cout << "Do you want to see the list of the destinations? (Y/N)" << endl;
-        if (cin >> user) {
-            if (user == 'Y') {
-                for (auto dest : reachDests) {
-                    cout << dest.getName() << "; " << dest.getCity() << "; " << dest.getCountry() << endl;
-                }
-                break;  // Input is valid, exit the loop
-            }
-            else if (user == 'N') break;
-            else if (user == 'q') {
-                menus.pop();
-                return;
-            }
-            else {
-                cout << "Invalid character!" << endl;
-            }
-        }
-        else {
-            cout << "Invalid input! Please enter a valid character." << endl;
-            cin.clear();          // Clear the error state
-            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-        }
-    }
     over = true;
 }
 
@@ -249,32 +223,6 @@ void countriesX() {
     int stops = stoi(X);
     auto reachCountries = csvInfo::flightsGraph.getCountries(airport, stops);
     cout << "There are " << reachCountries.size() << " reachable destinations from " << airport.getName() << " with the maximum of " << stops << " stops." << endl;
-
-    char user;
-    while (!reachCountries.empty()) {
-        cout << "Do you want to see the list of the countries? (Y/N)" << endl;
-        if (cin >> user) {
-            if (user == 'Y') {
-                for (auto dest : reachCountries) {
-                    cout << dest << endl;
-                }
-                break;  // Input is valid, exit the loop
-            }
-            else if (user == 'N') break;
-            else if (user == 'q') {
-                menus.pop();
-                return;
-            }
-            else {
-                cout << "Invalid character!" << endl;
-            }
-        }
-        else {
-            cout << "Invalid input! Please enter a valid character." << endl;
-            cin.clear();          // Clear the error state
-            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-        }
-    }
     over = true;
 }
 
@@ -336,32 +284,6 @@ void airportMenu() {
                 case 4:
                     airs = csvInfo::flightsGraph.getAirlines(airport);
                     cout << "There are " << airs.size() << " airlines with flights departing from this airport." << endl;
-
-                    char user;
-                    while (!airs.empty()) {
-                        cout << "Do you want to see the list of the destinations? (Y/N)" << endl;
-                        if (cin >> user) {
-                            if (user == 'Y') {
-                                for (auto a : airs) {
-                                    cout << a.getCode() << "; " << a.getName() << endl;
-                                }
-                                break;  // Input is valid, exit the loop
-                            }
-                            else if (user == 'N') break;
-                            else if (user == 'q') {
-                                menus.pop();
-                                return;
-                            }
-                            else {
-                                cout << "Invalid character!" << endl;
-                            }
-                        }
-                        else {
-                            cout << "Invalid input! Please enter a valid character." << endl;
-                            cin.clear();          // Clear the error state
-                            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-                        }
-                    }
                     over = true;
                 case 0:
                     menus.pop();
@@ -425,31 +347,6 @@ void airlineMenu() {
                 case 2:
                     dest = csvInfo::flightsGraph.getNumberOfDestinations(air);
                     cout << dest.size() << " destinations." << endl;
-                    char user;
-                    while (!dest.empty()) {
-                        cout << "Do you want to see the list of the destinations? (Y/N)" << endl;
-                        if (cin >> user) {
-                            if (user == 'Y') {
-                                for (auto a : dest) {
-                                    cout << a.getName() << "; " << a.getCity() << "; " << a.getCountry() << endl;
-                                }
-                                break;  // Input is valid, exit the loop
-                            }
-                            else if (user == 'N') break;
-                            else if (user == 'q') {
-                                menus.pop();
-                                return;
-                            }
-                            else {
-                                cout << "Invalid character!" << endl;
-                            }
-                        }
-                        else {
-                            cout << "Invalid input! Please enter a valid character." << endl;
-                            cin.clear();          // Clear the error state
-                            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-                        }
-                    }
                     over = true;
                     return;
                 case 0:
@@ -527,7 +424,6 @@ void cityMenu() {
 
     set<Airport> dest;
     string X;
-    char user;
     vector<Airport> reachDests;
     int stops;
     while (true) {
@@ -576,30 +472,6 @@ void cityMenu() {
                     stops = stoi(X);
                     reachDests = csvInfo::flightsGraph.getReachableDestinationsInCity(city, country, stops);
                     cout << reachDests.size() << " Reachable destinations in a maximum number of " << stops << " stops." << endl;
-                    while (!reachDests.empty()) {
-                        cout << "Do you want to see the list of the destinations? (Y/N)" << endl;
-                        if (cin >> user) {
-                            if (user == 'Y') {
-                                for (auto dest : reachDests) {
-                                    cout << dest.getName() << "; " << dest.getCity() << "; " << dest.getCountry() << endl;
-                                }
-                                break;  // Input is valid, exit the loop
-                            }
-                            else if (user == 'N') break;
-                            else if (user == 'q') {
-                                menus.pop();
-                                return;
-                            }
-                            else {
-                                cout << "Invalid character!" << endl;
-                            }
-                        }
-                        else {
-                            cout << "Invalid input! Please enter a valid character." << endl;
-                            cin.clear();          // Clear the error state
-                            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-                        }
-                    }
                     over = true;
                     return;
                 case 0:
@@ -655,7 +527,6 @@ void countryMenu() {
     cout << "0 - Return to last menu." << endl;
 
     string X;
-    char user;
     vector<Airport> reachDests;
     int stops;
     while (true) {
@@ -708,30 +579,6 @@ void countryMenu() {
                     stops = stoi(X);
                     reachDests = csvInfo::flightsGraph.getReachableDestinationsInCountry(country, stops);
                     cout << reachDests.size() << " Reachable destinations in a maximum number of " << stops << " stops." << endl;
-                    while (!reachDests.empty()) {
-                        cout << "Do you want to see the list of the destinations? (Y/N)" << endl;
-                        if (cin >> user) {
-                            if (user == 'Y') {
-                                for (auto dest : reachDests) {
-                                    cout << dest.getName() << "; " << dest.getCity() << "; " << dest.getCountry() << endl;
-                                }
-                                break;  // Input is valid, exit the loop
-                            }
-                            else if (user == 'N') break;
-                            else if (user == 'q') {
-                                menus.pop();
-                                return;
-                            }
-                            else {
-                                cout << "Invalid character!" << endl;
-                            }
-                        }
-                        else {
-                            cout << "Invalid input! Please enter a valid character." << endl;
-                            cin.clear();          // Clear the error state
-                            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-                        }
-                    }
                     over = true;
                     return;
                 case 0:

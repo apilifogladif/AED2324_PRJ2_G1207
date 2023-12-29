@@ -30,7 +30,7 @@ void getFlightwFiltersMenu();
 // global variables
 map<std::string, int> m {{"main", 0}, {"getInfo", 1}, {"bestFlight", 2}, {"airportInfo", 3},
                          {"airlineInfo", 4}, {"cityInfo", 5}, {"countryInfo", 6},
-                         {"globalInfo", 7}, {"destX", 8}, {"countriesX", 9}, {"bestFlightwFilters", 10}};
+                         {"globalInfo", 7}, {"destX", 8}, {"countriesX", 9}, {"flightFilters", 10}};
 stack<string> menus;
 bool over = false;
 bool quit = false;
@@ -88,7 +88,6 @@ void mainMenu() {
     cout << endl << "----------------------------" << endl;
     cout << "1 - Get information about..." << endl; // airport, airline, city, country, global
     cout << "2 - Best flight option..." << endl;
-    cout << "3 - Best flight option with filters... " << endl;
     cout << "0 - Exit." << endl;
     while (true) {
         cout << "Write the number of what you want to do: ";
@@ -99,9 +98,6 @@ void mainMenu() {
                     return;
                 case 2:
                     menus.emplace("bestFlight");
-                    return;
-                case 3:
-                    menus.emplace("bestFlightwFilters");
                     return;
                 case 0:
                     quit = true;
@@ -665,16 +661,14 @@ void getFlightMenu() {
 }
 
 // TODO
-void getFlightwFiltersMenu() {
+void flightFiltersMenu() {
     int op = 0;
     cout << endl << "-------------------------------------" << endl;
-    cout << endl << "   Best flight option with filters   " << endl;
+    cout << endl << "       Best flight option ...        " << endl;
     cout << endl << "-------------------------------------" << endl;
     cout << "Where are you departing from?" << endl;
-    cout << "1 - Airport code." << endl;
-    cout << "2 - Airport name." << endl;
-    cout << "3 - City name." << endl;
-    cout << "4 - Coordinates." << endl;
+    cout << "1 - with filters." << endl;
+    cout << "2 - without filters." << endl;
     cout << "0 - Exit." << endl;
 }
 
@@ -716,11 +710,11 @@ int main() {
                 menus.pop();
                 break;
             case 9:
-                getFlightwFiltersMenu();
+                countriesX();
                 menus.pop();
                 break;
             case 10:
-                countriesX();
+                flightFiltersMenu();
                 menus.pop();
                 break;
             default:

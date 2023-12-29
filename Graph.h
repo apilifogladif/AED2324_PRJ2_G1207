@@ -389,9 +389,9 @@ public:
      * @param k The number of top airports to retrieve.
      * @return A vector of pairs representing the top airports and their respective number of flights.
      */
-    vector<pair<Airport, int>> getTopAirports(int k) const;
+    vector<pair<Airport, int>> getTopKAirports(int k) const;
 
-
+    void findMaxStopsTrip();
 };
 
 #endif /* GRAPH_H_ */

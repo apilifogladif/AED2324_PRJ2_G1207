@@ -289,7 +289,54 @@ int Graph::getTotalReachableDestinations(int maxStops) const {
 
 // Others
 
-vector<pair<Airport, int>> Graph::getTopAirports(int k) const {
+void Graph::findMaxStopsTrip() {
+    vector<pair<string, string>> maxStopsTripPairs;
+    int maxStops = 0;
+
+    for (auto sourceVertex : vertexSet) {
+
+        for (auto v : vertexSet) {
+            v->setVisited(false);
+        }
+
+        queue<pair<Vertex *, int>> q;
+        q.emplace(sourceVertex, 0);
+        q.front().first->setVisited(true);
+
+        while (!q.empty()) {
+            Vertex *currentVertex = q.front().first;
+            int stopsCount = q.front().second;
+            q.pop();
+
+            for (auto &edge : currentVertex->getAdj()) {
+                auto destVertex = edge.getDest();
+
+                if (!destVertex->isVisited()) {
+                    q.emplace(destVertex, stopsCount + 1);
+                    destVertex->setVisited(true);
+
+                    if (maxStops < stopsCount + 1) {
+                        maxStopsTripPairs.clear();
+                    }
+
+                    if (maxStops <= stopsCount + 1) {
+                        maxStops = stopsCount + 1;
+                        maxStopsTripPairs.emplace_back(sourceVertex->getAirport().getCode(), destVertex->getAirport().getCode());
+                    }
+                }
+            }
+        }
+    }
+
+    cout << "Maximum trip with " << maxStops << " stops." << endl;
+    cout << "Pairs of source-destination airports: " << endl;
+
+    for (auto &tripPair : maxStopsTripPairs) {
+        cout << tripPair.first << " - " << tripPair.second << endl;
+    }
+}
+
+vector<pair<Airport, int>> Graph::getTopKAirports(int k) const {
     vector<pair<Airport, int>> airportFlights;
     for (auto vertex : getVertexSet()) {
         int numFlights = vertex->getAdj().size();

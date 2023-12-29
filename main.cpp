@@ -25,10 +25,12 @@ void countryMenu();
 
 void globalMenu();
 
+void getFlightwFiltersMenu();
+
 // global variables
-map<std::string, int> m {{"main", 0}, {"getInfo", 1}, {"getFlight", 2}, {"airportInfo", 3},
+map<std::string, int> m {{"main", 0}, {"getInfo", 1}, {"bestFlight", 2}, {"airportInfo", 3},
                          {"airlineInfo", 4}, {"cityInfo", 5}, {"countryInfo", 6},
-                         {"globalInfo", 7}, {"destX", 8}, {"countriesX", 9}};
+                         {"globalInfo", 7}, {"destX", 8}, {"countriesX", 9}, {"bestFlightwFilters", 10}};
 stack<string> menus;
 bool over = false;
 bool quit = false;
@@ -85,15 +87,8 @@ void mainMenu() {
     cout << endl << "      Main Menu   " << endl;
     cout << endl << "----------------------------" << endl;
     cout << "1 - Get information about..." << endl; // airport, airline, city, country, global
-    cout << "2 - Get flight..." << endl;
-    // To an airport, city, country, airlines, origin
-    cout << "3 - Others... " << endl;
-    // Reachable airports with X max flights
-    // Reachable cities with X max flights
-    // Reachable countries with X max flights
-    // Maximum trip
-    // Top K airport with the greatest air traffic capacity
-    // Essential airports
+    cout << "2 - Best flight option..." << endl;
+    cout << "3 - Best flight option with filters... " << endl;
     cout << "0 - Exit." << endl;
     while (true) {
         cout << "Write the number of what you want to do: ";
@@ -103,7 +98,10 @@ void mainMenu() {
                     menus.emplace("getInfo");
                     return;
                 case 2:
-                    menus.emplace("getFlight");
+                    menus.emplace("bestFlight");
+                    return;
+                case 3:
+                    menus.emplace("bestFlightwFilters");
                     return;
                 case 0:
                     quit = true;
@@ -653,17 +651,38 @@ void globalMenu() {
 
 // TODO
 void getFlightMenu() {
+    int op = 0;
+    cout << endl << "-------------------------------------" << endl;
+    cout << endl << "          Best flight option         " << endl;
+    cout << endl << "-------------------------------------" << endl;
+    cout << "Where are you departing from?" << endl;
+    cout << "1 - Airport code." << endl;
+    cout << "2 - Airport name." << endl;
+    cout << "3 - City name." << endl;
+    cout << "4 - Coordinates." << endl;
+    cout << "0 - Exit." << endl;
 
+}
+
+// TODO
+void getFlightwFiltersMenu() {
+    int op = 0;
+    cout << endl << "-------------------------------------" << endl;
+    cout << endl << "   Best flight option with filters   " << endl;
+    cout << endl << "-------------------------------------" << endl;
+    cout << "Where are you departing from?" << endl;
+    cout << "1 - Airport code." << endl;
+    cout << "2 - Airport name." << endl;
+    cout << "3 - City name." << endl;
+    cout << "4 - Coordinates." << endl;
+    cout << "0 - Exit." << endl;
 }
 
 int main() {
     csvInfo::createAirportsVector();
     csvInfo::createAirlinesVector();
     csvInfo::createFlightsGraph();
-    cout << "<< SIZE >>" << endl;
-    cout << csvInfo::airportsVector.size() << endl;
-    cout << csvInfo::airlinesVector.size() << endl;
-    cout << csvInfo::flightsGraph.getVertexSet().size() << endl;
+
     menus.emplace("main");
     while (true) {
         string next = menus.top();
@@ -697,6 +716,10 @@ int main() {
                 menus.pop();
                 break;
             case 9:
+                getFlightwFiltersMenu();
+                menus.pop();
+                break;
+            case 10:
                 countriesX();
                 menus.pop();
                 break;

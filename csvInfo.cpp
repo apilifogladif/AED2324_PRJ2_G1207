@@ -5,6 +5,8 @@ csvInfo::csvInfo() = default;
 
 vector<Airline> csvInfo::airlinesVector;
 vector<Airport> csvInfo::airportsVector;
+set<string> csvInfo::citiesSet;
+set<string> csvInfo::countriesSet;
 Graph csvInfo::flightsGraph;
 
 void csvInfo::createAirlinesVector() {
@@ -35,6 +37,7 @@ void csvInfo::createAirlinesVector() {
 
 void csvInfo::createAirportsVector() {
     airportsVector.clear();
+    flightsGraph.clean();
     fstream file;
     file.open("../data/airports.csv");
     if (!file.is_open()) {
@@ -58,14 +61,15 @@ void csvInfo::createAirportsVector() {
         getline(s, latitude, ',');
         getline(s, longitude);
         Airport airport = Airport(code, name, city, country, stof(latitude), stof(longitude));
-        airportsVector.push_back(airport);
         flightsGraph.addVertex(airport);
+        airportsVector.push_back(airport);
+        citiesSet.insert(city);
+        countriesSet.insert(country);
     }
     file.close();
 }
 
 void csvInfo::createFlightsGraph() {
-    flightsGraph.clean();
     fstream file;
     file.open("../data/flights.csv");
     if (!file.is_open()) {

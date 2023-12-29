@@ -13,6 +13,7 @@
 #include <unordered_map>
 #include "Airlines.h"
 #include "Airport.h"
+#include <utility>
 
 using namespace std;
 
@@ -382,6 +383,15 @@ public:
      * @return A vector of Airline objects representing the airlines associated with the airport.
      */
     vector<Airline> getAirlines(Airport airport);
+
+    /**
+     * @brief Gets the top airports based on the number of flights.
+     * @param k The number of top airports to retrieve.
+     * @return A vector of pairs representing the top airports and their respective number of flights.
+     */
+    vector<pair<Airport, int>> getTopAirports(int k) const;
+
+
 };
 
 #endif /* GRAPH_H_ */

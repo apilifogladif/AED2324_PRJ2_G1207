@@ -285,6 +285,25 @@ int Graph::getTotalReachableDestinations(int maxStops) const {
     return uniqueDestinations.size();
 }
 
+// Others
+
+vector<pair<Airport, int>> Graph::getTopAirports(int k) const {
+    vector<pair<Airport, int>> airportFlights;
+    for (auto vertex : getVertexSet()) {
+        int numFlights = vertex->getAdj().size();
+        airportFlights.emplace_back(vertex->getAirport(), numFlights);
+    }
+    auto comp = [](const auto& a, const auto& b) {
+        return a.second > b.second;
+    };
+    sort(airportFlights.begin(), airportFlights.end(), comp);
+    vector<pair<Airport, int>> topAirports;
+    if (k > 0 && k <= static_cast<int>(airportFlights.size())) {
+        topAirports.assign(airportFlights.begin(), airportFlights.begin() + k);
+    }
+    return topAirports;
+}
+
 /****************** Provided constructors and functions ********************/
 
 Vertex::Vertex(Airport in): airport(in) {}

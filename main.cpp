@@ -474,6 +474,7 @@ void cityMenu() {
     cout << endl << "-------------------------------------" << endl;
 
     string country;
+    getline(cin, country);
     while (true) {
         cout << "Enter the name of the country: ";
         if (getline(cin, country)) {
@@ -623,6 +624,7 @@ void countryMenu() {
     cout << endl << "-------------------------------------" << endl;
 
     string country;
+    getline(cin, country);
     while (true) {
         cout << "Enter the name of the country: ";
         if (getline(cin, country)) {

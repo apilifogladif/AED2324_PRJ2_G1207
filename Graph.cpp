@@ -1,11 +1,13 @@
 #include "Graph.h"
 
+#include <utility>
+
 // Airport
 
 int Graph::getNumberOfFlights(Airport& airport) const {
     int numFlights = 0;
     Vertex* airportVertex = findVertex(airport);
-    if (airportVertex != NULL) {
+    if (airportVertex != nullptr) {
         for (const auto& edge : airportVertex->getAdj()) {
             if (edge.getDest()->getAirport() == airport) {
                 ++numFlights;
@@ -15,10 +17,10 @@ int Graph::getNumberOfFlights(Airport& airport) const {
     return numFlights;
 }
 
-int Graph::getNumberOfAirlines(const Airport& airport) const {
+unsigned long Graph::getNumberOfAirlines(const Airport& airport) const {
     set<string> uniqueAirlines;
     Vertex* airportVertex = findVertex(airport);
-    if (airportVertex != NULL) {
+    if (airportVertex != nullptr) {
         for (auto& edge : airportVertex->getAdj()) {
             uniqueAirlines.insert(edge.getAirline().getCode());
         }
@@ -26,9 +28,9 @@ int Graph::getNumberOfAirlines(const Airport& airport) const {
     return uniqueAirlines.size();
 }
 
-int Graph::getNumberOfDestinations(const Airport& airport) const {
+unsigned long Graph::getNumberOfDestinations(const Airport& airport) const {
     Vertex* airportVertex = findVertex(airport);
-    if (airportVertex != NULL) {
+    if (airportVertex != nullptr) {
         return airportVertex->getAdj().size();
     }
     return 0;
@@ -48,9 +50,9 @@ vector<Airport> Graph::getReachableDestinations(const Airport& source, int maxSt
     vector<Airport> reachableDestinations;
     Vertex* sourceVertex = findVertex(source);
     for (auto v : vertexSet) v->visited = false;
-    if (sourceVertex != NULL) {
+    if (sourceVertex != nullptr) {
         sourceVertex->visited = true;
-        for (auto v : sourceVertex->getAdj())
+        for (const auto& v : sourceVertex->getAdj())
             if (! v.getDest()->isVisited()) {
                 reachableDestinations.push_back(v.getDest()->getAirport());
                 dfsReachableDestinations(v.getDest(), maxStops, reachableDestinations);
@@ -75,8 +77,8 @@ void Graph::dfsReachableDestinations(Vertex* v, int stopsLeft, vector<Airport>& 
 
 vector<Airline> Graph::getAirlines(Airport airport) {
     vector<Airline> airs;
-    auto v = findVertex(airport);
-    for (auto vtx : v->getAdj()) {
+    auto v = findVertex(std::move(airport));
+    for (const auto& vtx : v->getAdj()) {
         auto it = find(airs.begin(), airs.end(), vtx.getAirline());
         if (it == airs.end()) airs.push_back(vtx.getAirline());
     }

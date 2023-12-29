@@ -3,11 +3,6 @@
 
 using namespace std;
 
-void mainMenu();
-void getInfoMenu();
-void airportMenu();
-int main();
-
 Airport verifyAirport(const string& code);
 Airline verifyAirline(const string& code);
 bool verifyCity(const string& name, const string& c);
@@ -15,16 +10,15 @@ bool verifyCountry(const string& name);
 bool checkDigit(string num);
 void clearMenus();
 
+void mainMenu();
+void getInfoMenu();
+void airportMenu();
+int main();
 void getFlightMenu();
-
 void airlineMenu();
-
 void cityMenu();
-
 void countryMenu();
-
 void globalMenu();
-
 void getFlightwFiltersMenu();
 
 // global variables
@@ -38,7 +32,47 @@ bool quit = false;
 Airport airport = Airport("", "", "", "", 0, 0);
 Airline airline = Airline("", "", "", "");
 
+int typeOfDest(const set<Airport>& setDest) {
+    int op = 0;
+    cout << endl << "----------------------------------------" << endl;
+    cout << endl << "  Number of which type of destination?  " << endl;
+    cout << endl << "----------------------------------------" << endl;
+    cout << "1 - Airports." << endl;
+    cout << "2 - City." << endl;
+    cout << "3 - Countries." << endl;
 
+    set<string> aux;
+    while (true) {
+        cout << "Write the number of what you want to do: ";
+        if (cin >> op) {
+            switch (op) {
+                case 1 :
+                    return setDest.size();
+                case 2:
+                    for (auto i : setDest) {
+                        if (aux.find(i.getCity() + i.getCountry()) == aux.end()) {
+                            aux.insert(i.getCity() + i.getCountry());
+                        }
+                    }
+                    return aux.size();
+                case 3:
+                    for (auto i : setDest) {
+                        if (aux.find(i.getCountry()) == aux.end()) {
+                            aux.insert(i.getCountry());
+                        }
+                    }
+                    return aux.size();
+                default:
+                    cout << "Invalid number! The number should be between 0 and 6." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input! Please enter a valid number." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+    }
+}
 
 Airport verifyAirport(const string& code) {
     Airport null = Airport("", "", "", "", 0, 0);

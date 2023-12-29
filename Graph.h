@@ -208,14 +208,14 @@ public:
     * @param airport Airport of interest.
     * @return Number of airlines operating at the airport.
     */
-    int getNumberOfAirlines(const Airport& airport) const;
+    unsigned long getNumberOfAirlines(const Airport& airport) const;
 
     /**
     * @brief Gets the number of destinations reachable from a given airport.
     * @param airport Source airport.
     * @return Number of destinations reachable from the source airport.
     */
-    int getNumberOfDestinations(const Airport &airport) const;
+    unsigned long getNumberOfDestinations(const Airport &airport) const;
 
     /**
      * @brief Gets the reachable destinations from a source airport within a given number of stops.

@@ -368,8 +368,19 @@ public:
      */
     int getTotalReachableDestinations(int maxStops) const;
 
+    /**
+     * @brief Gets a vector of countries reachable from the given source airport within a specified maximum number of stops.
+     * @param source The source airport for which to find reachable countries.
+     * @param maxStops The maximum number of stops allowed for the flight path.
+     * @return A vector of strings representing the countries reachable from the source airport.
+     */
     vector<string> getCountries(const Airport &source, int maxStops) const;
 
+    /**
+     * @brief Gets a vector of airlines associated with a specific airport.
+     * @param airport The airport for which to retrieve the associated airlines.
+     * @return A vector of Airline objects representing the airlines associated with the airport.
+     */
     vector<Airline> getAirlines(Airport airport);
 };
 

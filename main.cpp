@@ -476,7 +476,7 @@ void cityMenu() {
     string country;
     while (true) {
         cout << "Enter the name of the country: ";
-        if (cin >> country) {
+        if (getline(cin, country)) {
             if (verifyCountry(country)) {
                 break;  // Input is valid, exit the loop
             }
@@ -498,7 +498,7 @@ void cityMenu() {
     string city;
     while (true) {
         cout << "Enter the name of the city: ";
-        if (cin >> city) {
+        if (getline(cin, city)) {
             if (verifyCity(city, country)) {
                 break;  // Input is valid, exit the loop
             }
@@ -625,7 +625,7 @@ void countryMenu() {
     string country;
     while (true) {
         cout << "Enter the name of the country: ";
-        if (cin >> country) {
+        if (getline(cin, country)) {
             if (verifyCountry(country)) {
                 break;  // Input is valid, exit the loop
             }

@@ -677,6 +677,11 @@ int main() {
     csvInfo::createAirlinesVector();
     csvInfo::createFlightsGraph();
 
+    cout << "<<< SIZE >>>" << endl;
+    cout << csvInfo::flightsGraph.getVertexSet().size() << endl;
+    cout << csvInfo::airportsVector.size() << endl;
+    cout << csvInfo::airlinesVector.size() << endl;
+
     menus.emplace("main");
     while (true) {
         string next = menus.top();

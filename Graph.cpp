@@ -90,7 +90,7 @@ int Graph::getNumberOfFlights(const Airline& airline) const {
     for (auto v : vertexSet) {
         for (const auto& edge : v->getAdj()) {
             if (edge.getAirline() == airline) {
-                ++numFlights;
+                numFlights++;
             }
         }
     }
@@ -101,7 +101,7 @@ set<Airport> Graph::getNumberOfDestinations(const Airline& airline) const {
     set<Airport> uniqueDestinations;
     for (auto v : vertexSet) {
         for (const auto& edge : v->getAdj()) {
-            if (edge.getAirline() == airline) {
+            if (edge.getAirline() == airline && uniqueDestinations.find(edge.getDest()->getAirport()) == uniqueDestinations.end()) {
                 uniqueDestinations.insert(edge.getDest()->getAirport());
             }
         }

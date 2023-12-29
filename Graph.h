@@ -391,6 +391,10 @@ public:
      */
     vector<pair<Airport, int>> getTopKAirports(int k) const;
 
+    /**
+     * @brief Finds the maximum stops trip and corresponding source-destination airport pairs, using breadth-first search (BFS)
+     * The result is printed to the terminal.
+     */
     void findMaxStopsTrip();
 };
 

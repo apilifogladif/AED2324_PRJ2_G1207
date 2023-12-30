@@ -256,6 +256,10 @@ void mainMenu() {
 }
 
 /**
+ * @brief
+ *
+ * Complexity:
+ */
 void getInfoMenu() {
     int op = 0;
     cout << endl << "-----------------------------" << endl;
@@ -302,6 +306,11 @@ void getInfoMenu() {
     }
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ */
 void destX() {
     string X;
     while (true) {
@@ -332,6 +341,11 @@ void destX() {
     over = true;
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ */
 void airportMenu() {
     int op = 0;
     cout << endl << "-------------------------------------" << endl;
@@ -447,6 +461,11 @@ void airportMenu() {
     }
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ */
 void airlineMenu() {
     int op = 0;
     cout << endl << "-------------------------------------" << endl;
@@ -511,6 +530,11 @@ void airlineMenu() {
     }
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ */
 void cityMenu() {
     int op = 0;
     cout << endl << "-------------------------------------" << endl;
@@ -636,6 +660,11 @@ void cityMenu() {
     }
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ */
 void countryMenu() {
     int op = 0;
     cout << endl << "-------------------------------------" << endl;
@@ -743,6 +772,11 @@ void countryMenu() {
     }
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ */
 void globalMenu() {
     int op = 0;
     cout << endl << "-------------------------------------" << endl;
@@ -798,6 +832,11 @@ void globalMenu() {
     }
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ */
 void getFlightMenu() {
     int op = 0;
     cout << endl << "-------------------------------------" << endl;
@@ -1229,7 +1268,6 @@ int main() {
         c += v->getAdj().size();
     }
     cout << c << endl;
-    vector<Airport> articulationPoints = AuxiliarFunctions::articulationPoints(&csvInfo::flightsGraph);
     menus.emplace("main");
     while (true) {
         string next = menus.top();

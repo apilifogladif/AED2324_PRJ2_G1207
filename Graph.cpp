@@ -30,15 +30,13 @@ bool Graph::dfs(Vertex* source, Vertex* dest, vector<Airport>* path) const {
         return true;
     }
     cout << "B" << endl;
-    for (Edge e : source->getAdj()) {
+    for (auto& e : source->getAdj()) {
         cout << "C" << endl;
-        if (!e.dest->isProcessing()) {
-            if (!e.dest->isVisited()) {
-                cout << "D" << endl;
-                if (dfs(e.dest, dest, path)) {
-                    cout << "E" << endl;
-                    return true;
-                }
+        if (!e.dest->isVisited()) {
+            cout << "D" << endl;
+            if (dfs(e.dest, dest, path)) {
+                cout << "E" << endl;
+                return true;
             }
         }
     }

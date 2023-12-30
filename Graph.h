@@ -41,6 +41,9 @@ class Vertex {
 public:
     /**
      * @brief Constructor for Vertex class.
+     *
+     * Complexity: O(1)
+     *
      * @param in Airport object to be associated with the vertex.
      */
     Vertex(Airport in);
@@ -74,8 +77,11 @@ class Edge {
 public:
     /**
      * @brief Constructor for Edge class.
-     * @param d Destination vertex.
-     * @param airline_ Airline associated with the edge.
+     *
+     * Complexity: 0(1)
+     *
+     * @param d : Destination vertex.
+     * @param airline_ : Airline associated with the edge.
      */
     Edge(Vertex* d, Airline airline_);
 
@@ -105,116 +111,166 @@ public:
     friend class AuxiliarFunctions;
     /**
      * @brief Finds a vertex with the given airport in the graph.
-     * @param in Airport to find.
+     *
+     * Complexity: 0(n)
+     *
+     * @param in : Airport to find.
      * @return Pointer to the found vertex or nullptr if not found.
      */
     Vertex *findVertex(Airport in) const;
 
     /**
      * @brief Finds a vertex with the given code in the graph.
-     * @param in Code of the airport to find.
+     *
+     * Complexity: O(n)
+     *
+     * @param in : Code of the airport to find.
      * @return Pointer to the found vertex or nullptr if not found.
      */
     Vertex *findVertex(string in) const;
 
     /**
      * @brief Gets the number of vertices in the graph.
+     *
+     * Complexity: O(1)
+     *
      * @return Number of vertices.
      */
     int getNumVertex() const;
 
     /**
      * @brief Adds a vertex with a given airport to the graph.
-     * @param in Airport to add.
+     *
+     * Complexity: O(1)
+     *
+     * @param in : Airport to add.
      * @return True if the vertex is added successfully, false otherwise.
      */
     bool addVertex(const Airport &in);
 
     /**
      * @brief Removes a vertex with a given airport from the graph.
-     * @param in Airport to remove.
+     *
+     * Complexity: O(n^2)
+     *
+     * @param in : Airport to remove.
      * @return True if the vertex is removed successfully, false otherwise.
      */
     bool removeVertex(Airport in);
 
     /**
      * @brief Adds an edge to the graph.
-     * @param sourc Source airport code.
-     * @param dest Destination airport code.
-     * @param airline Airline associated with the edge.
+     *
+     * Complexity: O(n)
+     *
+     * @param sourc : Source airport code.
+     * @param dest : Destination airport code.
+     * @param airline : Airline associated with the edge.
      * @return True if the edge is added successfully, false otherwise.
      */
     bool addEdge(const string &sourc, const string &dest, Airline airline);
 
     /**
      * @brief Removes an edge from the graph.
-     * @param sourc Source airport.
-     * @param dest Destination airport.
+     *
+     * Complexity: O(n)
+     *
+     * @param sourc : Source airport.
+     * @param dest : Destination airport.
      * @return True if the edge is removed successfully, false otherwise.
      */
     bool removeEdge(const Airport &sourc, const Airport &dest);
 
     /**
      * @brief Gets the vector of vertices in the graph.
+     *
+     * Complexity: O(1)
+     *
      * @return Vector of vertices.
      */
     vector<Vertex*> getVertexSet() const;
 
     /**
      * @brief Performs a depth-first search (dfs) traversal in the graph.
+     *
+     * Complexity: O(n)
+     *
      * @return Vector of airports in dfs order.
      */
     vector<Airport> dfs() const;
 
     /**
      * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
-     * @param source Source airport.
-     * @param dest Destination airport.
-     * @param path Path between both airports.
+     *
+     * Complexity: O(n)
+     *
+     * @param source : Source airport.
+     * @param dest : Destination airport.
+     * @param path : Path between both airports.
      * @return True if there is a path, otherwise returns false.
      */
     bool dfs(Vertex* source, Vertex* dest, vector<Airport>* path) const;
 
     /**
      * @brief Performs a breadth-first search (bfs) in the graph from a specific source airport.
-     * @param source Source airport.
+     *
+     * Complexity: O(n^2)
+     *
+     * @param source : Source airport.
      * @return Vector of airports in bfs order from the source.
      */
     vector<Airport> bfs(const Airport &source) const;
 
     /**
      * @brief Performs topological sort on the graph.
+     *
+     * Complexity: O(n^3)
+     *
      * @return Vector of airports in topological order.
      */
     vector<Airport> topsort() const;
 
     /**
      * @brief Checks if the graph is a Directed Acyclic Graph (DAG).
+     *
+     * Complexity: O(n)
+     *
      * @return True if the graph is acyclic, false otherwise.
      */
     bool isDAG() const;
 
     /**
      * @brief Cleans the graph by removing all vertices and edges.
+     *
+     * Complexity: O(n)
      */
     void clean();
 
     /**
      * @brief Gets the number of flights departing from a given airport.
-     * @param airport Departure airport.
+     *
+     * Complexity: O(n)
+     *
+     * @param airport : Departure airport.
      * @return Number of flights departing from the airport.
      */
     int getNumberOfFlights(Airport& airport) const;
 
     /**
     * @brief Gets the number of airlines operating at a given airport.
-    * @param airport Airport of interest.
+    *
+    * Complexity: O(n)
+    *
+    * @param airport : Airport of interest.
     * @return Number of airlines operating at the airport.
     */
     unsigned long getNumberOfAirlines(const Airport& airport) const;
 
     /**
     * @brief Gets the number of destinations reachable from a given airport.
+    *
+    * Complexity: O(1)
+    *
     * @param airport Source airport.
     * @return Number of destinations reachable from the source airport.
     */
@@ -222,17 +278,23 @@ public:
 
     /**
      * @brief Gets the reachable destinations from a source airport within a given number of stops.
-     * @param source The source airport.
-     * @param maxStops The maximum number of stops allowed.
+     *
+     * Complexity: O(n)
+     *
+     * @param source : The source airport.
+     * @param maxStops : The maximum number of stops allowed.
      * @return Vector of airports representing the reachable destinations.
      */
     vector<Airport> getReachableDestinations(const Airport& source, int maxStops) const;
 
     /**
      * @brief Performs a depth-first search to find reachable destinations within a given number of stops.
-     * @param v The current vertex being explored.
-     * @param stopsLeft The remaining number of stops allowed.
-     * @param reachableDestinations Vector to store the reachable destinations.
+     *
+     * Complexity: O(n)
+     *
+     * @param v : The current vertex being explored.
+     * @param stopsLeft : The remaining number of stops allowed.
+     * @param reachableDestinations : Vector to store the reachable destinations.
      */
     void dfsReachableDestinations(Vertex* v, int stopsLeft, vector<Airport>& reachableDestinations) const;
 
@@ -400,12 +462,21 @@ public:
      */
     void findMaxStopsTrip();
 
-
+    /**
+     * @brief Gets airports closest to the specified coordinates.
+     * @param lat Latitude of the target location in degrees.
+     * @param longi Longitude of the target location in degrees.
+     * @return Vector of airports closest to the specified coordinates.
+     */
     vector<Airport> getAirportsInCoordinates(float lat, float longi) const;
 
+    /**
+     * @brief Finds a path between two airports in the graph using depth-first search (DFS).
+     * @param s Source airport.
+     * @param d Destination airport.
+     * @return Vector of airports representing the path from source to destination.
+     */
     vector<Airport> pathAirport(Airport s, Airport d);
-
-
 };
 
 #endif /* GRAPH_H_ */

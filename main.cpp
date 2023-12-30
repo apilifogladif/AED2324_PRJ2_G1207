@@ -8,7 +8,6 @@ void typeOfDestVector(const vector<Airport>& vecDest);
 Airport verifyAirportCode(const string& code);
 Airport verifyAirportName(const string& name);
 Airline verifyAirlineCode(const string& code);
-Airline verifyAirlineName(const string& name);
 bool verifyCity(const string& name, const string& country);
 bool verifyCountry(const string& name);
 bool checkDigit(string num);
@@ -136,25 +135,6 @@ Airline verifyAirlineCode(const string& code) {
     Airline airline;
     for (Airline a : csvInfo::airlinesVector) {
         if (a.getCode() == code) {
-            airline = a;
-            break;
-        }
-    }
-    return airline;
-}
-
-/**
- * @brief
- *
- * Complexity:
- *
- * @param name :
- * @return
- */
-Airline verifyAirlineName(const string& name) {
-    Airline airline;
-    for (Airline a : csvInfo::airlinesVector) {
-        if (a.getName() == name) {
             airline = a;
             break;
         }
@@ -381,16 +361,11 @@ void airportMenu() {
     cout << "1 - Number of flights out of the airport." << endl;
     cout << "2 - Number of reachable destinations in a maximum number of X stops." << endl;
     cout << "3 - Number of airlines with flights departing from this airport." << endl;
-    cout << "4 - The flight trips with the greatest number of stops in between them." << endl;
-    cout << "5 - Top-k airports with the greatest air traffic capacity.." << endl;
-    cout << "6 - Airports that are essential to the network’s circulation capability.." << endl;
+
     cout << "0 - Return to last menu." << endl;
 
     Vertex* v;
     vector<Airline> airs;
-    vector<pair<Airport, int>> aux;
-    char X;
-    int i;
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
@@ -408,49 +383,11 @@ void airportMenu() {
                     cout << "There are " << airs.size() << " airlines with flights departing from this airport." << endl;
                     over = true;
                     return;
-                case 4:
-                    csvInfo::flightsGraph.findMaxStopsTrip();
-                    over = true;
-                    return;
-                case 5:
-                    while (true) {
-                        cout << "How many do you want to be shown? ";
-                        if (cin >> X) {
-                            if (isdigit(X)) {
-                                break;
-                            }
-                            else if (X == 'q') {
-                                menus.pop();
-                                return;
-                            }
-                            else {
-                                cout << "Invalid number of stops!" << endl;
-                            }
-                        }
-                        else {
-                            cout << "Invalid input! Please enter a valid number of stops." << endl;
-                            cin.clear();          // Clear the error state
-                            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-                        }
-                    }
-                    aux = csvInfo::flightsGraph.getTopKAirports(X);
-                    cout << "Top " << X << ": " << endl;
-                    i = 1;
-                    for (auto a : aux) {
-                        cout << i << " - " << a.first.getCode() << ";" << a.first.getName() << "; " << a.first.getCity() << "; " << a.first.getCountry() << endl;
-                        i++;
-                    }
-                    over = true;
-                    return;
-                case 6:
-                    // TODO
-                    over = true;
-                    return;
                 case 0:
                     menus.pop();
                     return;
                 default:
-                    cout << "Invalid number! The number should be between 1 and 5." << endl;
+                    cout << "Invalid number! The number should be between 0 and 3." << endl;
             }
         }
         else {
@@ -785,10 +722,18 @@ void globalMenu() {
     cout << "1 - Number of flights." << endl;
     cout << "2 - Number of airlines." << endl;
     cout << "3 - Number of airports." << endl;
-    cout << "4 -Number of cities." << endl;
-    cout << "5 -Number of countries." << endl;
+    cout << "4 - Number of cities." << endl;
+    cout << "5 - Number of countries." << endl;
+    cout << "6 - The flight trips with the greatest number of stops in between them." << endl;
+    cout << "7 - Top-k airports with the greatest air traffic capacity." << endl;
+    cout << "8 - Airports that are essential to the network’s circulation capability." << endl;
     cout << "0 - Return to last menu." << endl;
 
+    vector<pair<Airport, int>> aux;
+    string X;
+    int k;
+    int i;
+    vector<Airport> articulationPoints;
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
@@ -806,15 +751,52 @@ void globalMenu() {
                     over = true;
                     return;
                 case 4:
-                    cout << csvInfo::flightsGraph.getTotalNumberOfAirlines() << " airlines." << endl;
-                    over = true;
-                    return;
-                case 5:
                     cout << csvInfo::flightsGraph.getTotalNumberOfCities() << " cities." << endl;
                     over = true;
                     return;
-                case 6:
+                case 5:
                     cout << csvInfo::flightsGraph.getTotalNumberOfCountries() << " countries." << endl;
+                    over = true;
+                    return;
+                case 6:
+                    csvInfo::flightsGraph.findMaxStopsTrip();
+                    over = true;
+                    return;
+                case 7:
+                    while (true) {
+                        cout << "How many do you want to be shown? ";
+                        if (cin >> X) {
+                            if (X == "q") {
+                                menus.pop();
+                                return;
+                            }
+                            else if (checkDigit(X)) {
+                                break;  // Input is valid, exit the loop
+                            }
+                            else {
+                                cout << "Invalid number!" << endl;
+                            }
+                        }
+                        else {
+                            cout << "Invalid input! Please enter a valid number." << endl;
+                            cin.clear();          // Clear the error state
+                            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+                        }
+                    }
+                    k = stoi(X);
+                    aux = csvInfo::flightsGraph.getTopKAirports(k);
+                    cout << "Top " << X << ": " << endl;
+                    i = 1;
+                    for (auto a : aux) {
+                        cout << i << " - " << a.first.getCode() << ";" << a.first.getName() << "; " << a.first.getCity() << "; " << a.first.getCountry() << endl;
+                        i++;
+                    }
+                    over = true;
+                    return;
+                case 8:
+                    cout << "Essential airports: ";
+                    articulationPoints = AuxiliarFunctions::articulationPoints(&csvInfo::flightsGraph);
+                    cout << "(" << articulationPoints.size() << " airports)" << endl;
                     over = true;
                     return;
                 case 0:
@@ -869,7 +851,6 @@ void getFlightMenu() {
         if (cin >> op) {
             switch (op) {
                 case 1 :
-                    input = "AC"; // Airport Code
                     while (true) {
                         cout << "Enter the code of the airport: ";
                         if (cin >> code) {
@@ -895,7 +876,6 @@ void getFlightMenu() {
                     o = true;
                     break;
                 case 2:
-                    input = "AN"; // Airport Name
                     while (true) {
                         cout << "Enter the name of the airport: ";
                         if (cin >> code) {
@@ -921,7 +901,6 @@ void getFlightMenu() {
                     o = true;
                     break;
                 case 3:
-                    input = "CN"; // City name
                     while (true) {
                         cout << "Enter the name of the country: ";
                         if (cin >> code) {
@@ -968,7 +947,6 @@ void getFlightMenu() {
                     o = true;
                     break;
                 case 4:
-                    input = "C"; // Coordinates
                     while (true) {
                         cout << "Enter the latitude: ";
                         if (cin >> code) {
@@ -1055,7 +1033,6 @@ void getFlightMenu() {
         if (cin >> op) {
             switch (op) {
                 case 1 :
-                    input += " AC"; // Airport Code
                     while (true) {
                         cout << "Enter the code of the airport: ";
                         if (cin >> Dcode) {
@@ -1081,7 +1058,6 @@ void getFlightMenu() {
                     o = true;
                     break;
                 case 2:
-                    input += " AN"; // Airport Name
                     while (true) {
                         cout << "Enter the name of the airport: ";
                         if (cin >> Dcode) {
@@ -1107,7 +1083,6 @@ void getFlightMenu() {
                     o = true;
                     break;
                 case 3:
-                    input += " CN"; // City name
                     while (true) {
                         cout << "Enter the name of the country: ";
                         if (cin >> Dcode) {
@@ -1154,7 +1129,6 @@ void getFlightMenu() {
                     o = true;
                     break;
                 case 4:
-                    input += " C"; // Coordinates
                     while (true) {
                         cout << "Enter the latitude: ";
                         if (cin >> Dcode) {
@@ -1254,6 +1228,13 @@ void getFlightMenu() {
     }
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ *
+ * @return
+ */
 int main() {
     csvInfo::createAirportsVector();
     csvInfo::createAirlinesVector();

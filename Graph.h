@@ -209,7 +209,7 @@ public:
      * @param path : Path between both airports.
      * @return True if there is a path, otherwise returns false.
      */
-    bool dfs(Vertex* source, Vertex* dest, vector<Airport>* path) const;
+    bool dfs(Vertex* source, Vertex* dest, vector<Airport> path) const;
 
     /**
      * @brief Performs a breadth-first search (bfs) in the graph from a specific source airport.
@@ -303,14 +303,17 @@ public:
      *
      * Complexity: O(n^2)
      *
-     * @param airline The airline for which to retrieve the number of flights.
+     * @param airline : The airline for which to retrieve the number of flights.
      * @return The number of flights associated with the airline.
      */
     int getNumberOfFlights(const Airline& airline) const;
  ////////////////////////////////////////////////////
     /**
      * @brief Gets the number of destinations served by the given airline.
-     * @param airline The airline for which to retrieve the number of destinations.
+     *
+     * Complexity: O
+     *
+     * @param airline : The airline for which to retrieve the number of destinations.
      * @return A vector of destinations served by the airline.
      */
     vector<Airport> getNumberOfDestinations(const Airline& airline) const;

@@ -169,9 +169,11 @@ public:
     /**
      * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
      * @param source Source airport.
-     * @return Vector of airports in dfs order from the source.
+     * @param dest Destination airport.
+     * @param path Path between both airports.
+     * @return True if there is a path, otherwise returns false.
      */
-    vector<Airport> dfs(const Airport & source) const;
+    bool dfs(Vertex* source, Vertex* dest, vector<Airport> path) const;
 
     /**
      * @brief Performs a breadth-first search (bfs) in the graph from a specific source airport.

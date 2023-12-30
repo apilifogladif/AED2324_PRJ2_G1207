@@ -5,28 +5,27 @@
 
 // path between 2 airports
 vector<Airport> Graph::pathAirport(Airport s, Airport d) {
-    auto source = findVertex(s);
-    vector<Airport> dfsVec = dfs(s);
-    vector<Airport> adj;
     vector<Airport> aux;
-
-    for (auto e :  source->getAdj()) adj.push_back(e.getDest()->getAirport());
-
-    for (auto air : dfsVec) {
-        if (find(adj.begin(), adj.end(), air) != adj.end()) {
-            aux.clear();
-            aux.push_back(s);
-            aux.push_back(air);
-        }
-        else if (air == d) {
-            aux.push_back(air);
-            break;
-        }
-        else {
-            aux.push_back(air);
-        }
-    }
+    for (auto v : vertexSet) v->visited = false;
+    auto source = findVertex(s);
+    auto dest = findVertex(d);
+    dfs(source, dest, aux);
     return aux;
+}
+
+bool Graph::dfs(Vertex* source, Vertex* dest, vector<Airport> path) const {
+    source->visited = true;
+    path.push_back(source->airport);
+    if (source == dest) {
+        return true;
+    }
+    for (auto & e : source->adj) {
+        auto w = e.dest;
+        if ( ! w->visited)
+            if(dfs(w, dest, path)) return true;
+    }
+    path.pop_back();
+    return false;
 }
 
 // Coordinates
@@ -620,27 +619,6 @@ void Graph::dfsVisit(Vertex *v, vector<Airport> & res) const {
             dfsVisit(w, res);
     }
 }
-
-
-/****************** DFS ********************/
-/*
- * Performs a depth-first search (dfs) in a graph (this).
- * Returns a vector with the contents of the vertices by dfs order,
- * from the source node.
- */
-vector<Airport> Graph::dfs(const Airport & source) const {
-    vector<Airport> res;
-    auto s = findVertex(source);
-    if (s == nullptr)
-        return res;
-
-    for (auto v : vertexSet)
-        v->visited = false;
-
-    dfsVisit(s, res);
-    return res;
-}
-
 
 /****************** BFS ********************/
 /*

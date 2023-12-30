@@ -3,22 +3,6 @@
 
 using namespace std;
 
-/**
- * @file main.cpp
- *
- * @mainpage AED project 2
- * @section intro_sec Introduction
- * This project was made in the context of the Algorithms and Data Structures class.
- *
- * The aim of this project is precisely to develop a flight management system
- * for the air travel network of the airlines around the world that provides
- * effective assistance to users who wish to explore and plan travel
- *
- * The system must include various functionalities ??
- *
- * This project was made by: Filipa Geraldes, Filipa Fidalgo and Leonor Couto.
- */
-
 void typeOfDestVector(const vector<Airport>& vecDest);
 
 Airport verifyAirportCode(const string& code);
@@ -50,6 +34,13 @@ bool over = false;
 bool quit = false;
 Airport air_;
 
+/**
+ * @brief
+ *
+ * Complexity:
+ *
+ * @param vecDest :
+ */
 void typeOfDestVector(const vector<Airport>& vecDest) {
     int op = 0;
     cout << endl << "----------------------------------------" << endl;
@@ -95,6 +86,14 @@ void typeOfDestVector(const vector<Airport>& vecDest) {
     }
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ *
+ * @param code :
+ * @return
+ */
 Airport verifyAirportCode(const string& code) {
     Airport airport;
     for (Airport a : csvInfo::airportsVector) {
@@ -106,6 +105,14 @@ Airport verifyAirportCode(const string& code) {
     return airport;
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ *
+ * @param name :
+ * @return
+ */
 Airport verifyAirportName(const string& name) {
     Airport airport;
     for (Airport a : csvInfo::airportsVector) {
@@ -117,6 +124,14 @@ Airport verifyAirportName(const string& name) {
     return airport;
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ *
+ * @param code :
+ * @return
+ */
 Airline verifyAirlineCode(const string& code) {
     Airline airline;
     for (Airline a : csvInfo::airlinesVector) {
@@ -128,6 +143,14 @@ Airline verifyAirlineCode(const string& code) {
     return airline;
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ *
+ * @param name :
+ * @return
+ */
 Airline verifyAirlineName(const string& name) {
     Airline airline;
     for (Airline a : csvInfo::airlinesVector) {
@@ -139,6 +162,15 @@ Airline verifyAirlineName(const string& name) {
     return airline;
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ *
+ * @param name :
+ * @param country :
+ * @return
+ */
 bool verifyCity(const string& name, const string& country) {
     for (Airport a : csvInfo::airportsVector) {
         if (a.getCity() == name && a.getCountry() == country) return true;
@@ -146,11 +178,27 @@ bool verifyCity(const string& name, const string& country) {
     return false;
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ *
+ * @param name :
+ * @return
+ */
 bool verifyCountry(const string& name) {
     if (csvInfo::countriesSet.find(name) != csvInfo::countriesSet.end()) return true;
     return false;
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ *
+ * @param num :
+ * @return
+ */
 bool checkDigit(string num) {
     for (auto c : num) {
         if (!isdigit(c)) return false;
@@ -158,12 +206,22 @@ bool checkDigit(string num) {
     return true;
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ */
 void clearMenus() {
     while (!menus.empty()) {
         menus.pop();
     }
 }
 
+/**
+ * @brief
+ *
+ * Complexity:
+ */
 void mainMenu() {
     int op = 0;
     cout << endl << "----------------------------" << endl;
@@ -197,6 +255,7 @@ void mainMenu() {
     }
 }
 
+/**
 void getInfoMenu() {
     int op = 0;
     cout << endl << "-----------------------------" << endl;

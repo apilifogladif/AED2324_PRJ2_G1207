@@ -8,10 +8,29 @@
 class csvInfo {
 private:
 public:
+    /**
+     * Vector of all the airlines
+     */
     static vector<Airline> airlinesVector;
+
+    /**
+     * Vector of all the airports
+     */
     static vector<Airport> airportsVector;
+
+    /**
+     * Set of all the cities
+     */
     static set<string> citiesSet;
+
+    /**
+     * Set of all the countries
+     */
     static set<string> countriesSet;
+
+    /**
+     * Graph of all the flights
+     */
     static Graph flightsGraph;
 
     /**
@@ -20,17 +39,17 @@ public:
     csvInfo();
 
     /**
-     * @brief Adds all Airlines present in airlines.csv to a vector
+     * @brief Adds all airlines present in airlines.csv to a vector
      */
     static void createAirlinesVector();
 
     /**
-     * @brief Adds all Airports present in airports.csv to a vector
+     * @brief Adds all airports present in airports.csv to a vector
      */
     static void createAirportsVector();
 
     /**
-     * @brief Adds all Flights present in arlines.csv to a graph
+     * @brief Adds all flights present in flights.csv to a graph
      */
     static void createFlightsGraph();
 };

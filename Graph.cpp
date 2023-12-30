@@ -432,22 +432,6 @@ vector<pair<Airport, int>> Graph::getTopKAirports(int k) const {
     return topAirports;
 }
 
-/*
-void Graph::identifyEssentialAirports() {
-
-    cout << "Essential Airports: ";
-    for (auto point : articulationPoints) {
-        cout << point->getAirport().getCode() << " ";
-    }
-    cout << endl;
-}
-
-void Graph::dfsArticulationPoints(Vertex* source, Vertex* dest, unordered_set<Vertex*>& isVisited, vector<Vertex*>& articulationPoints, int& count) {
-
-}
-*/
-
-
 /****************** Provided constructors and functions ********************/
 
 Vertex::Vertex(Airport in): airport(in) {}

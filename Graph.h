@@ -244,9 +244,9 @@ public:
     /**
      * @brief Gets the number of destinations served by the given airline.
      * @param airline The airline for which to retrieve the number of destinations.
-     * @return The number of destinations served by the airline.
+     * @return A vector of destinations served by the airline.
      */
-    set<Airport> getNumberOfDestinations(const Airline& airline) const;
+    vector<Airport> getNumberOfDestinations(const Airline& airline) const;
 
 
     /**
@@ -264,6 +264,14 @@ public:
      * @return The number of unique airports in the city.
      */
     int getNumberOfAirportsInCity(const string& city, const string& country) const;
+
+    /**
+     * @brief Gets the airports in the specified city.
+     * @param city The city for which to retrieve the number of airports.
+     * @param country The country of the city.
+     * @return The vector of unique airports in the city.
+     */
+    vector<Airport> getAirportsInCity(const string& city, const string& country) const;
 
     /**
      * @brief Gets the number of unique airlines operating in the specified city.
@@ -371,14 +379,6 @@ public:
     int getTotalReachableDestinations(int maxStops) const;
 
     /**
-     * @brief Gets a vector of countries reachable from the given source airport within a specified maximum number of stops.
-     * @param source The source airport for which to find reachable countries.
-     * @param maxStops The maximum number of stops allowed for the flight path.
-     * @return A vector of strings representing the countries reachable from the source airport.
-     */
-    vector<string> getCountries(const Airport &source, int maxStops) const;
-
-    /**
      * @brief Gets a vector of airlines associated with a specific airport.
      * @param airport The airport for which to retrieve the associated airlines.
      * @return A vector of Airline objects representing the airlines associated with the airport.
@@ -397,6 +397,10 @@ public:
      * The result is printed to the terminal.
      */
     void findMaxStopsTrip();
+
+    vector<Airport> getAirportsInCoordinates(float lat, float longi) const;
+
+    vector<Airport> pathAirport(Airport s, Airport d);
 };
 
 #endif /* GRAPH_H_ */

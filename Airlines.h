@@ -14,6 +14,11 @@ private:
 
 public:
     /**
+     * @brief Default constructor of the Airline class.
+     */
+    Airline();
+
+    /**
      * @brief Constructor of the Airline class.
      * @param c Airline's code.
      * @param n Airline's name.

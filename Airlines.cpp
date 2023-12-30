@@ -1,5 +1,12 @@
 #include "Airlines.h"
 
+Airline::Airline() {
+    code = "";
+    name = "";
+    callsign = "";
+    country = "";
+}
+
 Airline::Airline(string c, string n, string cs, string co) {
     code = std::move(c);
     name = std::move(n);

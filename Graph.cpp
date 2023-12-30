@@ -1,6 +1,65 @@
 #include "Graph.h"
 
 #include <utility>
+#include <cmath>
+
+// path between 2 airports
+vector<Airport> Graph::pathAirport(Airport s, Airport d) {
+    auto source = findVertex(s);
+    vector<Airport> dfsVec = dfs(s);
+    vector<Airport> adj;
+    vector<Airport> aux;
+
+    for (auto e :  source->getAdj()) adj.push_back(e.getDest()->getAirport());
+
+    for (auto air : dfsVec) {
+        if (find(adj.begin(), adj.end(), air) != adj.end()) {
+            aux.clear();
+            aux.push_back(s);
+            aux.push_back(air);
+        }
+        else if (air == d) {
+            aux.push_back(air);
+            break;
+        }
+        else {
+            aux.push_back(air);
+        }
+    }
+    return aux;
+}
+
+// Coordinates
+vector<Airport> Graph::getAirportsInCoordinates(float lat, float longi) const {
+    vector<Airport> closestAirports;
+    float minDist;
+
+    const float R = 6371.0;
+    float lat1 = lat * M_PI / 180.0;
+    float lon1 = longi * M_PI / 180.0;
+
+    for (auto v : vertexSet) {
+        float lat2 = v->getAirport().getLatitude() * M_PI / 180.0;
+        float lon2 = v->getAirport().getLongitude() * M_PI / 180.0;
+
+        float dLat = lat2 - lat1;
+        float dLon = lon2 - lon1;
+
+        float a = sin(dLat / 2) * sin(dLat / 2) +
+                   cos(lat1) * cos(lat2) * sin(dLon / 2) * sin(dLon / 2);
+        float c = 2 * atan2(sqrt(a), sqrt(1 - a));
+        float distance = R * c;
+
+        if (distance < minDist) {
+            minDist = distance;
+            closestAirports.clear();
+            closestAirports.push_back(v->getAirport());
+        } else if (distance == minDist) {
+            closestAirports.push_back(v->getAirport());
+        }
+    }
+    return closestAirports;
+}
 
 // Airport
 
@@ -34,16 +93,6 @@ unsigned long Graph::getNumberOfDestinations(const Airport& airport) const {
         return airportVertex->getAdj().size();
     }
     return 0;
-}
-
-vector<string> Graph::getCountries(const Airport& source, int maxStops) const {
-    vector<Airport> reachDests = getReachableDestinations(source, maxStops);
-    vector<string> countries;
-    for (auto dest : reachDests) {
-        auto it = find(countries.begin(), countries.end(), dest.getCountry());
-        if (it == countries.end()) countries.push_back(dest.getCountry());
-    }
-    return countries;
 }
 
 vector<Airport> Graph::getReachableDestinations(const Airport& source, int maxStops) const {
@@ -99,12 +148,12 @@ int Graph::getNumberOfFlights(const Airline& airline) const {
     return numFlights;
 }
 
-set<Airport> Graph::getNumberOfDestinations(const Airline& airline) const {
-    set<Airport> uniqueDestinations;
+vector<Airport> Graph::getNumberOfDestinations(const Airline& airline) const {
+    vector<Airport> uniqueDestinations;
     for (auto v : vertexSet) {
         for (const auto& edge : v->getAdj()) {
-            if (edge.getAirline() == airline && uniqueDestinations.find(edge.getDest()->getAirport()) == uniqueDestinations.end()) {
-                uniqueDestinations.insert(edge.getDest()->getAirport());
+            if (edge.getAirline() == airline && find(uniqueDestinations.begin(), uniqueDestinations.end(), edge.getDest()->getAirport()) == uniqueDestinations.end()) {
+                uniqueDestinations.push_back(edge.getDest()->getAirport());
             }
         }
     }
@@ -132,6 +181,16 @@ int Graph::getNumberOfAirportsInCity(const string& city, const string& country) 
         }
     }
     return uniqueAirports.size();
+}
+
+vector<Airport> Graph::getAirportsInCity(const string& city, const string& country) const {
+    vector<Airport> uniqueAirports;
+    for (auto v : getVertexSet()) {
+        if (v->getAirport().getCity() == city && v->getAirport().getCountry() == country) {
+            uniqueAirports.push_back(v->getAirport());
+        }
+    }
+    return uniqueAirports;
 }
 
 int Graph::getNumberOfAirlinesInCity(const string& city, const string& country) const {

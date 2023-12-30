@@ -48,3 +48,25 @@ void dfs_art(Graph *g, Vertex *v, stack<Airport> &s, vector<Airport> &res, int &
     v->setProcessing(false);
     s.pop();
 }
+
+// Best flight option
+
+vector<vector<Airport>> AuxiliarFunctions::bestFlightOp(vector<Airport> sourceAirports, vector<Airport> destAirports) {
+    vector<Airport> aux;
+    vector<vector<Airport>> best;
+
+    for (auto s : sourceAirports) {
+        for (auto d : destAirports) {
+            aux = csvInfo::flightsGraph.pathAirport(s, d);
+
+            if (aux.size() < best[0].size()) {
+                best.clear();
+                best.push_back(aux);
+            }
+            else if (aux.size() == best[0].size()) {
+                best.push_back(aux);
+            }
+        }
+    }
+    return best;
+}

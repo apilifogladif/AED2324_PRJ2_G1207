@@ -24,7 +24,6 @@ void airlineMenu();
 void cityMenu();
 void countryMenu();
 void globalMenu();
-void getFlightwFiltersMenu();
 
 // global variables
 map<std::string, int> m {{"main", 0}, {"getInfo", 1}, {"bestFlight", 2}, {"airportInfo", 3},
@@ -293,10 +292,16 @@ void airportMenu() {
     cout << "1 - Number of flights out of the airport." << endl;
     cout << "2 - Number of reachable destinations in a maximum number of X stops." << endl;
     cout << "3 - Number of airlines with flights departing from this airport." << endl;
+    cout << "4 - The flight trips with the greatest number of stops in between them." << endl;
+    cout << "5 - Top-k airports with the greatest air traffic capacity.." << endl;
+    cout << "6 - Airports that are essential to the network’s circulation capability.." << endl;
     cout << "0 - Return to last menu." << endl;
 
     Vertex* v;
     vector<Airline> airs;
+    vector<pair<Airport, int>> aux;
+    char X;
+    int i;
     while (true) {
         cout << "Write the number of what you want to do: ";
         if (cin >> op) {
@@ -312,6 +317,44 @@ void airportMenu() {
                 case 3:
                     airs = csvInfo::flightsGraph.getAirlines(airport);
                     cout << "There are " << airs.size() << " airlines with flights departing from this airport." << endl;
+                    over = true;
+                    return;
+                case 4:
+                    csvInfo::flightsGraph.findMaxStopsTrip();
+                    over = true;
+                    return;
+                case 5:
+                    while (true) {
+                        cout << "How many do you want to be shown? ";
+                        if (cin >> X) {
+                            if (isdigit(X)) {
+                                break;
+                            }
+                            else if (X == 'q') {
+                                menus.pop();
+                                return;
+                            }
+                            else {
+                                cout << "Invalid number of stops!" << endl;
+                            }
+                        }
+                        else {
+                            cout << "Invalid input! Please enter a valid number of stops." << endl;
+                            cin.clear();          // Clear the error state
+                            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+                        }
+                    }
+                    aux = csvInfo::flightsGraph.getTopKAirports(X);
+                    cout << "Top " << X << ": " << endl;
+                    i = 1;
+                    for (auto a : aux) {
+                        cout << i << " - " << a.first.getCode() << ";" << a.first.getName() << "; " << a.first.getCity() << "; " << a.first.getCountry() << endl;
+                        i++;
+                    }
+                    over = true;
+                    return;
+                case 6:
+                    // TODO
                     over = true;
                     return;
                 case 0:
@@ -1111,7 +1154,7 @@ int main() {
         c += v->getAdj().size();
     }
     cout << c << endl;
-    cout << "articulation points " << AuxiliarFunctions::articulationPoints(&csvInfo::flightsGraph).size() << endl;
+    vector<Airport> articulationPoints = AuxiliarFunctions::articulationPoints(&csvInfo::flightsGraph);
     menus.emplace("main");
     while (true) {
         string next = menus.top();

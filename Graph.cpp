@@ -5,26 +5,47 @@
 
 // path between 2 airports
 vector<Airport> Graph::pathAirport(Airport s, Airport d) {
+    cout << "s: " << s.getCode() << "; d: " << d.getCode() << endl;
     vector<Airport> aux;
-    for (auto v : vertexSet) v->visited = false;
-    auto source = findVertex(s);
-    auto dest = findVertex(d);
-    dfs(source, dest, aux);
+    for (auto v : vertexSet) {
+        v->visited = false;
+        v->processing = false;
+    }
+
+    auto source = findVertex(std::move(s));
+    auto dest = findVertex(std::move(d));
+    if (source == nullptr || dest == nullptr) return aux;
+    cout << "s: " << source->getAirport().getCode() << "; d: " << dest->getAirport().getCode() << endl;
+
+    dfs(source, dest, &aux);
     return aux;
 }
 
-bool Graph::dfs(Vertex* source, Vertex* dest, vector<Airport> path) const {
+bool Graph::dfs(Vertex* source, Vertex* dest, vector<Airport>* path) const {
+    cout << "A" << endl;
     source->visited = true;
-    path.push_back(source->airport);
-    if (source == dest) {
+    source->processing = true;
+    path->push_back(source->airport);
+    if (source->getAirport().getCode() == dest->getAirport().getCode()) {
         return true;
     }
-    for (auto & e : source->adj) {
-        auto w = e.dest;
-        if ( ! w->visited)
-            if(dfs(w, dest, path)) return true;
+    cout << "B" << endl;
+    for (Edge e : source->getAdj()) {
+        cout << "C" << endl;
+        if (!e.dest->isProcessing()) {
+            if (!e.dest->isVisited()) {
+                cout << "D" << endl;
+                if (dfs(e.dest, dest, path)) {
+                    cout << "E" << endl;
+                    return true;
+                }
+            }
+        }
     }
-    path.pop_back();
+    cout << "F" << endl;
+    path->pop_back();
+    cout << "G" << endl;
+    source->processing = false;
     return false;
 }
 
@@ -410,6 +431,22 @@ vector<pair<Airport, int>> Graph::getTopKAirports(int k) const {
     }
     return topAirports;
 }
+
+/*
+void Graph::identifyEssentialAirports() {
+
+    cout << "Essential Airports: ";
+    for (auto point : articulationPoints) {
+        cout << point->getAirport().getCode() << " ";
+    }
+    cout << endl;
+}
+
+void Graph::dfsArticulationPoints(Vertex* source, Vertex* dest, unordered_set<Vertex*>& isVisited, vector<Vertex*>& articulationPoints, int& count) {
+
+}
+*/
+
 
 /****************** Provided constructors and functions ********************/
 

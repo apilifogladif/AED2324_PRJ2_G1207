@@ -173,7 +173,7 @@ public:
      * @param path Path between both airports.
      * @return True if there is a path, otherwise returns false.
      */
-    bool dfs(Vertex* source, Vertex* dest, vector<Airport> path) const;
+    bool dfs(Vertex* source, Vertex* dest, vector<Airport>* path) const;
 
     /**
      * @brief Performs a breadth-first search (bfs) in the graph from a specific source airport.
@@ -403,6 +403,9 @@ public:
     vector<Airport> getAirportsInCoordinates(float lat, float longi) const;
 
     vector<Airport> pathAirport(Airport s, Airport d);
+
+    void identifyEssentialAirports();
+    void dfsArticulationPoints(Vertex* source, unordered_set<Vertex*>& articulationPoints);
 };
 
 #endif /* GRAPH_H_ */

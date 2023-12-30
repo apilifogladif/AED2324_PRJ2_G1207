@@ -14,9 +14,24 @@ public:
     static set<string> countriesSet;
     static Graph flightsGraph;
 
+    /**
+     * @brief Default constructor
+     */
     csvInfo();
+
+    /**
+     * @brief Adds all Airlines present in airlines.csv to a vector
+     */
     static void createAirlinesVector();
+
+    /**
+     * @brief Adds all Airports present in airports.csv to a vector
+     */
     static void createAirportsVector();
+
+    /**
+     * @brief Adds all Flights present in arlines.csv to a graph
+     */
     static void createFlightsGraph();
 };
 

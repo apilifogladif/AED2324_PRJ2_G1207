@@ -8,9 +8,36 @@ using namespace std;
 
 class AuxiliarFunctions {
 public:
+    /**
+     * @brief
+     *
+     * Complexity:
+     *
+     * @param g :
+     * @return
+     */
     static vector<Airport> articulationPoints(Graph* g);
 
-    static vector<vector<Airport>> bestFlightOp(vector<Airport> sourceAirports, vector<Airport> destAirports);
+    /**
+     * @brief
+     *
+     * Complexity:
+     *
+     * @param g :
+     * @return
+     */
+    static vector<Airport> essentialAirports(Graph *g);
+
+    /**
+     * @brief
+     *
+     * Complexity:
+     *
+     * @param sourceAirports :
+     * @param destAirports :
+     * @return
+     */
+    static vector<vector<Airport>> bestFlightOp(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports);
 };
 
 

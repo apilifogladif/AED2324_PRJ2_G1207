@@ -5,44 +5,34 @@
 
 // path between 2 airports
 vector<Airport> Graph::pathAirport(Airport s, Airport d) {
-    cout << "s: " << s.getCode() << "; d: " << d.getCode() << endl;
     vector<Airport> aux;
     for (auto v : vertexSet) {
         v->visited = false;
         v->processing = false;
     }
-
     auto source = findVertex(std::move(s));
     auto dest = findVertex(std::move(d));
     if (source == nullptr || dest == nullptr) return aux;
-    cout << "s: " << source->getAirport().getCode() << "; d: " << dest->getAirport().getCode() << endl;
 
     dfs(source, dest, &aux);
     return aux;
 }
 
 bool Graph::dfs(Vertex* source, Vertex* dest, vector<Airport>* path) const {
-    cout << "A" << endl;
     source->visited = true;
     source->processing = true;
     path->push_back(source->airport);
     if (source->getAirport().getCode() == dest->getAirport().getCode()) {
         return true;
     }
-    cout << "B" << endl;
     for (auto& e : source->getAdj()) {
-        cout << "C" << endl;
         if (!e.dest->isVisited()) {
-            cout << "D" << endl;
             if (dfs(e.dest, dest, path)) {
-                cout << "E" << endl;
                 return true;
             }
         }
     }
-    cout << "F" << endl;
     path->pop_back();
-    cout << "G" << endl;
     source->processing = false;
     return false;
 }

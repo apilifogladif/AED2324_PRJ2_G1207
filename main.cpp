@@ -1220,12 +1220,13 @@ void getFlightMenu() {
 
     // print flight options
     for (int i = 0; i < answer.size(); i++) {
-        cout << "Option " << i << ": ";
+        cout << "Option " << i + 1 << ": ";
         for (int a = 0; a < answer[i].size() - 1; a++) {
             cout << answer[i][a].getCode() << " -> ";
         }
         cout << answer[i][answer[i].size() - 1].getCode() << endl;
     }
+    over = true;
 }
 
 /**

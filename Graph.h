@@ -102,6 +102,7 @@ class Graph {
     void dfsVisit(Vertex *v,  vector<Airport> & res) const;
     bool dfsIsDAG(Vertex *v) const;
 public:
+    friend class AuxiliarFunctions;
     /**
      * @brief Finds a vertex with the given airport in the graph.
      * @param in Airport to find.

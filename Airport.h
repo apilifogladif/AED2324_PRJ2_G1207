@@ -19,6 +19,10 @@ private:
     float longitude;
 public:
     /**
+     * @brief Default constructor of the Airport class.
+     */
+    Airport();
+    /**
      *
      * @brief Constructor of the Airport class.
      * @param c Airport's code.

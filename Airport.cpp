@@ -1,5 +1,14 @@
 #include "Airport.h"
 
+Airport::Airport() {
+    code = "";
+    name = "";
+    city = "";
+    country = "";
+    latitude = 0;
+    longitude = 0;
+}
+
 Airport::Airport(string c, string n, string ci, string co, float la, float lo) {
     code = std::move(c);
     name = std::move(n);

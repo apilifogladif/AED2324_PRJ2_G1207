@@ -1,5 +1,6 @@
 #include <map>
 #include "csvInfo.h"
+#include "AuxiliarFunctions.h"
 
 using namespace std;
 
@@ -720,7 +721,7 @@ int main() {
         c += v->getAdj().size();
     }
     cout << c << endl;
-
+    cout << "articulation points " << AuxiliarFunctions::articulationPoints(&csvInfo::flightsGraph).size() << endl;
     menus.emplace("main");
     while (true) {
         string next = menus.top();

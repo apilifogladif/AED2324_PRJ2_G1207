@@ -3,6 +3,22 @@
 
 using namespace std;
 
+/**
+ * @file main.cpp
+ *
+ * @mainpage AED project 2
+ * @section intro_sec Introduction
+ * This project was made in the context of the Algorithms and Data Structures class.
+ *
+ * The aim of this project is precisely to develop a flight management system
+ * for the air travel network of the airlines around the world that provides
+ * effective assistance to users who wish to explore and plan travel
+ *
+ * The system must include various functionalities ??
+ *
+ * This project was made by: Filipa Geraldes, Filipa Fidalgo and Leonor Couto.
+ */
+
 void typeOfDestVector(const vector<Airport>& vecDest);
 
 Airport verifyAirportCode(const string& code);

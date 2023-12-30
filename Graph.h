@@ -300,11 +300,14 @@ public:
 
     /**
      * @brief Gets the number of flights associated with the given airline.
+     *
+     * Complexity: O(n^2)
+     *
      * @param airline The airline for which to retrieve the number of flights.
      * @return The number of flights associated with the airline.
      */
     int getNumberOfFlights(const Airline& airline) const;
-
+ ////////////////////////////////////////////////////
     /**
      * @brief Gets the number of destinations served by the given airline.
      * @param airline The airline for which to retrieve the number of destinations.

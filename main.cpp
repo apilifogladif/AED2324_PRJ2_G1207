@@ -901,14 +901,14 @@ void getFlightMenu() {
                     o = true;
                     break;
                 case 3:
+                    getline(cin, country);
                     while (true) {
                         cout << "Enter the name of the country: ";
-                        if (cin >> code) {
-                            if (verifyCountry(code)) {
-                                country = code;
+                        if (getline(cin, country)) {
+                            if (verifyCountry(country)) {
                                 break;  // Input is valid, exit the loop
                             }
-                            else if (code == "q") {
+                            else if (country == "q") {
                                 menus.pop();
                                 return;
                             }
@@ -922,14 +922,14 @@ void getFlightMenu() {
                             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                         }
                     }
+
                     while (true) {
                         cout << "Enter the name of the city: ";
-                        if (cin >> code) {
-                            if (verifyCity(code, country)) {
-                                city = code;
+                        if (getline(cin, city)) {
+                            if (verifyCity(city, country)) {
                                 break;  // Input is valid, exit the loop
                             }
-                            else if (code == "q") {
+                            else if (city == "q") {
                                 menus.pop();
                                 return;
                             }
@@ -1006,6 +1006,11 @@ void getFlightMenu() {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
+
+    for(auto a : sourceAirports){
+        cout << endl << a.getCode() << "; " << a.getName() << "; " << a.getCity() << "; " << a.getCountry() << "; " << a.getLatitude() << "; " << a.getLongitude();
+    }
+    cout <<  endl;
 
     // DESTINATION
 
@@ -1084,13 +1089,13 @@ void getFlightMenu() {
                     break;
                 case 3:
                     while (true) {
+                        getline(cin, Dcountry);
                         cout << "Enter the name of the country: ";
-                        if (cin >> Dcode) {
-                            if (verifyCountry(Dcode)) {
-                                Dcountry = Dcode;
+                        if (getline(cin, Dcountry)) {
+                            if (verifyCountry(Dcountry)) {
                                 break;  // Input is valid, exit the loop
                             }
-                            else if (Dcode == "q") {
+                            else if (Dcountry == "q") {
                                 menus.pop();
                                 return;
                             }
@@ -1104,14 +1109,14 @@ void getFlightMenu() {
                             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
                         }
                     }
+
                     while (true) {
                         cout << "Enter the name of the city: ";
-                        if (cin >> Dcode) {
-                            if (verifyCity(Dcode, Dcountry)) {
-                                Dcity = Dcode;
+                        if (getline(cin, Dcity)) {
+                            if (verifyCity(Dcity, Dcountry)) {
                                 break;  // Input is valid, exit the loop
                             }
-                            else if (Dcode == "q") {
+                            else if (Dcity == "q") {
                                 menus.pop();
                                 return;
                             }
@@ -1188,6 +1193,11 @@ void getFlightMenu() {
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
     }
+
+    for(auto b : destAirports){
+        cout << endl << b.getCode() << "; " << b.getName() << "; " << b.getCity() << "; " << b.getCountry() << "; " << b.getLatitude() << "; " << b.getLongitude();
+    }
+    cout <<  endl;
 
     char opt;
     vector<vector<Airport>> answer;

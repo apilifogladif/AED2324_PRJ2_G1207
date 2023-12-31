@@ -92,22 +92,26 @@ vector<vector<Airport>> AuxiliarFunctions::bestFlightOp(const vector<Airport>& s
 
 vector<vector<Airport>>
 AuxiliarFunctions::filterVectorAirlines(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports, const vector<string>& airlines) {
-    vector<Airport> aux;
+    vector<vector<Airport>> aux;
     vector<vector<Airport>> best;
     bool first = true;
     for (const Airport& s : sourceAirports) {
         for (const Airport& d : destAirports) {
             aux = csvInfo::flightsGraph.pathAirportRestrictAirlines(s, d, airlines);
-            if (first) {
-                best.push_back(aux);
-                first = false;
-            }
-            else if (aux.size() < best[0].size()) {
-                best.clear();
-                best.push_back(aux);
-            }
-            else if (aux.size() == best[0].size()) {
-                best.push_back(aux);
+            cout << "SIZE " << aux.size() << endl;
+            for ( auto i : aux) {
+                cout << "SIZE I " << i.size() << endl;
+                if (first) {
+                    best.push_back(i);
+                    first = false;
+                }
+                else if (aux.size() < best[0].size()) {
+                    best.clear();
+                    best.push_back(i);
+                }
+                else if (aux.size() == best[0].size()) {
+                    best.push_back(i);
+                }
             }
         }
     }

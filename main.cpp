@@ -180,7 +180,6 @@ void chooseAirlines() {
             cin.clear();          // Clear the error state
             cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
         }
-        i++;
     }
 }
 
@@ -1336,7 +1335,6 @@ void getFlightMenu() {
     over = true;
 
     // print flight options
-    cout << "answer " << answer.size() << endl;
     if (answer.empty()) {
         cout << "There are no flights connecting the source and the destination";
         if (opt == 'Y') cout << " with the filters you chose." << endl;

@@ -117,7 +117,7 @@ public:
      * @param in : Airport to find.
      * @return Pointer to the found vertex or nullptr if not found.
      */
-    Vertex *findVertex(Airport in) const;
+    Vertex *findVertex(const Airport& in) const;
 
     /**
      * @brief Finds a vertex with the given code in the graph.
@@ -156,7 +156,7 @@ public:
      * @param in : Airport to remove.
      * @return True if the vertex is removed successfully, false otherwise.
      */
-    bool removeVertex(Airport in);
+    bool removeVertex(const Airport& in);
 
     /**
      * @brief Adds an edge to the graph.
@@ -209,7 +209,34 @@ public:
      * @param path : Path between both airports.
      * @return True if there is a path, otherwise returns false.
      */
-    bool dfs(Vertex* source, Vertex* dest, vector<Airport>* path) const;
+    bool dfsPath(Vertex* source, Vertex* dest, vector<Airport>* path) const;
+
+    /**
+     * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
+     *
+     * Complexity:
+     *
+     * @param source : Source airport.
+     * @param dest : Destination airport.
+     * @param path : Path between both airports.
+     * @param airlines : Vector with the airlines that can be used.
+     * @return True if there is a path, otherwise returns false.
+     */
+    bool dfsPathFilterAirlines(Vertex* source, Vertex* dest, vector<Airport>* path, vector<string> airlines) const;
+
+    /**
+     * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
+     *
+     * Complexity:
+     *
+     * @param source : Source airport.
+     * @param dest : Destination airport.
+     * @param path : Path between both airports.
+     * @param NumAir : Number of airlines that can be used.
+     * @param air : Vector with the airlines that are being used.
+     * @return True if there is a path, otherwise returns false.
+     */
+    bool dfsPathFilterNumAir(Vertex* source, Vertex* dest, vector<Airport>* path, int NumAir, vector<string> air) const;
 
     /**
      * @brief Performs a breadth-first search (bfs) in the graph from a specific source airport.
@@ -510,7 +537,7 @@ public:
      * @param airport : The airport for which to retrieve the associated airlines.
      * @return A vector of Airline objects representing the airlines associated with the airport.
      */
-    vector<Airline> getAirlines(Airport airport);
+    vector<Airline> getAirlines(const Airport& airport);
 
     /**
      * @brief Gets the top airports based on the number of flights.
@@ -539,7 +566,7 @@ public:
      * @param longi : Longitude of the target location in degrees.
      * @return Vector of airports closest to the specified coordinates.
      */
-    vector<Airport> getAirportsInCoordinates(float lat, float longi) const;
+    vector<Airport> getAirportsInCoordinates(double lat, double longi) const;
 
     /**
      * @brief Finds a path between two airports in the graph using depth-first search (DFS).
@@ -550,7 +577,31 @@ public:
      * @param d : Destination airport.
      * @return Vector of airports representing the path from source to destination.
      */
-    vector<Airport> pathAirport(Airport s, Airport d);
+    vector<Airport> pathAirport(const Airport& s, const Airport& d);
+
+    /**
+     * @brief Finds a path between two airports in the graph using depth-first search (DFS).
+     *
+     * Complexity: O(n)
+     *
+     * @param s : Source airport.
+     * @param d : Destination airport.
+     * @param airlines : Vector with the airlines that can be used.
+     * @return Vector of airports representing the path from source to destination.
+     */
+    vector<Airport> pathAirportRestrictAirlines(const Airport& s, const Airport& d, vector<string> airlines);
+
+    /**
+     * @brief Finds a path between two airports in the graph using depth-first search (DFS).
+     *
+     * Complexity: O(n)
+     *
+     * @param s : Source airport.
+     * @param d : Destination airport.
+     * @param NumAir : Number of airlines that can be used.
+     * @return Vector of airports representing the path from source to destination.
+     */
+    vector<Airport> pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir);
 };
 
 #endif /* GRAPH_H_ */

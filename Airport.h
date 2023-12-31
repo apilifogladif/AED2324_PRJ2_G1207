@@ -15,8 +15,8 @@ private:
     string name;
     string city;
     string country;
-    float latitude;
-    float longitude;
+    double latitude;
+    double longitude;
 public:
     /**
      * @brief Default constructor of the Airport class.
@@ -37,7 +37,7 @@ public:
      * @param la : Airport's latitude.
      * @param lo : Airport's longitude.
      */
-    Airport(string c, string n, string ci, string co, float la, float lo);
+    Airport(string c, string n, string ci, string co, double la, double lo);
 
     /**
      * @brief Get code of the Airport.
@@ -82,7 +82,7 @@ public:
      *
      * @return Returns the value of the Airport's latitude.
      */
-    float getLatitude();
+    double getLatitude();
 
     /**
      * @brief Get longitude of the Airport.
@@ -91,7 +91,7 @@ public:
      *
      * @return Returns the value of the Airport's longitude.
      */
-    float getLongitude();
+    double getLongitude();
 
     /**
     * @brief Equality comparison operator for airports.

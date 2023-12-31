@@ -89,3 +89,52 @@ vector<vector<Airport>> AuxiliarFunctions::bestFlightOp(const vector<Airport>& s
     }
     return best;
 }
+
+vector<vector<Airport>>
+AuxiliarFunctions::filterVectorAirlines(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports, const vector<string>& airlines) {
+    vector<Airport> aux;
+    vector<vector<Airport>> best;
+    bool first = true;
+    for (const Airport& s : sourceAirports) {
+        for (const Airport& d : destAirports) {
+            aux = csvInfo::flightsGraph.pathAirportRestrictAirlines(s, d, airlines);
+            if (first) {
+                best.push_back(aux);
+                first = false;
+            }
+            else if (aux.size() < best[0].size()) {
+                best.clear();
+                best.push_back(aux);
+            }
+            else if (aux.size() == best[0].size()) {
+                best.push_back(aux);
+            }
+        }
+    }
+    return best;
+}
+
+vector<vector<Airport>>
+AuxiliarFunctions::filterNumAirlines(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports, int numAir) {
+    vector<Airport> aux;
+    vector<vector<Airport>> best;
+    bool first = true;
+    for (const Airport& s : sourceAirports) {
+        for (const Airport& d : destAirports) {
+            aux = csvInfo::flightsGraph.pathAirportNumAirlines(s, d, numAir);
+            if (aux.empty()) continue;
+            if (first) {
+                best.push_back(aux);
+                first = false;
+            }
+            else if (aux.size() < best[0].size()) {
+                best.clear();
+                best.push_back(aux);
+            }
+            else if (aux.size() == best[0].size()) {
+                best.push_back(aux);
+            }
+        }
+    }
+    return best;
+}

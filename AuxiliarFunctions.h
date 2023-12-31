@@ -38,6 +38,10 @@ public:
      * @return
      */
     static vector<vector<Airport>> bestFlightOp(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports);
+
+    static vector<vector<Airport>> filterVectorAirlines(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports, const vector<string>& airlines);
+
+    static vector<vector<Airport>> filterNumAirlines(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports, int numAir);
 };
 
 

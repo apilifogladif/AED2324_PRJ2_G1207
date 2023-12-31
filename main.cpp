@@ -12,7 +12,9 @@ bool verifyCity(const string& name, const string& country);
 bool verifyCountry(const string& name);
 bool checkDigit(string num);
 void clearMenus();
-
+void chooseAirlines();
+void chooseNumAir();
+int filters();
 void mainMenu();
 void getInfoMenu();
 void destX();
@@ -33,57 +35,9 @@ bool over = false;
 bool quit = false;
 Airport air_;
 
-/**
- * @brief
- *
- * Complexity:
- *
- * @param vecDest :
- */
-void typeOfDestVector(const vector<Airport>& vecDest) {
-    int op = 0;
-    cout << endl << "----------------------------------------" << endl;
-    cout << endl << "  Number of which type of destination?  " << endl;
-    cout << endl << "----------------------------------------" << endl;
-    cout << "1 - Airports." << endl;
-    cout << "2 - Cities." << endl;
-    cout << "3 - Countries." << endl;
-
-    set<string> aux;
-    while (true) {
-        cout << "Write the number of what you want to do: ";
-        if (cin >> op) {
-            switch (op) {
-                case 1 :
-                    cout << vecDest.size() << " airports.";
-                    return;
-                case 2:
-                    for (auto i : vecDest) {
-                        if (aux.find(i.getCity() + i.getCountry()) == aux.end()) {
-                            aux.insert(i.getCity() + i.getCountry());
-                        }
-                    }
-                    cout << aux.size() << " cities.";
-                    return;
-                case 3:
-                    for (auto i : vecDest) {
-                        if (aux.find(i.getCountry()) == aux.end()) {
-                            aux.insert(i.getCountry());
-                        }
-                    }
-                    cout << aux.size() << " countries.";
-                    return              ;
-                default:
-                    cout << "Invalid number! The number should be between 1 and 3." << endl;
-            }
-        }
-        else {
-            cout << "Invalid input! Please enter a valid number." << endl;
-            cin.clear();          // Clear the error state
-            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
-        }
-    }
-}
+// filters
+vector<string> airlines;
+int numAir;
 
 /**
  * @brief
@@ -197,6 +151,63 @@ void clearMenus() {
     }
 }
 
+void chooseAirlines() {
+    cout << endl << "-----------------------------------------" << endl;
+    cout << endl << "     Write the code of the airlines      " << endl;
+    cout << endl << "  (Enter q to save the set of airlines)  " << endl;
+    cout << endl << "-----------------------------------------" << endl;
+    string code;
+    Airline airline;
+    int i = 1;
+    while (true) {
+        cout << i << ": ";
+        if (cin >> code) {
+            airline = verifyAirlineCode(code);
+            if (!airline.getCode().empty()) {
+                airlines.push_back(airline.getCode());
+                i++;
+                continue;  // Input is valid, exit the loop
+            }
+            else if (code == "q") {
+                break;
+            }
+            else {
+                cout << "Invalid Airline Code!" << endl;
+            }
+        }
+        else {
+            cout << "Invalid input! Please enter a valid Airline Code." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+        i++;
+    }
+}
+
+void chooseNumAir() {
+    int op = 0;
+    cout << endl << "------------------------------" << endl;
+    cout << endl << "     Maximum of airlines      " << endl;
+    cout << endl << "------------------------------" << endl;
+    while (true) {
+        cout << "Write the number: ";
+        if (cin >> op) {
+            if (op <= 444) {
+                numAir = op;
+                break;
+            }
+            else {
+                cout << "There are only 444 airlines. Enter a valid number." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input! Please enter a valid number." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+    }
+}
+
 /**
  * @brief
  *
@@ -205,7 +216,7 @@ void clearMenus() {
 void mainMenu() {
     int op = 0;
     cout << endl << "----------------------------" << endl;
-    cout << endl << "      Main Menu   " << endl;
+    cout << endl << "         Main Menu          " << endl;
     cout << endl << "----------------------------" << endl;
     cout << "1 - Get information about..." << endl; // airport, airline, city, country, global
     cout << "2 - Best flight option..." << endl;
@@ -224,7 +235,92 @@ void mainMenu() {
                     quit = true;
                     return;
                 default:
-                    cout << "Invalid number! The number should be between 0 and 6." << endl;
+                    cout << "Invalid number! The number should be between 0 and 2." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input! Please enter a valid number." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+    }
+}
+
+// 0 -> return to bestFlightOpMenu; 1 -> vector of airlines; 2 -> number of airlines
+int filters() {
+    int op = 0;
+    cout << endl << "-----------------------------" << endl;
+    cout << endl << "    Select type of filter    " << endl;
+    cout << endl << "-----------------------------" << endl;
+    cout << "1 - Choose airlines." << endl;
+    cout << "2 - Choose number of different airlines." << endl;
+    cout << "0 - Return to last menu." << endl;
+    while (true) {
+        cout << "Write the number of what you want to do: ";
+        if (cin >> op) {
+            switch (op) {
+                case 1 :
+                    chooseAirlines();
+                    return 1;
+                case 2:
+                    chooseNumAir();
+                    return 2;
+                case 0:
+                    return 0;
+                default:
+                    cout << "Invalid number! The number should be between 0 and 2." << endl;
+            }
+        }
+        else {
+            cout << "Invalid input! Please enter a valid number." << endl;
+            cin.clear();          // Clear the error state
+            cin.ignore(INT_MAX , '\n'); // Ignore the invalid input
+        }
+    }
+}
+
+/**
+ * @brief
+ *
+ * Complexity:
+ *
+ * @param vecDest :
+ */
+void typeOfDestVector(const vector<Airport>& vecDest) {
+    int op = 0;
+    cout << endl << "----------------------------------------" << endl;
+    cout << endl << "  Number of which type of destination?  " << endl;
+    cout << endl << "----------------------------------------" << endl;
+    cout << "1 - Airports." << endl;
+    cout << "2 - Cities." << endl;
+    cout << "3 - Countries." << endl;
+
+    set<string> aux;
+    while (true) {
+        cout << "Write the number of what you want to do: ";
+        if (cin >> op) {
+            switch (op) {
+                case 1 :
+                    cout << vecDest.size() << " airports.";
+                    return;
+                case 2:
+                    for (auto i : vecDest) {
+                        if (aux.find(i.getCity() + i.getCountry()) == aux.end()) {
+                            aux.insert(i.getCity() + i.getCountry());
+                        }
+                    }
+                    cout << aux.size() << " cities.";
+                    return;
+                case 3:
+                    for (auto i : vecDest) {
+                        if (aux.find(i.getCountry()) == aux.end()) {
+                            aux.insert(i.getCountry());
+                        }
+                    }
+                    cout << aux.size() << " countries.";
+                    return              ;
+                default:
+                    cout << "Invalid number! The number should be between 1 and 3." << endl;
             }
         }
         else {
@@ -275,7 +371,7 @@ void getInfoMenu() {
                     menus.pop();
                     return;
                 default:
-                    cout << "Invalid number! The number should be between 0 and 6." << endl;
+                    cout << "Invalid number! The number should be between 0 and 5." << endl;
             }
         }
         else {
@@ -361,7 +457,6 @@ void airportMenu() {
     cout << "1 - Number of flights out of the airport." << endl;
     cout << "2 - Number of reachable destinations in a maximum number of X stops." << endl;
     cout << "3 - Number of airlines with flights departing from this airport." << endl;
-
     cout << "0 - Return to last menu." << endl;
 
     Vertex* v;
@@ -456,7 +551,7 @@ void airlineMenu() {
                     menus.pop();
                     return;
                 default:
-                    cout << "Invalid number! The number should be between 1 and 5." << endl;
+                    cout << "Invalid number! The number should be between 0 and 2." << endl;
             }
         }
         else {
@@ -586,7 +681,7 @@ void cityMenu() {
                     menus.pop();
                     return;
                 default:
-                    cout << "Invalid number! The number should be between 1 and 5." << endl;
+                    cout << "Invalid number! The number should be between 0 and 5." << endl;
             }
         }
         else {
@@ -698,7 +793,7 @@ void countryMenu() {
                     menus.pop();
                     return;
                 default:
-                    cout << "Invalid number! The number should be between 1 and 5." << endl;
+                    cout << "Invalid number! The number should be between 0 and 6." << endl;
             }
         }
         else {
@@ -803,7 +898,7 @@ void globalMenu() {
                     menus.pop();
                     return;
                 default:
-                    cout << "Invalid number! The number should be between 0 and 6." << endl;
+                    cout << "Invalid number! The number should be between 0 and 8." << endl;
             }
         }
         else {
@@ -842,9 +937,10 @@ void getFlightMenu() {
     Airport airport;
     string city;
     string country;
-    float latitude;
-    float longitude;
+    double latitude;
+    double longitude;
     vector<Airport> sourceAirports;
+    size_t pos = 0;
 
     while (true) {
         cout << "Write the number of what you want to do: ";
@@ -950,8 +1046,9 @@ void getFlightMenu() {
                     while (true) {
                         cout << "Enter the latitude: ";
                         if (cin >> code) {
-                            if (to_string(stof(code)) == code) {
-                                latitude = stof(code);
+                            stod(code, &pos);
+                            if (pos == code.length()) {
+                                latitude = stod(code);
                                 break;  // Input is valid, exit the loop
                             }
                             else if (code == "q") {
@@ -971,8 +1068,9 @@ void getFlightMenu() {
                     while (true) {
                         cout << "Enter the longitude: ";
                         if (cin >> code) {
-                            if (to_string(stof(code)) == code) {
-                                longitude = stof(code);
+                            stod(code, &pos);
+                            if (pos == code.length()) {
+                                longitude= stod(code);
                                 break;  // Input is valid, exit the loop
                             }
                             else if (code == "q") {
@@ -1029,8 +1127,8 @@ void getFlightMenu() {
     Airport Dairport;
     string Dcity;
     string Dcountry;
-    float Dlat;
-    float Dlong;
+    double Dlat;
+    double Dlong;
     vector<Airport> destAirports;
 
     while (true) {
@@ -1137,8 +1235,9 @@ void getFlightMenu() {
                     while (true) {
                         cout << "Enter the latitude: ";
                         if (cin >> Dcode) {
-                            if (to_string(stof(Dcode)) == Dcode) {
-                                Dlat = stof(Dcode);
+                            stod(Dcode, &pos);
+                            if (pos == Dcode.length()) {
+                                Dlat= stod(Dcode);
                                 break;  // Input is valid, exit the loop
                             }
                             else if (Dcode == "q") {
@@ -1158,8 +1257,9 @@ void getFlightMenu() {
                     while (true) {
                         cout << "Enter the longitude: ";
                         if (cin >> Dcode) {
-                            if (to_string(stof(Dcode)) == Dcode) {
-                                Dlong = stof(Dcode);
+                            stod(Dcode, &pos);
+                            if (pos == Dcode.length()) {
+                                Dlong= stod(Dcode);
                                 break;  // Input is valid, exit the loop
                             }
                             else if (Dcode == "q") {
@@ -1206,7 +1306,12 @@ void getFlightMenu() {
     while (true) {
         if (cin >> opt) {
             if (opt == 'Y') {
-                // answer = AuxiliarFunctions::bestFlightOpWFilters(sourceAirports, destAirports);
+                op = filters();
+                if (op == 0) return;
+                if (op == 1)
+                    answer = AuxiliarFunctions::filterVectorAirlines(sourceAirports, destAirports, airlines);
+                if (op == 2)
+                    answer = AuxiliarFunctions::filterNumAirlines(sourceAirports, destAirports, numAir);
                 break;  // Input is valid, exit the loop
             }
             else if (opt == 'N') {
@@ -1228,7 +1333,16 @@ void getFlightMenu() {
         }
     }
 
+    over = true;
+
     // print flight options
+    cout << "answer " << answer.size() << endl;
+    if (answer.empty()) {
+        cout << "There are no flights connecting the source and the destination";
+        if (opt == 'Y') cout << " with the filters you chose." << endl;
+        else cout << "." << endl;
+        return;
+    }
     for (int i = 0; i < answer.size(); i++) {
         cout << "Option " << i + 1 << ": ";
         for (int a = 0; a < answer[i].size() - 1; a++) {
@@ -1236,7 +1350,6 @@ void getFlightMenu() {
         }
         cout << answer[i][answer[i].size() - 1].getCode() << endl;
     }
-    over = true;
 }
 
 /**
@@ -1300,7 +1413,7 @@ int main() {
             cout << endl;
             cout << "1 - Return to last Menu" << endl;
             cout << "2 - Return to Main Menu" << endl;
-            cout << "3 - Quit." << endl;
+            cout << "0 - Exit." << endl;
             while (true) {
                 cout << "Write the number of what you want to do: ";
                 if (cin >> op) {
@@ -1310,12 +1423,12 @@ int main() {
                         menus.emplace("main");
                         break;
                     }
-                    else if (op == 3) {
+                    else if (op == 0) {
                         quit = true;
                         break;
                     }
                     else {
-                        cout << "Invalid number! The number should be between 1 and 3." << endl;
+                        cout << "Invalid number! The number should be between 0 and 2." << endl;
                     }
                 }
                 else {
@@ -1330,38 +1443,3 @@ int main() {
     }
     system("exit");
 }
-
-
-
-// Airport
-// Number of flights
-// Number of airlines
-// Number of destinations
-// Reachable destinations in a maximum number of X stops
-
-// Airline
-// Number of flights
-// Number of destinations
-
-// City
-// Number of flights
-// Number of airports
-// Number of airlines
-// Number of destinations
-// Reachable destinations in a maximum number of X stops
-
-// Country
-// Number of flights
-// Number of airports
-// Number of airlines
-// Number of destinations
-// Number of cities
-// Reachable destinations in a maximum number of X stops
-
-// Global
-// Number of flights
-// Number of airports
-// Number of airlines
-// Number of countries
-// Number of cities
-// Reachable destinations in a maximum number of X stops

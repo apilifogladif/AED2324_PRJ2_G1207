@@ -9,7 +9,7 @@ Airport::Airport() {
     longitude = 0;
 }
 
-Airport::Airport(string c, string n, string ci, string co, float la, float lo) {
+Airport::Airport(string c, string n, string ci, string co, double la, double lo) {
     code = std::move(c);
     name = std::move(n);
     city = std::move(ci);
@@ -26,9 +26,9 @@ string Airport::getCity() {return city;}
 
 string Airport::getCountry() {return country;}
 
-float Airport::getLatitude() {return latitude;}
+double Airport::getLatitude() {return latitude;}
 
-float Airport::getLongitude() {return longitude;}
+double Airport::getLongitude() {return longitude;}
 
 bool Airport::operator==(const Airport& other) const {
     return this->getCode() == other.getCode();

@@ -26,15 +26,15 @@ vector<Airport> AuxiliarFunctions::articulationPoints(Graph *g) {
 }
 
 /**
- * @brief
+ * @brief Perform depth-first search to find articulation points in the graph.
  *
  * Complexity:
  *
- * @param g :
- * @param v :
- * @param s :
- * @param res :
- * @param i :
+ * @param g : Pointer to the graph.
+ * @param v : Pointer to the current vertex.
+ * @param s : Reference to the stack used in DFS.
+ * @param res : Reference to the vector storing articulation points.
+ * @param i : Reference to the current index in DFS.
  */
 void dfs_art(Graph *g, Vertex *v, stack<Airport> &s, vector<Airport> &res, int &i){
     v->setVisited(true);

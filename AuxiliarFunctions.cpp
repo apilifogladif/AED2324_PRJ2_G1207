@@ -68,22 +68,23 @@ void dfs_art(Graph *g, Vertex *v, stack<Airport> &s, vector<Airport> &res, int &
 // Best flight option
 
 vector<vector<Airport>> AuxiliarFunctions::bestFlightOp(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports) {
-    vector<Airport> aux;
+    vector<vector<Airport>> aux;
     vector<vector<Airport>> best;
     bool first = true;
     for (const Airport& s : sourceAirports) {
         for (const Airport& d : destAirports) {
             aux = csvInfo::flightsGraph.pathAirport(s, d);
-            if (first) {
-                best.push_back(aux);
-                first = false;
-            }
-            else if (aux.size() < best[0].size()) {
-                best.clear();
-                best.push_back(aux);
-            }
-            else if (aux.size() == best[0].size()) {
-                best.push_back(aux);
+            for (auto i : aux) {
+                cout << i.size() << endl;
+                if (first) {
+                    best.push_back(i);
+                    first = false;
+                } else if (i.size() < best[0].size()) {
+                    best.clear();
+                    best.push_back(i);
+                } else if (i.size() == best[0].size()) {
+                    best.push_back(i);
+                }
             }
         }
     }

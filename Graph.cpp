@@ -76,8 +76,8 @@ bool Graph::dfsPathFilterAirlines(Vertex* source, Vertex* dest, vector<Airport>*
             aux->push_back(*path);
         }
         else if (aux[0].size() > path->size()) {
-                aux->clear();
-                aux->push_back(*path);
+            aux->clear();
+            aux->push_back(*path);
         }
 
     }
@@ -101,44 +101,47 @@ bool Graph::dfsPathFilterAirlines(Vertex* source, Vertex* dest, vector<Airport>*
 }
 
 // path between 2 airports
-vector<Airport> Graph::pathAirport(const Airport& s, const Airport& d) {
-    vector<Airport> aux;
+vector<vector<Airport>> Graph::pathAirport(const Airport& s, const Airport& d) {
+    vector<vector<Airport>> paths;
     for (auto v : vertexSet) {
         v->visited = false;
         v->processing = false;
     }
     auto source = findVertex(s);
     auto dest = findVertex(d);
-    if (source == nullptr || dest == nullptr) return aux;
+    if (source == nullptr || dest == nullptr) return paths;
 
-    dfsPath(source, dest, &aux);
-    return aux;
+    vector<Airport> aux;
+    aux.push_back(s);
+    for (auto e : source->getAdj()) {
+        if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
+            aux.push_back(dest->getAirport());
+            paths.push_back(aux);
+        }
+        else {
+            dfsPath(e.dest, dest, aux, &paths);
+        }
+    }
+    return paths;
 }
 
-bool Graph::dfsPath(Vertex* source, Vertex* dest, vector<Airport>* path) const {
+void Graph::dfsPath(Vertex* source, Vertex* dest, vector<Airport> aux, vector<vector<Airport>>* paths) const {
     source->visited = true;
     source->processing = true;
-    path->push_back(source->airport);
-    if (source->getAirport().getCode() == dest->getAirport().getCode()) {
-        return true;
-    }
+    aux.push_back(source->airport);
     queue<Vertex*> save;
     for (auto& e : source->getAdj()) {
-        if (!e.dest->isVisited()) {
-            save.push(e.dest);
+        if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
+            aux.push_back(e.dest->getAirport());
+            paths->push_back(aux);
+        }
+        else if (!e.dest->isVisited()) {
+            dfsPath(e.dest, dest, aux, paths);
             e.dest->visited=true;
         }
     }
-    while (!save.empty()) {
-        Vertex* v = save.front();
-        if (dfsPath(v, dest, path)) {
-            return true;
-        }
-        save.pop();
-    }
-    path->pop_back();
+    aux.pop_back();
     source->processing = false;
-    return false;
 }
 
 // Coordinates
@@ -861,4 +864,3 @@ Vertex *Graph::findVertex(string in) const {
     }
     return NULL;
 }
-

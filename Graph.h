@@ -207,9 +207,9 @@ public:
      * @param source : Source airport.
      * @param dest : Destination airport.
      * @param path : Path between both airports.
-     * @return True if there is a path, otherwise returns false.
+     * @return
      */
-    bool dfsPath(Vertex* source, Vertex* dest, vector<Airport>* path) const;
+    void dfsPath(Vertex* source, Vertex* dest, vector<Airport> aux, vector<vector<Airport>>* path) const;
 
     /**
      * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
@@ -577,7 +577,7 @@ public:
      * @param d : Destination airport.
      * @return Vector of airports representing the path from source to destination.
      */
-    vector<Airport> pathAirport(const Airport& s, const Airport& d);
+    vector<vector<Airport>> pathAirport(const Airport& s, const Airport& d);
 
     /**
      * @brief Finds a path between two airports in the graph using depth-first search (DFS).

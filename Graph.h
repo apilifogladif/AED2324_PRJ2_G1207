@@ -222,7 +222,7 @@ public:
      * @param airlines : Vector with the airlines that can be used.
      * @return True if there is a path, otherwise returns false.
      */
-    bool dfsPathFilterAirlines(Vertex* source, Vertex* dest, vector<Airport>* path, vector<vector<Airport>>* aux, vector<string> airlines) const;
+    void dfsPathFilterAirlines(Vertex* source, Vertex* dest, vector<Airport> path, vector<vector<Airport>>* aux, vector<string> airlines) const;
 
     /**
      * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
@@ -236,7 +236,7 @@ public:
      * @param air : Vector with the airlines that are being used.
      * @return True if there is a path, otherwise returns false.
      */
-    bool dfsPathFilterNumAir(Vertex* source, Vertex* dest, vector<Airport>* path, int NumAir, vector<string>& air) const;
+    void dfsPathFilterNumAir(Vertex* source, Vertex* dest, vector<Airport> aux, vector<vector<Airport>>* paths,int NumAir, set<string> air) ;
 
     /**
      * @brief Performs a breadth-first search (bfs) in the graph from a specific source airport.
@@ -589,7 +589,7 @@ public:
      * @param airlines : Vector with the airlines that can be used.
      * @return Vector of vectors of airports representing the path from source to destination.
      */
-    vector<vector<Airport>> pathAirportRestrictAirlines(const Airport& s, const Airport& d, vector<string> airlines);
+    vector<vector<Airport>> pathAirportRestrictAirlines(const Airport& s, const Airport& d, const vector<string>& airlines);
 
     /**
      * @brief Finds a path between two airports in the graph using depth-first search (DFS).
@@ -601,7 +601,7 @@ public:
      * @param NumAir : Number of airlines that can be used.
      * @return Vector of airports representing the path from source to destination.
      */
-    vector<Airport> pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir);
+    vector<vector<Airport>> pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir);
 };
 
 #endif /* GRAPH_H_ */

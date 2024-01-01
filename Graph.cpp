@@ -5,7 +5,8 @@
 #include <limits>
 
 // path between 2 airports using only a maximum of numAir airlines
-vector<Airport> Graph::pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir) {
+vector<vector<Airport>> Graph::pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir) {
+    vector<vector<Airport>> paths;
     vector<Airport> aux;
     for (auto v : vertexSet) {
         v->visited = false;
@@ -13,91 +14,86 @@ vector<Airport> Graph::pathAirportNumAirlines(const Airport& s, const Airport& d
     }
     auto source = findVertex(s);
     auto dest = findVertex(d);
-    if (source == nullptr || dest == nullptr) return aux;
+    if (source == nullptr || dest == nullptr) return paths;
 
-    vector<string> air;
-    dfsPathFilterNumAir(source, dest, &aux, NumAir, air);
-    return aux;
+    set<string> air;
+    aux.push_back(s);
+    for (const auto& e : source->getAdj()) {
+        air.clear();
+        air.insert(e.getAirline().getCode());
+        if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
+            aux.push_back(dest->getAirport());
+            paths.push_back(aux);
+        }
+        else {
+            dfsPathFilterNumAir(e.dest, dest, aux, &paths, NumAir, air);
+        }
+    }
+    return paths;
 }
 
-bool Graph::dfsPathFilterNumAir(Vertex* source, Vertex* dest, vector<Airport>* path, int NumAir, vector<string>& air) const {
-    source->visited = true;
-    source->processing = true;
-    path->push_back(source->airport);
-    if (source->getAirport().getCode() == dest->getAirport().getCode()) {
-        return true;
-    }
-    queue<Vertex*> save;
+void Graph::dfsPathFilterNumAir(Vertex* source, Vertex* dest, vector<Airport> aux, vector<vector<Airport>>* paths, int NumAir, set<string> air) {
+    source->setVisited(true);
+    aux.push_back(source->airport);
+    set<string> backup = air;
     for (auto& e : source->getAdj()) {
-        if (!e.dest->isVisited() && air.size() < NumAir) {
-            cout << e.dest->getAirport().getCode() << endl;
-            cout << air.size() << endl;
-            if(find(air.begin(), air.end(), e.getAirline().getCode()) == air.end()) {
-                air.push_back(e.getAirline().getCode());
-            }
-            save.push(e.dest);
-            e.dest->visited=true;
+        backup = air;
+        backup.insert(e.getAirline().getCode());
+        if (backup.size() > NumAir) continue;
+        air.insert(e.getAirline().getCode());
+        if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
+            aux.push_back(e.dest->getAirport());
+            paths->push_back(aux);
+        }
+        else if (!e.dest->isVisited()) {
+            dfsPathFilterNumAir(e.dest, dest, aux, paths, NumAir, air);
         }
     }
-    while (!save.empty()) {
-        Vertex* v = save.front();
-        if (dfsPathFilterNumAir(v, dest, path, NumAir, air)) {
-            return true;
-        }
-        save.pop();
-    }
-    path->pop_back();
-    source->processing = false;
-    return false;
+    aux.pop_back();
 }
 
 // path between 2 airports using a set of airlines
-vector<vector<Airport>> Graph::pathAirportRestrictAirlines(const Airport& s, const Airport& d, vector<string> airlines) {
-    vector<vector<Airport>> aux;
+vector<vector<Airport>> Graph::pathAirportRestrictAirlines(const Airport& s, const Airport& d, const vector<string>& airlines) {
+    vector<vector<Airport>> paths;
     for (auto v : vertexSet) {
         v->visited = false;
         v->processing = false;
     }
     auto source = findVertex(s);
     auto dest = findVertex(d);
-    if (source == nullptr || dest == nullptr) return aux;
+    if (source == nullptr || dest == nullptr) return paths;
 
-    vector<Airport> path;
-    dfsPathFilterAirlines(source, dest, &path, &aux, std::move(airlines));
-    return aux;
+    vector<Airport> aux;
+    aux.push_back(s);
+    for (const auto& e : source->getAdj()) {
+        if (find(airlines.begin(), airlines.end(), e.getAirline().getCode()) != airlines.end()) {
+            if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
+                aux.push_back(dest->getAirport());
+                paths.push_back(aux);
+            }
+            else {
+                dfsPathFilterAirlines(e.dest, dest, aux, &paths, airlines);
+            }
+        }
+    }
+    return paths;
 }
 
-bool Graph::dfsPathFilterAirlines(Vertex* source, Vertex* dest, vector<Airport>* path, vector<vector<Airport>>* aux, vector<string> airlines) const {
+void Graph::dfsPathFilterAirlines(Vertex* source, Vertex* dest, vector<Airport> aux, vector<vector<Airport>>* paths, vector<string> airlines) const {
     source->visited = true;
-    source->processing = true;
-    path->push_back(source->airport);
-    if (source->getAirport().getCode() == dest->getAirport().getCode()) {
-        if (aux->size() == 0) {
-            aux->push_back(*path);
-        }
-        else if (aux[0].size() > path->size()) {
-            aux->clear();
-            aux->push_back(*path);
-        }
-
-    }
-    queue<Vertex*> save;
+    aux.push_back(source->airport);
     for (auto& e : source->getAdj()) {
-        if (!e.dest->isVisited() && find(airlines.begin(), airlines.end(), e.getAirline().getCode()) != airlines.end()) {
-            save.push(e.dest);
-            e.dest->visited=true;
+        if (find(airlines.begin(), airlines.end(), e.getAirline().getCode()) != airlines.end()) {
+            if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
+                aux.push_back(e.dest->getAirport());
+                paths->push_back(aux);
+            }
+            else if (!e.dest->isVisited()) {
+                dfsPathFilterAirlines(e.dest, dest, aux, paths, airlines);
+            }
         }
     }
-    while (!save.empty()) {
-        Vertex* v = save.front();
-        if (dfsPathFilterAirlines(v, dest, path, aux, airlines)) {
-            return true;
-        }
-        save.pop();
-    }
-    path->pop_back();
-    source->processing = false;
-    return false;
+    aux.pop_back();
 }
 
 // path between 2 airports
@@ -113,12 +109,14 @@ vector<vector<Airport>> Graph::pathAirport(const Airport& s, const Airport& d) {
 
     vector<Airport> aux;
     aux.push_back(s);
-    for (auto e : source->getAdj()) {
+    set<Airport> visited;
+    for (const auto& e : source->getAdj()) {
         if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
             aux.push_back(dest->getAirport());
             paths.push_back(aux);
         }
-        else {
+        else if (visited.find(e.dest->getAirport()) == visited.end()) {
+            visited.insert(e.dest->getAirport());
             dfsPath(e.dest, dest, aux, &paths);
         }
     }
@@ -126,8 +124,7 @@ vector<vector<Airport>> Graph::pathAirport(const Airport& s, const Airport& d) {
 }
 
 void Graph::dfsPath(Vertex* source, Vertex* dest, vector<Airport> aux, vector<vector<Airport>>* paths) const {
-    source->visited = true;
-    source->processing = true;
+    source->setVisited(true);
     aux.push_back(source->airport);
     queue<Vertex*> save;
     for (auto& e : source->getAdj()) {
@@ -137,11 +134,9 @@ void Graph::dfsPath(Vertex* source, Vertex* dest, vector<Airport> aux, vector<ve
         }
         else if (!e.dest->isVisited()) {
             dfsPath(e.dest, dest, aux, paths);
-            e.dest->visited=true;
         }
     }
     aux.pop_back();
-    source->processing = false;
 }
 
 // Coordinates

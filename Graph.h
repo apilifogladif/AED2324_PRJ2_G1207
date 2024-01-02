@@ -592,8 +592,6 @@ public:
      * @return Number of flights out the given airport
      */
     int getNumberOfFlights(const Airport &airport) const;
-
-    set<Airline> findAirlines(Vertex *vtx, Vertex *vtx2);
 };
 
 #endif /* GRAPH_H_ */

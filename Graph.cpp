@@ -5,68 +5,11 @@
 #include <limits>
 
 // path between 2 airports using only a maximum of numAir airlines
-//vector<pair<vector<Vertex*>, int>> Graph::pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir) {
-//    Vertex* source = nullptr;
-//    Vertex* dest = nullptr;
-//
-//    for (auto v : vertexSet) {
-//        v->visited = false;
-//        if (v->airport.getCode() == s.getCode())
-//            source = v;
-//
-//        if (v->airport.getCode() == d.getCode())
-//            dest = v;
-//    }
-//    if (source == nullptr || dest == nullptr) return {};
-//
-//    set<Airline> air;
-//    return bfsPathFilterNumAir(source, dest, NumAir, air);
-//}
-//
-//vector<pair<vector<Vertex*>, int>> Graph::bfsPathFilterNumAir(Vertex* source, Vertex* dest, int NumAir, set<Airline> air) {
-//    vector<pair<vector<Vertex*>, int>> paths;
-//    queue<pair<vector<Vertex*>, int>> q;
-//    int min = INT_MAX;
-//
-//    for (auto v : vertexSet) v->visited = false;
-//
-//    q.emplace(vector<Vertex*>{source}, 0);
-//
-//    while (!q.empty()) {
-//        auto p = q.front();
-//        q.pop();
-//        p.first.back()->setVisited(true);
-//
-//        if (p.second > min) break;
-//
-//        if (p.first.back() == dest) {
-//            if (p.second < min) paths.clear();
-//            min = p.second;
-//            paths.emplace_back(p.first, static_cast<int>(air.size()));
-//            cout << air.size() << endl;
-//            continue;
-//        }
-//
-//        for (const auto& e : p.first.back()->getAdj()) {
-//            for (const auto& a : e.getAirline()) {
-//                if (!e.getDest()->isVisited()) {
-//                    set<Airline> newAir = air; // Create a new set to avoid modification of the original set
-//                    newAir.insert(a);
-//                    auto newTrip = p.first;
-//                    newTrip.push_back(e.getDest());
-//                    q.emplace(newTrip, p.second + 1);
-//                }
-//            }
-//        }
-//    }
-//    return paths;
-//}
-
 vector<vector<Vertex*>> Graph::pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir) {
     vector<vector<Vertex*>> paths;
 
-    Vertex* source = nullptr;
-    Vertex* dest = nullptr;
+    Vertex* source;
+    Vertex* dest;
 
     for (auto v : vertexSet) {
         v->visited = false;
@@ -99,7 +42,7 @@ vector<vector<Vertex*>> Graph::pathAirportNumAirlines(const Airport& s, const Ai
         for (const auto& e : p.first.back()->getAdj()) {
             for (const auto& a : e.getAirline()) {
                 if (!e.getDest()->isVisited()) {
-                    set<Airline> newAir = p.second; // Create a new set to avoid modification of the original set
+                    set<Airline> newAir = p.second;
                     newAir.insert(a);
 
                     if (static_cast<int>(newAir.size()) <= NumAir) {
@@ -769,13 +712,4 @@ Vertex *Graph::findVertex(string in) const {
             return v;
     }
     return NULL;
-}
-
-set<Airline> Graph::findAirlines(Vertex *vtx, Vertex *vtx2) {
-    for (auto v : vtx->getAdj()) {
-        if (v.getDest()->getAirport() == vtx2->getAirport()) {
-            return v.getAirline();
-        }
-    }
-    return set<Airline>();
 }

@@ -28,7 +28,7 @@ vector<Airport> AuxiliarFunctions::articulationPoints(Graph *g) {
 /**
  * @brief Perform depth-first search to find articulation points in the graph.
  *
- * Complexity:
+ * Complexity: O(n)
  *
  * @param g : Pointer to the graph.
  * @param v : Pointer to the current vertex.

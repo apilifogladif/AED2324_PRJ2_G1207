@@ -5,6 +5,9 @@
 #include <fstream>
 #include <sstream>
 
+/**
+ * @brief Gets the info from the csv's.
+ */
 class csvInfo {
 private:
 public:

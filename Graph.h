@@ -32,11 +32,27 @@ class Vertex {
     vector<Edge> adj;  // list of outgoing edges
     bool visited;          // auxiliary field
     bool processing;       // auxiliary field
+    bool hasPath;          // auxiliary field
     int indegree;          // auxiliary field
     int num;               // auxiliary field
     int low;               // auxiliary field
 
+    /**
+     * Auxiliary function to add an outgoing edge to a vertex (this),
+     * with a given destination vertex (d) and edge weight (w).
+     * @param d : Vertex
+     * @param airline_ : Airline
+     */
     void addEdge(Vertex *d, Airline airline_);
+
+    /**
+     * Auxiliary function to remove an outgoing edge (with a given destination (d))
+     * from a vertex (this).
+     * Returns true if successful, and false if such edge does not exist.
+     *
+     * @param d : Vertex
+     * @return True or False
+     */
     bool removeEdgeTo(Vertex *d);
 public:
     /**
@@ -50,19 +66,116 @@ public:
 
     // Getter and setter methods for Vertex properties
 
+    /**
+     * @brief Returns the Airport
+     *
+     * @return Airport
+     */
     Airport getAirport() const;
+
+    /**
+     * @brief Sets the Airport to the provided
+     *
+     * @param in : Airport
+     */
     void setAirport(Airport in);
+
+    /**
+     * @brief Checks if an vertex was visited - auxiliary field
+     *
+     * @return True of false
+     */
     bool isVisited() const;
+
+    /**
+     * @brief Sets the visited to true or false - auxiliary field
+     *
+     * @param v : True or False
+     */
     void setVisited(bool v);
+
+    /**
+     * @brief Checks if an hasPath was visited - auxiliary field
+     *
+     * @return True of false
+     */
+    bool isHasPath() const;
+
+    /**
+     * @brief Sets the hasPath to true or false - auxiliary field
+     *
+     * @param v : True or False
+     */
+    void setHasPath(bool v);
+
+    /**
+     * @brief Checks if an vertex is processing - auxiliary field
+     *
+     * @return True of false
+     */
     bool isProcessing() const;
+
+    /**
+     * @brief Sets processing to true or false - auxiliary field
+     *
+     * @param v : True or False
+     */
     void setProcessing(bool p);
+
+    /**
+     * Return the outgoing edges
+     *
+     * @return Outgoing edges vector
+     */
     const vector<Edge> &getAdj() const;
+
+    /**
+     * @brief Sets the outgoing vector
+     *
+     * @param adj : Vector of outgoing
+     */
     void setAdj(const vector<Edge> &adj);
+
+    /**
+     * @brief Returns the indegree - auxiliary field
+     *
+     * @return Indegree
+     */
     int getIndegree() const;
+
+    /**
+     * @brief Sets the indegree - auxiliary field
+     *
+     * @param indegree : Indegree
+     */
     void setIndegree(int indegree);
+
+    /**
+     * @brief Returns the Number - auxiliary field
+     *
+     * @return Number
+     */
     int getNum() const;
+
+    /**
+     * @brief Sets num - auxiliary field
+     *
+     * @param num : Number
+     */
     void setNum(int num);
+
+    /**
+     * @brief Returns the low - auxiliary field
+     *
+     * @return Low int
+     */
     int getLow() const;
+
+    /**
+     * @brief Sets low - auxiliary field
+     *
+     * @param low : Low int
+     */
     void setLow(int low);
 
     friend class Graph;
@@ -86,10 +199,31 @@ public:
     Edge(Vertex* d, Airline airline_);
 
     // Getter and setter methods for Edge properties
-
+    /**
+     * @brief Returns the destination vertex
+     *
+     * @return Destination vertex
+     */
     Vertex* getDest() const;
+    /**
+     * @brief Sets the destination vertex
+     *
+     * @param dest : Destination vertex
+     */
     void setDest(Vertex* dest);
+
+    /**
+     * @brief Returns the airline
+     *
+     * @return Airline
+     */
     Airline getAirline() const;
+
+    /**
+     * @brief Sets the airline
+     *
+     * @param airline_ : Airline
+     */
     void setAirline(Airline airline_);
 
     friend class Graph;
@@ -105,7 +239,22 @@ class Graph {
     stack<Vertex> _stack_;           // auxiliary field
     list<list<Airport>> _list_sccs_;        // auxiliary field
 
+    /**
+     * Auxiliary function that visits a vertex (v) and its adjacent, recursively.
+     * Updates a parameter with the list of visited node contents.
+     *
+     * @param v : Vertex
+     * @param res : Vector of airports
+     */
     void dfsVisit(Vertex *v,  vector<Airport> & res) const;
+
+    /**
+     * Auxiliary function that visits a vertex (v) and its adjacent, recursively.
+     * Returns false (not acyclic) if an edge to a vertex in the stack is found.
+     *
+     * @param v : Vertex
+     * @return True of False
+     */
     bool dfsIsDAG(Vertex *v) const;
 public:
     friend class AuxiliarFunctions;
@@ -128,15 +277,6 @@ public:
      * @return Pointer to the found vertex or nullptr if not found.
      */
     Vertex *findVertex(string in) const;
-
-    /**
-     * @brief Gets the number of vertices in the graph.
-     *
-     * Complexity: O(1)
-     *
-     * @return Number of vertices.
-     */
-    int getNumVertex() const;
 
     /**
      * @brief Adds a vertex with a given airport to the graph.
@@ -214,7 +354,7 @@ public:
     /**
      * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
      *
-     * Complexity:
+     * Complexity: O(n)
      *
      * @param source : Source airport.
      * @param dest : Destination airport.
@@ -227,7 +367,7 @@ public:
     /**
      * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
      *
-     * Complexity:
+     * Complexity: O(n)
      *
      * @param source : Source airport.
      * @param dest : Destination airport.
@@ -273,35 +413,6 @@ public:
      */
     void clean();
 
-    /**
-     * @brief Gets the number of flights departing from a given airport.
-     *
-     * Complexity: O(n)
-     *
-     * @param airport : Departure airport.
-     * @return Number of flights departing from the airport.
-     */
-    int getNumberOfFlights(Airport& airport) const;
-
-    /**
-    * @brief Gets the number of airlines operating at a given airport.
-    *
-    * Complexity: O(n)
-    *
-    * @param airport : Airport of interest.
-    * @return Number of airlines operating at the airport.
-    */
-    unsigned long getNumberOfAirlines(const Airport& airport) const;
-
-    /**
-    * @brief Gets the number of destinations reachable from a given airport.
-    *
-    * Complexity: O(1)
-    *
-    * @param airport Source airport.
-    * @return Number of destinations reachable from the source airport.
-    */
-    unsigned long getNumberOfDestinations(const Airport &airport) const;
 
     /**
      * @brief Gets the reachable destinations from a source airport within a given number of stops.
@@ -518,16 +629,6 @@ public:
      * @return The total number of unique cities in the graph.
      */
     int getTotalNumberOfCities() const;
-
-    /**
-     * @brief Gets the total number of reachable destinations within a maximum number of stops in the graph.
-     *
-     * Complexity: O(n)
-     *
-     * @param maxStops : The maximum number of stops allowed.
-     * @return The total number of reachable destinations within the specified number of stops.
-     */
-    int getTotalReachableDestinations(int maxStops) const;
 
     /**
      * @brief Gets a vector of airlines associated with a specific airport.

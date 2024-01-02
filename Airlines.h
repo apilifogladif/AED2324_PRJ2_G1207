@@ -5,6 +5,9 @@
 #include <utility>
 using namespace  std;
 
+/**
+ * @brief Represents a Airline.
+ */
 class Airline {
 private:
     string code;

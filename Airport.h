@@ -9,6 +9,9 @@
 
 using namespace std;
 
+/**
+ * @brief Represents a Airport.
+ */
 class Airport {
 private:
     string code;

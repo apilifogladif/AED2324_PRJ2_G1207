@@ -40,12 +40,12 @@ vector<string> airlines;
 int numAir;
 
 /**
- * @brief
+ * @brief Checks if the airport code has an airport associated
  *
- * Complexity:
+ * Complexity: O(n)
  *
- * @param code :
- * @return
+ * @param code : Airport code
+ * @return The airport corresponding to the airport code
  */
 Airport verifyAirportCode(const string& code) {
     Airport airport;
@@ -59,12 +59,12 @@ Airport verifyAirportCode(const string& code) {
 }
 
 /**
- * @brief
+ * @brief Checks if the airport name has an airport associated
  *
- * Complexity:
+ * Complexity: O(n)
  *
- * @param name :
- * @return
+ * @param name : Airport name
+ * @return The airport corresponding to the airport name given
  */
 Airport verifyAirportName(const string& name) {
     Airport airport;
@@ -78,12 +78,12 @@ Airport verifyAirportName(const string& name) {
 }
 
 /**
- * @brief
+ * @brief Checks if the airline code has an airline associated
  *
- * Complexity:
+ * Complexity: O(n)
  *
- * @param code :
- * @return
+ * @param code : Airline code
+ * @return The airline corresponding to the airline code given
  */
 Airline verifyAirlineCode(const string& code) {
     Airline airline;
@@ -97,13 +97,13 @@ Airline verifyAirlineCode(const string& code) {
 }
 
 /**
- * @brief
+ * @brief Checks if the city exists in the airports vector
  *
- * Complexity:
+ * Complexity: O(n)
  *
- * @param name :
- * @param country :
- * @return
+ * @param name : City name
+ * @param country : Country name
+ * @return True or False
  */
 bool verifyCity(const string& name, const string& country) {
     for (Airport a : csvInfo::airportsVector) {
@@ -113,12 +113,12 @@ bool verifyCity(const string& name, const string& country) {
 }
 
 /**
- * @brief
+ * @brief Checks if the country exists in the countries set
  *
- * Complexity:
+ * Complexity: O(1)
  *
- * @param name :
- * @return
+ * @param name : Country name
+ * @return True or False
  */
 bool verifyCountry(const string& name) {
     if (csvInfo::countriesSet.find(name) != csvInfo::countriesSet.end()) return true;
@@ -126,12 +126,12 @@ bool verifyCountry(const string& name) {
 }
 
 /**
- * @brief
+ * @brief Checks if given input is made of all digits
  *
- * Complexity:
+ * Complexity: O(n)
  *
- * @param num :
- * @return
+ * @param num : String to check
+ * @return True or False
  */
 bool checkDigit(string num) {
     for (auto c : num) {
@@ -141,9 +141,9 @@ bool checkDigit(string num) {
 }
 
 /**
- * @brief
+ * @brief Clears all the menus
  *
- * Complexity:
+ * Complexity: O(n)
  */
 void clearMenus() {
     while (!menus.empty()) {
@@ -151,6 +151,11 @@ void clearMenus() {
     }
 }
 
+/**
+ * @brief Menu to choose an Airline
+ *
+ * Complexity: O(n)
+ */
 void chooseAirlines() {
     cout << endl << "-----------------------------------------" << endl;
     cout << endl << "     Write the code of the airlines      " << endl;
@@ -183,6 +188,11 @@ void chooseAirlines() {
     }
 }
 
+/**
+ * @brief Menu to choose the number of Airlines
+ *
+ * Complexity: O(n)
+ */
 void chooseNumAir() {
     int op = 0;
     cout << endl << "------------------------------" << endl;
@@ -208,9 +218,9 @@ void chooseNumAir() {
 }
 
 /**
- * @brief
+ * @brief Main Menu
  *
- * Complexity:
+ * Complexity: O(n)
  */
 void mainMenu() {
     int op = 0;
@@ -245,6 +255,13 @@ void mainMenu() {
     }
 }
 
+/**
+ * @brief Menu to choose the type of filter
+ *
+ * Complexity: O(n)
+ *
+ * @return An int depending on the menu the user chooses
+ */
 // 0 -> return to bestFlightOpMenu; 1 -> vector of airlines; 2 -> number of airlines
 int filters() {
     int op = 0;
@@ -279,11 +296,11 @@ int filters() {
 }
 
 /**
- * @brief
+ * @brief Menu to choose the type of destination
  *
- * Complexity:
+ * Complexity: O(n^2)
  *
- * @param vecDest :
+ * @param vecDest : The destinations vector
  */
 void typeOfDestVector(const vector<Airport>& vecDest) {
     int op = 0;
@@ -331,9 +348,9 @@ void typeOfDestVector(const vector<Airport>& vecDest) {
 }
 
 /**
- * @brief
+ * @brief Menu to get information
  *
- * Complexity:
+ * Complexity: O(n)
  */
 void getInfoMenu() {
     int op = 0;
@@ -382,9 +399,9 @@ void getInfoMenu() {
 }
 
 /**
- * @brief
+ * @brief Gets the number of maximum of stops the user chooses
  *
- * Complexity:
+ * Complexity: O(n)
  */
 void destX() {
     string X;
@@ -417,9 +434,9 @@ void destX() {
 }
 
 /**
- * @brief
+ * @brief Menu to get information about an airport
  *
- * Complexity:
+ * Complexity: O(n)
  */
 void airportMenu() {
     int op = 0;
@@ -493,9 +510,9 @@ void airportMenu() {
 }
 
 /**
- * @brief
+ * @brief Menu to get information about an airline
  *
- * Complexity:
+ * Complexity: O(n)
  */
 void airlineMenu() {
     int op = 0;
@@ -562,9 +579,9 @@ void airlineMenu() {
 }
 
 /**
- * @brief
+ * @brief Menu to get information about an city
  *
- * Complexity:
+ * Complexity: O(n)
  */
 void cityMenu() {
     int op = 0;
@@ -692,9 +709,9 @@ void cityMenu() {
 }
 
 /**
- * @brief
+ * @brief Menu to get information about a country
  *
- * Complexity:
+ * Complexity: O(n^2)
  */
 void countryMenu() {
     int op = 0;
@@ -804,9 +821,9 @@ void countryMenu() {
 }
 
 /**
- * @brief
+ * @brief Menu to get global information
  *
- * Complexity:
+ * Complexity: O(n^2)
  */
 void globalMenu() {
     int op = 0;
@@ -909,9 +926,9 @@ void globalMenu() {
 }
 
 /**
- * @brief
+ * @brief Menu to get information about a flight
  *
- * Complexity:
+ * Complexity: O(n^3)
  */
 void getFlightMenu() {
     int op = 0;
@@ -1185,8 +1202,8 @@ void getFlightMenu() {
                     o = true;
                     break;
                 case 3:
+                    getline(cin, Dcountry);
                     while (true) {
-                        getline(cin, Dcountry);
                         cout << "Enter the name of the country: ";
                         if (getline(cin, Dcountry)) {
                             if (verifyCountry(Dcountry)) {
@@ -1351,11 +1368,11 @@ void getFlightMenu() {
 }
 
 /**
- * @brief
+ * @brief Main function to initialize data and run the program.
  *
- * Complexity:
+ * Complexity: O(n)
  *
- * @return
+ * @return Program exit status.
  */
 int main() {
     csvInfo::createAirportsVector();

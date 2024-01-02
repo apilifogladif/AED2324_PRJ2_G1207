@@ -46,7 +46,9 @@ void cityMenu();
 void countryMenu();
 void globalMenu();
 
-// global variables
+/**
+ * Global variable
+ */
 map<std::string, int> m {{"main", 0}, {"getInfo", 1}, {"bestFlight", 2}, {"airportInfo", 3},
                          {"airlineInfo", 4}, {"cityInfo", 5}, {"countryInfo", 6},
                          {"globalInfo", 7}, {"destX", 8}};

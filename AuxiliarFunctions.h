@@ -24,7 +24,11 @@ public:
     /**
      * @brief Find the best flight options between source and destination airports.
      *
+<<<<<<< HEAD
      * Complexity: O(n)
+=======
+     * Complexity: O(n^3)
+>>>>>>> 10dd98bc036cab5fe0a1ee2f769399ccaba81ca8
      *
      * @param sourceAirports : Vector of source airports.
      * @param destAirports : Vector of destination airports.
@@ -33,6 +37,7 @@ public:
     static vector<vector<Airport>> bestFlightOp(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports);
 
     /**
+<<<<<<< HEAD
      * @brief Checks what is  best path
      * Calls the function that restricts the airline used
      *
@@ -42,10 +47,21 @@ public:
      * @param destAirports : Destination airports
      * @param airlines : Airlines allowed
      * @return Best path found
+=======
+     * @brief Finds the best flight paths between source and destination airports with airline restrictions.
+     *
+     * Complexity: O(n^3)
+     *
+     * @param sourceAirports : Vector of source airports.
+     * @param destAirports : Vector of destination airports.
+     * @param airlines : Vector of airline codes for restrictions.
+     * @return Vector of vectors representing the best flight paths according to the user input.
+>>>>>>> 10dd98bc036cab5fe0a1ee2f769399ccaba81ca8
      */
     static vector<vector<Airport>> filterVectorAirlines(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports, const vector<string>& airlines);
 
     /**
+<<<<<<< HEAD
      * @brief Checks what is best path
      * Calls the function that restricts the number of airlines used
      *
@@ -55,6 +71,15 @@ public:
      * @param destAirports : Destination airports
      * @param numAir : Number of airlines allowed
      * @return Best path found
+=======
+     * @brief Finds the best flight paths between source and destination airports with a specified number of airlines.
+     *
+     * Complexity: O(n^3)
+     * @param sourceAirports : Vector of source airports.
+     * @param destAirports : Vector of destination airports.
+     * @param numAir : Number of airlines for restrictions.
+     * @return Vector of vectors representing the best flight paths according to the user input.
+>>>>>>> 10dd98bc036cab5fe0a1ee2f769399ccaba81ca8
      */
     static vector<vector<Airport>> filterNumAirlines(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports, int numAir);
 };

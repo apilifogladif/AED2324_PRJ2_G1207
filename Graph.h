@@ -38,6 +38,7 @@ class Vertex {
     /**
      * Auxiliary function to add an outgoing edge to a vertex (this),
      * with a given destination vertex (d) and edge weight (w).
+     *
      * @param d : Vertex
      * @param airline_ : Airline
      */
@@ -171,7 +172,6 @@ public:
      */
     set<Airline> getAirline() const;
 
-
     friend class Graph;
     friend class Vertex;
 };
@@ -249,7 +249,7 @@ public:
     vector<Vertex*> getVertexSet() const;
 
     /**
-     * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
+     * @brief Performs a Breadth-first search (bfs) in the graph from a specific source airport.
      *
      * Complexity: O(n^3)
      *
@@ -260,20 +260,6 @@ public:
      * @return True if there is a path, otherwise returns false.
      */
     vector<vector<Vertex*>> bfsPathFilterAirlines(Vertex* source, Vertex* dest, vector<string> airlines) const;
-
-    /**
-     * @brief Performs a depth-first search (dfs) in the graph from a specific source airport.
-     *
-     * Complexity: O(n^3)
-     *
-     * @param source : Source airport.
-     * @param dest : Destination airport.
-     * @param path : Path between both airports.
-     * @param NumAir : Number of airlines that can be used.
-     * @param air : Vector with the airlines that are being used.
-     * @return True if there is a path, otherwise returns false.
-     */
-    vector<pair<vector<Vertex*>,int>> bfsPathFilterNumAir(Vertex* source, Vertex* dest, int NumAir, set<Airline> air);
 
     /**
      * @brief Cleans the graph by removing all vertices and edges.
@@ -317,7 +303,7 @@ public:
     /**
      * @brief Gets the number of destinations served by the given airline.
      *
-     * Complexity: O(n^2)
+     * Complexity: O(n^3)
      *
      * @param airline : The airline for which to retrieve the number of destinations.
      * @return A vector of destinations served by the airline.
@@ -563,7 +549,7 @@ public:
     /**
      * @brief Finds a path between two airports in the graph using depth-first search (DFS).
      *
-     * Complexity: O(n)
+     * Complexity: O(n^3)
      *
      * @param s : Source airport.
      * @param d : Destination airport.

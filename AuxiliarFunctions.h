@@ -36,7 +36,7 @@ public:
      * @brief Checks what is  best path
      * Calls the function that restricts the airline used
      *
-     * Complexity: O(n^3)
+     * Complexity: O(n^4)
      *
      * @param sourceAirports : Source airports
      * @param destAirports : Destination airports

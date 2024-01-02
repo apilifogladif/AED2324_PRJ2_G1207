@@ -708,7 +708,6 @@ void Graph::clean() {
 Vertex *Graph::findVertex(string in) const {
     for (auto v : vertexSet) {
         if (v->airport.getCode() == in)
-
             return v;
     }
     return NULL;

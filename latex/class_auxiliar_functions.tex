@@ -13,7 +13,7 @@ Has some the auxiliar functions used.
 \begin{DoxyCompactItemize}
 \item 
 static vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \mbox{\hyperlink{class_auxiliar_functions_a96a21439a18f8728abe10b97f6aed4dd}{articulation\+Points}} (\mbox{\hyperlink{class_graph}{Graph}} \texorpdfstring{$\ast$}{*}g)
-\begin{DoxyCompactList}\small\item\em Finds articulation points in the given graph using DFS (depth-\/first search). \end{DoxyCompactList}\item 
+\begin{DoxyCompactList}\small\item\em Finds articulation points in the given graph using DFS (depth-\/first search) \end{DoxyCompactList}\item 
 static vector$<$ vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ $>$ \mbox{\hyperlink{class_auxiliar_functions_a5ddb9f2fe300f8c448baceeba583ce5d}{best\+Flight\+Op}} (const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&source\+Airports, const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&dest\+Airports)
 \begin{DoxyCompactList}\small\item\em Find the best flight options between source and destination airports. \end{DoxyCompactList}\item 
 static vector$<$ vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ $>$ \mbox{\hyperlink{class_auxiliar_functions_a6858fe4790d0a51ef20f4ef5bcd8f5ba}{filter\+Vector\+Airlines}} (const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&source\+Airports, const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&dest\+Airports, const vector$<$ string $>$ \&airlines)
@@ -34,17 +34,17 @@ Has some the auxiliar functions used.
 
 
 
-Finds articulation points in the given graph using DFS (depth-\/first search). 
+Finds articulation points in the given graph using DFS (depth-\/first search) 
 
-Complexity\+: O(n)
+Complexity\+: O(n\texorpdfstring{$\ast$}{*}(v+e)), being v the number of vertices in a graph and e the number of edges)
 
 
 \begin{DoxyParams}{Parameters}
-{\em g} & \+: Pointer to the graph. \\
+{\em g} & \+: Pointer to the graph \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Vector of unique airports representing articulation points. 
+Vector of unique airports representing articulation points 
 \end{DoxyReturn}
 \Hypertarget{class_auxiliar_functions_a5ddb9f2fe300f8c448baceeba583ce5d}\label{class_auxiliar_functions_a5ddb9f2fe300f8c448baceeba583ce5d} 
 \index{AuxiliarFunctions@{AuxiliarFunctions}!bestFlightOp@{bestFlightOp}}
@@ -56,17 +56,17 @@ Vector of unique airports representing articulation points.
 
 Find the best flight options between source and destination airports. 
 
-Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}4)
+Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}6)
 
 
 \begin{DoxyParams}{Parameters}
-{\em source\+Airports} & \+: Vector of source airports. \\
+{\em source\+Airports} & \+: Vector of source airports \\
 \hline
-{\em dest\+Airports} & \+: Vector of destination airports. \\
+{\em dest\+Airports} & \+: Vector of destination airports \\
 \hline
 \end{DoxyParams}
 \begin{DoxyReturn}{Returns}
-Vector of vectors representing the best flight paths. 
+Vector of vectors representing the best flight paths 
 \end{DoxyReturn}
 \Hypertarget{class_auxiliar_functions_afb1cde0cafa5a569cb7038dac0966c1c}\label{class_auxiliar_functions_afb1cde0cafa5a569cb7038dac0966c1c} 
 \index{AuxiliarFunctions@{AuxiliarFunctions}!filterNumAirlines@{filterNumAirlines}}
@@ -78,7 +78,7 @@ Vector of vectors representing the best flight paths.
 
 Checks what is best path Calls the function that restricts the number of airlines used. 
 
-Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}3)
+Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}5)
 
 
 \begin{DoxyParams}{Parameters}
@@ -102,7 +102,7 @@ Best path found
 
 Checks what is best path Calls the function that restricts the airline used. 
 
-Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}4)
+Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}7\texorpdfstring{$\ast$}{*}log(n))
 
 
 \begin{DoxyParams}{Parameters}

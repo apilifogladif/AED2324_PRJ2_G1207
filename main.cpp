@@ -11,7 +11,7 @@ using namespace std;
  * @section intro_sec Introduction
  * This project was made in the context of the Algorithms and Data Structures class.
  *
- * The aim of this project is  is precisely to develop a flight management system for the air travel network
+ * The aim of this project is precisely to develop a flight management system for the air travel network
  * of the airlines around the world that provides effective assistance to users
  * who wish to explore and plan travel.
  *
@@ -20,7 +20,8 @@ using namespace std;
  * between two airports, cities or coordinates with or without using a filter.
  *
  *
- * This project was made by: Filipa Geraldes, Filipa Fidalgo and Leonor Couto.
+ * This project was made by: Filipa Geraldes (up202208030), Filipa Fidalgo (up202208039)
+ * and Leonor Couto (up202205796).
  */
 
 void typeOfDestVector(const vector<Airport>& vecDest);
@@ -137,7 +138,7 @@ bool verifyCity(const string& name, const string& country) {
 /**
  * @brief Checks if the country exists in the countries set
  *
- * Complexity: O(1)
+ * Complexity: O(log(n))
  *
  * @param name : Country name
  * @return True or False
@@ -423,7 +424,7 @@ void getInfoMenu() {
 /**
  * @brief Gets the number of maximum of stops the user chooses
  *
- * Complexity: O(n)
+ * Complexity: O(n+(v*(v+e))), being v the number of vertices in a graph and e the number of edges
  */
 void destX() {
     string X;
@@ -458,7 +459,7 @@ void destX() {
 /**
  * @brief Menu to get information about an airport
  *
- * Complexity: O(n)
+ * Complexity: O(n^2)
  */
 void airportMenu() {
     int op = 0;
@@ -534,7 +535,7 @@ void airportMenu() {
 /**
  * @brief Menu to get information about an airline
  *
- * Complexity: O(n)
+ * Complexity: O(n^5)
  */
 void airlineMenu() {
     int op = 0;
@@ -603,7 +604,7 @@ void airlineMenu() {
 /**
  * @brief Menu to get information about an city
  *
- * Complexity: O(n)
+ * Complexity: O(n^4)
  */
 void cityMenu() {
     int op = 0;
@@ -733,7 +734,7 @@ void cityMenu() {
 /**
  * @brief Menu to get information about a country
  *
- * Complexity: O(n^2)
+ * Complexity: O(n^5)
  */
 void countryMenu() {
     int op = 0;
@@ -845,7 +846,7 @@ void countryMenu() {
 /**
  * @brief Menu to get global information
  *
- * Complexity: O(n^2)
+ * Complexity: O(n^4)
  */
 void globalMenu() {
     int op = 0;
@@ -950,7 +951,7 @@ void globalMenu() {
 /**
  * @brief Menu to get information about a flight
  *
- * Complexity: O(n^3)
+ * Complexity: O(n^8*log(n))
  */
 void getFlightMenu() {
     int op = 0;
@@ -1394,7 +1395,7 @@ void getFlightMenu() {
 /**
  * @brief Main function to initialize data and run the program.
  *
- * Complexity: O(n)
+ * Complexity: O(n^9*log(n))
  *
  * @return Program exit status.
  */

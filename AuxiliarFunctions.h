@@ -14,7 +14,7 @@ public:
     /**
      * @brief Finds articulation points in the given graph using DFS (depth-first search)
      *
-     * Complexity: O(n)
+     * Complexity: O(n*(v+e)), being v the number of vertices in a graph and e the number of edges)
      *
      * @param g : Pointer to the graph
      * @return Vector of unique airports representing articulation points
@@ -24,7 +24,7 @@ public:
     /**
      * @brief Find the best flight options between source and destination airports
      *
-     * Complexity: O(n^4)
+     * Complexity: O(n^6)
      *
      * @param sourceAirports : Vector of source airports
      * @param destAirports : Vector of destination airports
@@ -36,7 +36,7 @@ public:
      * @brief Checks what is  best path
      * Calls the function that restricts the airline used
      *
-     * Complexity: O(n^4)
+     * Complexity: O(n^7*log(n))
      *
      * @param sourceAirports : Source airports
      * @param destAirports : Destination airports
@@ -49,7 +49,7 @@ public:
      * @brief Checks what is best path
      * Calls the function that restricts the number of airlines used
      *
-     * Complexity: O(n^3)
+     * Complexity: O(n^5)
      *
      * @param sourceAirports : Source airports
      * @param destAirports : Destination airports

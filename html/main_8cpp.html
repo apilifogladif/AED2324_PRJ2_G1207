@@ -185,7 +185,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numAir</b></td></tr>
 </div><div class="memdoc">
 
 <p>Menu to get information about an airline. </p>
-<p>Complexity: O(n) </p>
+<p>Complexity: O(n^5) </p>
 
 </div>
 </div>
@@ -205,7 +205,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numAir</b></td></tr>
 </div><div class="memdoc">
 
 <p>Menu to get information about an airport. </p>
-<p>Complexity: O(n) </p>
+<p>Complexity: O(n^2) </p>
 
 </div>
 </div>
@@ -293,7 +293,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numAir</b></td></tr>
 </div><div class="memdoc">
 
 <p>Menu to get information about an city. </p>
-<p>Complexity: O(n) </p>
+<p>Complexity: O(n^4) </p>
 
 </div>
 </div>
@@ -333,7 +333,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numAir</b></td></tr>
 </div><div class="memdoc">
 
 <p>Menu to get information about a country. </p>
-<p>Complexity: O(n^2) </p>
+<p>Complexity: O(n^5) </p>
 
 </div>
 </div>
@@ -353,7 +353,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numAir</b></td></tr>
 </div><div class="memdoc">
 
 <p>Gets the number of maximum of stops the user chooses. </p>
-<p>Complexity: O(n) </p>
+<p>Complexity: O(n+(v*(v+e))), being v the number of vertices in a graph and e the number of edges </p>
 
 </div>
 </div>
@@ -394,7 +394,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numAir</b></td></tr>
 </div><div class="memdoc">
 
 <p>Menu to get information about a flight. </p>
-<p>Complexity: O(n^3) </p>
+<p>Complexity: O(n^8*log(n)) </p>
 
 </div>
 </div>
@@ -434,7 +434,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numAir</b></td></tr>
 </div><div class="memdoc">
 
 <p>Menu to get global information. </p>
-<p>Complexity: O(n^2) </p>
+<p>Complexity: O(n^4) </p>
 
 </div>
 </div>
@@ -454,7 +454,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numAir</b></td></tr>
 </div><div class="memdoc">
 
 <p>Main function to initialize data and run the program. </p>
-<p>Complexity: O(n)</p>
+<p>Complexity: O(n^9*log(n))</p>
 <dl class="section return"><dt>Returns</dt><dd>Program exit status. </dd></dl>
 
 </div>
@@ -646,7 +646,7 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numAir</b></td></tr>
 </div><div class="memdoc">
 
 <p>Checks if the country exists in the countries set. </p>
-<p>Complexity: O(1)</p>
+<p>Complexity: O(log(n))</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">name</td><td>: Country name </td></tr>
@@ -672,7 +672,8 @@ int&#160;</td><td class="memItemRight" valign="bottom"><b>numAir</b></td></tr>
 <b>Initial value:</b><div class="fragment"><div class="line">{{<span class="stringliteral">&quot;main&quot;</span>, 0}, {<span class="stringliteral">&quot;getInfo&quot;</span>, 1}, {<span class="stringliteral">&quot;bestFlight&quot;</span>, 2}, {<span class="stringliteral">&quot;airportInfo&quot;</span>, 3},</div>
 <div class="line">                         {<span class="stringliteral">&quot;airlineInfo&quot;</span>, 4}, {<span class="stringliteral">&quot;cityInfo&quot;</span>, 5}, {<span class="stringliteral">&quot;countryInfo&quot;</span>, 6},</div>
 <div class="line">                         {<span class="stringliteral">&quot;globalInfo&quot;</span>, 7}, {<span class="stringliteral">&quot;destX&quot;</span>, 8}}</div>
-</div><!-- fragment -->
+</div><!-- fragment --><p>Global variable </p>
+
 </div>
 </div>
 </div><!-- contents -->

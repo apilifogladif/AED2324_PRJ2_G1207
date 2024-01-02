@@ -250,7 +250,7 @@ public:
     /**
      * @brief Performs a Breadth-first search (bfs) in the graph from a specific source airport
      *
-     * Complexity: O(n^3)
+     * Complexity: O(n^3*log(n))
      *
      * @param source : Source airport
      * @param dest : Destination airport
@@ -270,7 +270,7 @@ public:
     /**
      * @brief Gets the reachable destinations from a source airport within a given number of stops
      *
-     * Complexity: O(n)
+     * Complexity: O(v*(v+e)), being v the number of vertices in a graph and e the number of edges
      *
      * @param source : The source airport
      * @param maxStops : The maximum number of stops allowed
@@ -281,7 +281,7 @@ public:
     /**
      * @brief Performs a depth-first search to find reachable destinations within a given number of stops
      *
-     * Complexity: O(n)
+     * Complexity: O(v+e), being v the number of vertices in a graph and e the number of edges
      *
      * @param v : The current vertex being explored
      * @param stopsLeft : The remaining number of stops allowed
@@ -302,7 +302,7 @@ public:
     /**
      * @brief Gets the number of destinations served by the given airline
      *
-     * Complexity: O(n^3)
+     * Complexity: O(n^4)
      *
      * @param airline : The airline for which to retrieve the number of destinations
      * @return A vector of destinations served by the airline
@@ -368,7 +368,7 @@ public:
     /**
      * @brief Gets the reachable destinations from airports in the specified city within a given number of stops
      *
-     * Complexity: O(n)
+     * Complexity: O(v^2*(v+e)), being v the number of vertices in a graph and e the number of edges)
      *
      * @param city : The city for which to retrieve the reachable destinations
      * @param country : The country of the city
@@ -430,7 +430,7 @@ public:
     /**
      * @brief Gets the reachable destinations in the specified country within a given number of stops
      *
-     * Complexity: O(n)
+     * Complexity: O(v^2*(v+e)), being v the number of vertices in a graph and e the number of edges)
      *
      * @param country : The country of interest
      * @param maxStops : The maximum number of stops allowed
@@ -496,7 +496,7 @@ public:
     /**
      * @brief Gets the top airports based on the number of flights
      *
-     * Complexity: O(n)
+     * Complexity: O(n^2)
      *
      * @param k : The number of top airports to retrieve
      * @return A vector of pairs representing the top airports and their respective number of flights
@@ -525,7 +525,7 @@ public:
     /**
      * @brief Finds a path between two airports in the graph using depth-first search (DFS)
      *
-     * Complexity: O(n)
+     * Complexity: O(n^2)
      *
      * @param s : Source airport
      * @param d : Destination airport
@@ -536,7 +536,7 @@ public:
     /**
      * @brief Finds a path between two airports in the graph using depth-first search (DFS)
      *
-     * Complexity: O(n)
+     * Complexity: O(n^3*log(n))
      *
      * @param s : Source airport
      * @param d : Destination airport
@@ -571,7 +571,7 @@ public:
     /**
      * @brief Return the number of flights out an airport
      *
-     * Complexity: O(n)
+     * Complexity: O(n^2)
      *
      * @param airport : Airport
      * @return Number of flights out the given airport

@@ -184,13 +184,13 @@ Public Member Functions</h2></td></tr>
 <tr class="memdesc:a71edbda3dbb39bd3eb3185f92b8087c7"><td class="mdescLeft">&#160;</td><td class="mdescRight">Gets airports closest to the specified coordinates.  <br /></td></tr>
 <tr class="separator:a71edbda3dbb39bd3eb3185f92b8087c7"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a1f2c5a6ce8a381cedd2659469baa604f" id="r_a1f2c5a6ce8a381cedd2659469baa604f"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; <a class="el" href="class_vertex.html">Vertex</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a1f2c5a6ce8a381cedd2659469baa604f">pathAirport</a> (const <a class="el" href="class_airport.html">Airport</a> &amp;s, const <a class="el" href="class_airport.html">Airport</a> &amp;d)</td></tr>
-<tr class="memdesc:a1f2c5a6ce8a381cedd2659469baa604f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a path between two airports in the graph using depth-first search (DFS).  <br /></td></tr>
+<tr class="memdesc:a1f2c5a6ce8a381cedd2659469baa604f"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a path between two airports in the graph using depth-first search (DFS)  <br /></td></tr>
 <tr class="separator:a1f2c5a6ce8a381cedd2659469baa604f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4df01bdbcf9349e6999a580a95f727f1" id="r_a4df01bdbcf9349e6999a580a95f727f1"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; <a class="el" href="class_vertex.html">Vertex</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a4df01bdbcf9349e6999a580a95f727f1">pathAirportRestrictAirlines</a> (const <a class="el" href="class_airport.html">Airport</a> &amp;s, const <a class="el" href="class_airport.html">Airport</a> &amp;d, const vector&lt; string &gt; &amp;airlines)</td></tr>
-<tr class="memdesc:a4df01bdbcf9349e6999a580a95f727f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a path between two airports in the graph using depth-first search (DFS).  <br /></td></tr>
+<tr class="memdesc:a4df01bdbcf9349e6999a580a95f727f1"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a path between two airports in the graph using depth-first search (DFS)  <br /></td></tr>
 <tr class="separator:a4df01bdbcf9349e6999a580a95f727f1"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a0752066c9cefca2be0cb33025c1c2f0b" id="r_a0752066c9cefca2be0cb33025c1c2f0b"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; <a class="el" href="class_vertex.html">Vertex</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a0752066c9cefca2be0cb33025c1c2f0b">pathAirportNumAirlines</a> (const <a class="el" href="class_airport.html">Airport</a> &amp;s, const <a class="el" href="class_airport.html">Airport</a> &amp;d, int NumAir)</td></tr>
-<tr class="memdesc:a0752066c9cefca2be0cb33025c1c2f0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a path between two airports in the graph using depth-first search (DFS).  <br /></td></tr>
+<tr class="memdesc:a0752066c9cefca2be0cb33025c1c2f0b"><td class="mdescLeft">&#160;</td><td class="mdescRight">Finds a path between two airports in the graph using depth-first search (DFS)  <br /></td></tr>
 <tr class="separator:a0752066c9cefca2be0cb33025c1c2f0b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a4171fbbaadc3a4dce558715155fc06bd" id="r_a4171fbbaadc3a4dce558715155fc06bd"><td class="memItemLeft" align="right" valign="top">vector&lt; vector&lt; <a class="el" href="class_vertex.html">Vertex</a> * &gt; &gt;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="class_graph.html#a4171fbbaadc3a4dce558715155fc06bd">bfsPath</a> (<a class="el" href="class_vertex.html">Vertex</a> *source, <a class="el" href="class_vertex.html">Vertex</a> *dest) const</td></tr>
 <tr class="memdesc:a4171fbbaadc3a4dce558715155fc06bd"><td class="mdescLeft">&#160;</td><td class="mdescRight">Find the best paths using bfs.  <br /></td></tr>
@@ -244,13 +244,13 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">sourc</td><td>: Source airport code. </td></tr>
-    <tr><td class="paramname">dest</td><td>: Destination airport code. </td></tr>
-    <tr><td class="paramname">airline</td><td>: <a class="el" href="class_airline.html" title="Represents a Airline.">Airline</a> associated with the edge. </td></tr>
+    <tr><td class="paramname">sourc</td><td>: Source airport code </td></tr>
+    <tr><td class="paramname">dest</td><td>: Destination airport code </td></tr>
+    <tr><td class="paramname">airline</td><td>: <a class="el" href="class_airline.html" title="Represents a Airline.">Airline</a> associated with the edge </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the edge is added successfully, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the edge is added successfully, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -274,11 +274,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(1)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">in</td><td>: <a class="el" href="class_airport.html" title="Represents a Airport.">Airport</a> to add. </td></tr>
+    <tr><td class="paramname">in</td><td>: <a class="el" href="class_airport.html" title="Represents a Airport.">Airport</a> to add </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the vertex is added successfully, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the vertex is added successfully, false otherwise </dd></dl>
 
 </div>
 </div>
@@ -354,17 +354,17 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 </div><div class="memdoc">
 
 <p>Performs a Breadth-first search (bfs) in the graph from a specific source airport. </p>
-<p>Complexity: O(n^3)</p>
+<p>Complexity: O(n^3*log(n))</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">source</td><td>: Source airport. </td></tr>
-    <tr><td class="paramname">dest</td><td>: Destination airport. </td></tr>
-    <tr><td class="paramname">path</td><td>: Path between both airports. </td></tr>
-    <tr><td class="paramname">airlines</td><td>: Vector with the airlines that can be used. </td></tr>
+    <tr><td class="paramname">source</td><td>: Source airport </td></tr>
+    <tr><td class="paramname">dest</td><td>: Destination airport </td></tr>
+    <tr><td class="paramname">path</td><td>: Path between both airports </td></tr>
+    <tr><td class="paramname">airlines</td><td>: Vector with the airlines that can be used </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if there is a path, otherwise returns false. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if there is a path, otherwise returns false </dd></dl>
 
 </div>
 </div>
@@ -421,12 +421,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 </div><div class="memdoc">
 
 <p>Performs a depth-first search to find reachable destinations within a given number of stops. </p>
-<p>Complexity: O(n)</p>
+<p>Complexity: O(v+e), being v the number of vertices in a graph and e the number of edges</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">v</td><td>: The current vertex being explored. </td></tr>
-    <tr><td class="paramname">stopsLeft</td><td>: The remaining number of stops allowed. </td></tr>
-    <tr><td class="paramname">reachableDestinations</td><td>: Vector to store the reachable destinations. </td></tr>
+    <tr><td class="paramname">v</td><td>: The current vertex being explored </td></tr>
+    <tr><td class="paramname">stopsLeft</td><td>: The remaining number of stops allowed </td></tr>
+    <tr><td class="paramname">reachableDestinations</td><td>: Vector to store the reachable destinations </td></tr>
   </table>
   </dd>
 </dl>
@@ -473,11 +473,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: 0(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">in</td><td>: <a class="el" href="class_airport.html" title="Represents a Airport.">Airport</a> to find. </td></tr>
+    <tr><td class="paramname">in</td><td>: <a class="el" href="class_airport.html" title="Represents a Airport.">Airport</a> to find </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the found vertex or nullptr if not found. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the found vertex or nullptr if not found </dd></dl>
 
 </div>
 </div>
@@ -501,11 +501,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">in</td><td>: Code of the airport to find. </td></tr>
+    <tr><td class="paramname">in</td><td>: Code of the airport to find </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Pointer to the found vertex or nullptr if not found. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Pointer to the found vertex or nullptr if not found </dd></dl>
 
 </div>
 </div>
@@ -529,11 +529,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n^2)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">airport</td><td>: The airport for which to retrieve the associated airlines. </td></tr>
+    <tr><td class="paramname">airport</td><td>: The airport for which to retrieve the associated airlines </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector of <a class="el" href="class_airline.html" title="Represents a Airline.">Airline</a> objects representing the airlines associated with the airport. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of <a class="el" href="class_airline.html" title="Represents a Airline.">Airline</a> objects representing the airlines associated with the airport </dd></dl>
 
 </div>
 </div>
@@ -567,12 +567,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">city</td><td>: The city for which to retrieve the number of airports. </td></tr>
-    <tr><td class="paramname">country</td><td>: The country of the city. </td></tr>
+    <tr><td class="paramname">city</td><td>: The city for which to retrieve the number of airports </td></tr>
+    <tr><td class="paramname">country</td><td>: The country of the city </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The vector of unique airports in the city. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The vector of unique airports in the city </dd></dl>
 
 </div>
 </div>
@@ -606,12 +606,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">lat</td><td>: Latitude of the target location in degrees. </td></tr>
-    <tr><td class="paramname">longi</td><td>: Longitude of the target location in degrees. </td></tr>
+    <tr><td class="paramname">lat</td><td>: Latitude of the target location in degrees </td></tr>
+    <tr><td class="paramname">longi</td><td>: Longitude of the target location in degrees </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airports closest to the specified coordinates. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airports closest to the specified coordinates </dd></dl>
 
 </div>
 </div>
@@ -645,12 +645,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n^3)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">city</td><td>: The city for which to retrieve the number of unique airlines. </td></tr>
-    <tr><td class="paramname">country</td><td>: The country of the city. </td></tr>
+    <tr><td class="paramname">city</td><td>: The city for which to retrieve the number of unique airlines </td></tr>
+    <tr><td class="paramname">country</td><td>: The country of the city </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of unique airlines operating in the city. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of unique airlines operating in the city </dd></dl>
 
 </div>
 </div>
@@ -674,11 +674,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n^3)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">country</td><td>: The country for which to retrieve the number of airlines. </td></tr>
+    <tr><td class="paramname">country</td><td>: The country for which to retrieve the number of airlines </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of unique airlines in the country. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of unique airlines in the country </dd></dl>
 
 </div>
 </div>
@@ -712,12 +712,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">city</td><td>: The city for which to retrieve the number of airports. </td></tr>
-    <tr><td class="paramname">country</td><td>: The country of the city. </td></tr>
+    <tr><td class="paramname">city</td><td>: The city for which to retrieve the number of airports </td></tr>
+    <tr><td class="paramname">country</td><td>: The country of the city </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of unique airports in the city. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of unique airports in the city </dd></dl>
 
 </div>
 </div>
@@ -741,11 +741,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">country</td><td>: The country for which to retrieve the number of airports. </td></tr>
+    <tr><td class="paramname">country</td><td>: The country for which to retrieve the number of airports </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of airports in the country. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of airports in the country </dd></dl>
 
 </div>
 </div>
@@ -769,11 +769,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">country</td><td>: The country for which to retrieve the number of cities. </td></tr>
+    <tr><td class="paramname">country</td><td>: The country for which to retrieve the number of cities </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of unique cities in the country. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of unique cities in the country </dd></dl>
 
 </div>
 </div>
@@ -794,14 +794,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 </div><div class="memdoc">
 
 <p>Gets the number of destinations served by the given airline. </p>
-<p>Complexity: O(n^3)</p>
+<p>Complexity: O(n^4)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">airline</td><td>: The airline for which to retrieve the number of destinations. </td></tr>
+    <tr><td class="paramname">airline</td><td>: The airline for which to retrieve the number of destinations </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector of destinations served by the airline. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of destinations served by the airline </dd></dl>
 
 </div>
 </div>
@@ -825,11 +825,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n^3)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">airline</td><td>: The airline for which to retrieve the number of flights. </td></tr>
+    <tr><td class="paramname">airline</td><td>: The airline for which to retrieve the number of flights </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of flights associated with the airline. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of flights associated with the airline </dd></dl>
 
 </div>
 </div>
@@ -850,7 +850,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 </div><div class="memdoc">
 
 <p>Return the number of flights out an airport. </p>
-<p>Complexity: O(n)</p>
+<p>Complexity: O(n^2)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
     <tr><td class="paramname">airport</td><td>: <a class="el" href="class_airport.html" title="Represents a Airport.">Airport</a> </td></tr>
@@ -891,12 +891,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n^2)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">city</td><td>: The city for which to retrieve the number of flights. </td></tr>
-    <tr><td class="paramname">country</td><td>: The country of the city. </td></tr>
+    <tr><td class="paramname">city</td><td>: The city for which to retrieve the number of flights </td></tr>
+    <tr><td class="paramname">country</td><td>: The country of the city </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The number of flights associated with the city. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The number of flights associated with the city </dd></dl>
 
 </div>
 </div>
@@ -920,11 +920,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n^2)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">country</td><td>: The country for which to retrieve the number of flights. </td></tr>
+    <tr><td class="paramname">country</td><td>: The country for which to retrieve the number of flights </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The total number of flights departing from airports in the country. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The total number of flights departing from airports in the country </dd></dl>
 
 </div>
 </div>
@@ -955,15 +955,15 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 </div><div class="memdoc">
 
 <p>Gets the reachable destinations from a source airport within a given number of stops. </p>
-<p>Complexity: O(n)</p>
+<p>Complexity: O(v*(v+e)), being v the number of vertices in a graph and e the number of edges</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">source</td><td>: The source airport. </td></tr>
-    <tr><td class="paramname">maxStops</td><td>: The maximum number of stops allowed. </td></tr>
+    <tr><td class="paramname">source</td><td>: The source airport </td></tr>
+    <tr><td class="paramname">maxStops</td><td>: The maximum number of stops allowed </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airports representing the reachable destinations. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airports representing the reachable destinations </dd></dl>
 
 </div>
 </div>
@@ -1000,16 +1000,16 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 </div><div class="memdoc">
 
 <p>Gets the reachable destinations from airports in the specified city within a given number of stops. </p>
-<p>Complexity: O(n)</p>
+<p>Complexity: O(v^2*(v+e)), being v the number of vertices in a graph and e the number of edges)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">city</td><td>: The city for which to retrieve the reachable destinations. </td></tr>
-    <tr><td class="paramname">country</td><td>: The country of the city. </td></tr>
-    <tr><td class="paramname">maxStops</td><td>: The maximum number of stops allowed. </td></tr>
+    <tr><td class="paramname">city</td><td>: The city for which to retrieve the reachable destinations </td></tr>
+    <tr><td class="paramname">country</td><td>: The country of the city </td></tr>
+    <tr><td class="paramname">maxStops</td><td>: The maximum number of stops allowed </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airports representing the reachable destinations. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airports representing the reachable destinations </dd></dl>
 
 </div>
 </div>
@@ -1040,15 +1040,15 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 </div><div class="memdoc">
 
 <p>Gets the reachable destinations in the specified country within a given number of stops. </p>
-<p>Complexity: O(n)</p>
+<p>Complexity: O(v^2*(v+e)), being v the number of vertices in a graph and e the number of edges)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">country</td><td>: The country of interest. </td></tr>
-    <tr><td class="paramname">maxStops</td><td>: The maximum number of stops allowed. </td></tr>
+    <tr><td class="paramname">country</td><td>: The country of interest </td></tr>
+    <tr><td class="paramname">maxStops</td><td>: The maximum number of stops allowed </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airports representing the reachable destinations. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airports representing the reachable destinations </dd></dl>
 
 </div>
 </div>
@@ -1069,14 +1069,14 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 </div><div class="memdoc">
 
 <p>Gets the top airports based on the number of flights. </p>
-<p>Complexity: O(n)</p>
+<p>Complexity: O(n^2)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">k</td><td>: The number of top airports to retrieve. </td></tr>
+    <tr><td class="paramname">k</td><td>: The number of top airports to retrieve </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>A vector of pairs representing the top airports and their respective number of flights. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>A vector of pairs representing the top airports and their respective number of flights </dd></dl>
 
 </div>
 </div>
@@ -1110,12 +1110,12 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n^2)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">city</td><td>: The city for which to retrieve the total number of destinations. </td></tr>
-    <tr><td class="paramname">country</td><td>: The country of the city. </td></tr>
+    <tr><td class="paramname">city</td><td>: The city for which to retrieve the total number of destinations </td></tr>
+    <tr><td class="paramname">country</td><td>: The country of the city </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The total number of unique destinations served by airports in the city. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The total number of unique destinations served by airports in the city </dd></dl>
 
 </div>
 </div>
@@ -1139,11 +1139,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n^2)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">country</td><td>: The country for which to retrieve the number of destinations. </td></tr>
+    <tr><td class="paramname">country</td><td>: The country for which to retrieve the number of destinations </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>The total number of unique destinations in the country. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The total number of unique destinations in the country </dd></dl>
 
 </div>
 </div>
@@ -1164,7 +1164,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 
 <p>Gets the total number of unique airlines operating in the graph. </p>
 <p>Complexity: O(n^3)</p>
-<dl class="section return"><dt>Returns</dt><dd>The total number of unique airlines operating in the graph. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The total number of unique airlines operating in the graph </dd></dl>
 
 </div>
 </div>
@@ -1185,7 +1185,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 
 <p>Gets the total number of airports in the graph. </p>
 <p>Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>The total number of airports in the graph. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The total number of airports in the graph </dd></dl>
 
 </div>
 </div>
@@ -1206,7 +1206,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 
 <p>Gets the total number of unique cities in the graph. </p>
 <p>Complexity: O(n)</p>
-<dl class="section return"><dt>Returns</dt><dd>The total number of unique cities in the graph. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The total number of unique cities in the graph </dd></dl>
 
 </div>
 </div>
@@ -1227,7 +1227,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 
 <p>Gets the total number of unique countries in the graph. </p>
 <p>Complexity: O(n)</p>
-<dl class="section return"><dt>Returns</dt><dd>The total number of unique countries in the graph. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The total number of unique countries in the graph </dd></dl>
 
 </div>
 </div>
@@ -1248,7 +1248,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 
 <p>Gets the total number of flights in the graph. </p>
 <p>Complexity: O(n^2)</p>
-<dl class="section return"><dt>Returns</dt><dd>The total number of flights in the graph. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>The total number of flights in the graph </dd></dl>
 
 </div>
 </div>
@@ -1269,7 +1269,7 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 
 <p>Gets the vector of vertices in the graph. </p>
 <p>Complexity: O(1)</p>
-<dl class="section return"><dt>Returns</dt><dd>Vector of vertices. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of vertices </dd></dl>
 
 </div>
 </div>
@@ -1299,16 +1299,16 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
       </table>
 </div><div class="memdoc">
 
-<p>Finds a path between two airports in the graph using depth-first search (DFS). </p>
-<p>Complexity: O(n)</p>
+<p>Finds a path between two airports in the graph using depth-first search (DFS) </p>
+<p>Complexity: O(n^2)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>: Source airport. </td></tr>
-    <tr><td class="paramname">d</td><td>: Destination airport. </td></tr>
+    <tr><td class="paramname">s</td><td>: Source airport </td></tr>
+    <tr><td class="paramname">d</td><td>: Destination airport </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airports representing the path from source to destination. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airports representing the path from source to destination </dd></dl>
 
 </div>
 </div>
@@ -1344,17 +1344,17 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
       </table>
 </div><div class="memdoc">
 
-<p>Finds a path between two airports in the graph using depth-first search (DFS). </p>
+<p>Finds a path between two airports in the graph using depth-first search (DFS) </p>
 <p>Complexity: O(n^3)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>: Source airport. </td></tr>
-    <tr><td class="paramname">d</td><td>: Destination airport. </td></tr>
-    <tr><td class="paramname">NumAir</td><td>: Number of airlines that can be used. </td></tr>
+    <tr><td class="paramname">s</td><td>: Source airport </td></tr>
+    <tr><td class="paramname">d</td><td>: Destination airport </td></tr>
+    <tr><td class="paramname">NumAir</td><td>: Number of airlines that can be used </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of airports representing the path from source to destination. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of airports representing the path from source to destination </dd></dl>
 
 </div>
 </div>
@@ -1390,17 +1390,17 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
       </table>
 </div><div class="memdoc">
 
-<p>Finds a path between two airports in the graph using depth-first search (DFS). </p>
-<p>Complexity: O(n)</p>
+<p>Finds a path between two airports in the graph using depth-first search (DFS) </p>
+<p>Complexity: O(n^3*log(n))</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">s</td><td>: Source airport. </td></tr>
-    <tr><td class="paramname">d</td><td>: Destination airport. </td></tr>
-    <tr><td class="paramname">airlines</td><td>: Vector with the airlines that can be used. </td></tr>
+    <tr><td class="paramname">s</td><td>: Source airport </td></tr>
+    <tr><td class="paramname">d</td><td>: Destination airport </td></tr>
+    <tr><td class="paramname">airlines</td><td>: Vector with the airlines that can be used </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>Vector of vectors of airports representing the path from source to destination. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>Vector of vectors of airports representing the path from source to destination </dd></dl>
 
 </div>
 </div>
@@ -1424,11 +1424,11 @@ class&#160;</td><td class="memItemRight" valign="bottom"><b>AuxiliarFunctions</b
 <p>Complexity: O(n^2)</p>
 <dl class="params"><dt>Parameters</dt><dd>
   <table class="params">
-    <tr><td class="paramname">in</td><td>: <a class="el" href="class_airport.html" title="Represents a Airport.">Airport</a> to remove. </td></tr>
+    <tr><td class="paramname">in</td><td>: <a class="el" href="class_airport.html" title="Represents a Airport.">Airport</a> to remove </td></tr>
   </table>
   </dd>
 </dl>
-<dl class="section return"><dt>Returns</dt><dd>True if the vertex is removed successfully, false otherwise. </dd></dl>
+<dl class="section return"><dt>Returns</dt><dd>True if the vertex is removed successfully, false otherwise </dd></dl>
 
 </div>
 </div>

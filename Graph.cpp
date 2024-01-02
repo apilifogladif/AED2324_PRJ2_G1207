@@ -169,10 +169,7 @@ vector<vector<Vertex*>> Graph::bfsPath(Vertex* source, Vertex* dest) const{
             newTrip.push_back(e.getDest());
             q.emplace(newTrip,pair.second+1);
         }
-
-
     }
-
     return paths;
 }
 

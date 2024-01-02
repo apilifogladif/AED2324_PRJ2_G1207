@@ -1,9 +1,6 @@
 #include <map>
 #include "AuxiliarFunctions.h"
 
-//=============================================================================
-// Articulation Points
-//=============================================================================
 void dfs_art(Graph *g, Vertex *v, stack<Airport> &s, vector<Airport> &res, int &i);
 
 vector<Airport> AuxiliarFunctions::articulationPoints(Graph *g) {
@@ -29,7 +26,7 @@ vector<Airport> AuxiliarFunctions::articulationPoints(Graph *g) {
 /**
  * @brief Perform depth-first search to find articulation points in the graph.
  *
- * Complexity: O(n)
+ * Complexity: O(v+e), being v the number of vertices in a graph and e the number of edges
  *
  * @param g : Pointer to the graph.
  * @param v : Pointer to the current vertex.
@@ -102,7 +99,7 @@ AuxiliarFunctions::filterVectorAirlines(const vector<Airport>& sourceAirports, c
 
     for (const Airport& s : sourceAirports) {
         for (const Airport& d : destAirports) {
-            aux = csvInfo::flightsGraph.pathAirportRestrictAirlines(s, d, airlines);
+            aux = csvInfo::flightsGraph.pathAirportRestrictAirlines(s, d, airlines); //n^3*log(n)
             for (const auto& a : aux){
                 for (auto b : a){
                     auto c = b->getAirport();

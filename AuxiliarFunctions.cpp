@@ -1,5 +1,8 @@
 #include <map>
 #include "AuxiliarFunctions.h"
+/**
+ * @file AuxiliarFunctions.cpp
+ */
 
 void dfs_art(Graph *g, Vertex *v, stack<Airport> &s, vector<Airport> &res, int &i);
 

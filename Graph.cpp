@@ -5,141 +5,181 @@
 #include <limits>
 
 // path between 2 airports using only a maximum of numAir airlines
-vector<vector<Airport>> Graph::pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir) {
-    vector<vector<Airport>> paths;
-    vector<Airport> aux;
+vector<pair<vector<Vertex*>,int>> Graph::pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir) {
+    Vertex* source;
+    Vertex* dest;
+
     for (auto v : vertexSet) {
         v->visited = false;
-        v->processing = false;
-    }
-    auto source = findVertex(s);
-    auto dest = findVertex(d);
-    if (source == nullptr || dest == nullptr) return paths;
+        if (v->airport.getCode() == s.getCode())
+            source = v;
 
-    set<string> air;
-    aux.push_back(s);
-    for (const auto& e : source->getAdj()) {
-        air.clear();
-        air.insert(e.getAirline().getCode());
-        if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
-            aux.push_back(dest->getAirport());
-            paths.push_back(aux);
-        }
-        else {
-            dfsPathFilterNumAir(e.dest, dest, aux, &paths, NumAir, air);
-        }
+        if (v->airport.getCode() == d.getCode())
+            dest = v;
     }
-    return paths;
+    if (source == nullptr || dest == nullptr) return {};
+
+
+    return bfsPathFilterNumAir(source,dest,NumAir,vector<Airline>);
 }
 
-void Graph::dfsPathFilterNumAir(Vertex* source, Vertex* dest, vector<Airport> aux, vector<vector<Airport>>* paths, int NumAir, set<string> air) {
-    source->setVisited(true);
-    aux.push_back(source->airport);
-    set<string> backup = air;
-    for (auto& e : source->getAdj()) {
-        backup = air;
-        backup.insert(e.getAirline().getCode());
-        if (backup.size() > NumAir) continue;
-        air.insert(e.getAirline().getCode());
-        if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
-            aux.push_back(e.dest->getAirport());
-            paths->push_back(aux);
+vector<pair<vector<Vertex*>,int>> Graph::bfsPathFilterNumAir(Vertex* source, Vertex* dest, int NumAir, set<Airline> air) {
+    vector<pair<vector<Vertex*>,int>> paths;
+    queue<pair<vector<Vertex*>,int>> q;
+    int min = INT_MAX;
+
+    for (auto v : vertexSet) v->visited = false;
+
+    q.emplace(vector<Vertex*> {source},0);
+
+    while(!q.empty()){
+        auto p = q.front();
+        q.pop();
+        p.first.back()->setVisited(true);
+
+        if(p.second > min) break;
+
+        if(p.first.back() == dest) {
+            if(p.second < min) paths.clear();
+            min = p.second;
+            paths.emplace_back(p.first, static_cast<int>(air.size()));
+            continue;
         }
-        else if (!e.dest->isVisited()) {
-            dfsPathFilterNumAir(e.dest, dest, aux, paths, NumAir, air);
+
+        for (const auto& e : p.first.back()->getAdj()) {
+            for (auto a : e.getAirline()) {
+                if(e.getDest()->isVisited()) continue;
+                air.insert(a);
+                auto newTrip = make_pair(p.first, air);
+                newTrip.first.push_back(e.getDest());
+                q.emplace(newTrip,p.second+1);
+            }
+            air.clear();
         }
+
+
     }
-    aux.pop_back();
+
+    return paths;
 }
 
 // path between 2 airports using a set of airlines
-vector<vector<Airport>> Graph::pathAirportRestrictAirlines(const Airport& s, const Airport& d, const vector<string>& airlines) {
-    vector<vector<Airport>> paths;
+vector<vector<Vertex*>> Graph::pathAirportRestrictAirlines(const Airport& s, const Airport& d, const vector<string>& airlines) {
+    Vertex* source;
+    Vertex* dest;
+
     for (auto v : vertexSet) {
         v->visited = false;
-        v->processing = false;
-    }
-    auto source = findVertex(s);
-    auto dest = findVertex(d);
-    if (source == nullptr || dest == nullptr) return paths;
+        if (v->airport.getCode() == s.getCode())
+            source = v;
 
-    vector<Airport> aux;
-    aux.push_back(s);
-    for (const auto& e : source->getAdj()) {
-        if (find(airlines.begin(), airlines.end(), e.getAirline().getCode()) != airlines.end()) {
-            if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
-                aux.push_back(dest->getAirport());
-                paths.push_back(aux);
-            }
-            else {
-                dfsPathFilterAirlines(e.dest, dest, aux, &paths, airlines);
-            }
-        }
+        if (v->airport.getCode() == d.getCode())
+            dest = v;
     }
-    return paths;
+    if (source == nullptr || dest == nullptr) return {};
+
+
+    return bfsPathFilterAirlines(source,dest,airlines);
 }
 
-void Graph::dfsPathFilterAirlines(Vertex* source, Vertex* dest, vector<Airport> aux, vector<vector<Airport>>* paths, vector<string> airlines) const {
-    source->visited = true;
-    aux.push_back(source->airport);
-    for (auto& e : source->getAdj()) {
-        if (find(airlines.begin(), airlines.end(), e.getAirline().getCode()) != airlines.end()) {
-            if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
-                aux.push_back(e.dest->getAirport());
-                paths->push_back(aux);
+vector<vector<Vertex*>> Graph::bfsPathFilterAirlines(Vertex* source, Vertex* dest, vector<string> airlines) const {
+    vector<vector<Vertex*>> paths;
+    queue<pair<vector<Vertex*>,int>> q;
+    int min = INT_MAX;
+
+    for (auto v : vertexSet)
+        v->visited = false;
+
+    q.emplace(vector<Vertex*> {source},0);
+    while(!q.empty()){
+        auto pair = q.front();
+        q.pop();
+        pair.first.back()->setVisited(true);
+
+        if(pair.second > min) break;
+
+        if(pair.first.back() == dest){
+            if(pair.second < min) paths.clear();
+            min = pair.second;
+            paths.push_back(pair.first);
+            continue;
+        }
+
+        for (const auto& e : pair.first.back()->getAdj()){
+            bool ok = false;
+            for (const auto& a : e.getAirline()) {
+                if (find(airlines.begin(), airlines.end(), a.getCode()) != airlines.end()) {
+                    ok = true;
+                    break;
+                }
             }
-            else if (!e.dest->isVisited()) {
-                dfsPathFilterAirlines(e.dest, dest, aux, paths, airlines);
+            if (ok) {
+                if (e.getDest()->isVisited()) continue;
+                auto newTrip = pair.first;
+                newTrip.push_back(e.getDest());
+                q.emplace(newTrip,pair.second+1);
             }
         }
+
+
     }
-    aux.pop_back();
+
+    return paths;
 }
 
 // path between 2 airports
-vector<vector<Airport>> Graph::pathAirport(const Airport& s, const Airport& d) {
-    vector<vector<Airport>> paths;
+vector<vector<Vertex*>> Graph::pathAirport(const Airport& s, const Airport& d) {
+    Vertex* source;
+    Vertex* dest;
+
     for (auto v : vertexSet) {
         v->visited = false;
-        v->processing = false;
-        v->hasPath = true;
+        if (v->airport.getCode() == s.getCode())
+            source = v;
+
+        if (v->airport.getCode() == d.getCode())
+            dest = v;
     }
-    auto source = findVertex(s);
-    auto dest = findVertex(d);
-    if (source == nullptr || dest == nullptr) return paths;
+    if (source == nullptr || dest == nullptr) return {};
 
-    vector<Airport> aux;
-    aux.push_back(s);
-    source->setProcessing(true);
 
-    dfsPath(source, dest, aux, &paths);
-    return paths;
+    return bfsPath(source,dest);
 }
 
-void Graph::dfsPath(Vertex* source, Vertex* dest, vector<Airport> aux, vector<vector<Airport>>* paths) const {
-    source->setProcessing(true);
-    aux.push_back(source->airport);
-    source->hasPath = false;
+vector<vector<Vertex*>> Graph::bfsPath(Vertex* source, Vertex* dest) const{
+    vector<vector<Vertex*>> paths;
+    queue<pair<vector<Vertex*>,int>> q;
+    int min = INT_MAX;
 
-    for (auto& e : source->getAdj()) {
-        //cout << source->getAirport().getCode() << " " << e.dest->getAirport().getCode();
-        if (e.dest->hasPath) {
-            if (e.dest->getAirport().getCode() == dest->getAirport().getCode()) {
-                //cout << " A";
-                aux.push_back(e.dest->getAirport());
-                paths->push_back(aux);
-                source->hasPath = true;
-            }
-            else if (!e.dest->processing) {
-                //cout << " B";
-                dfsPath(e.dest, dest, aux, paths);
-                if (!e.dest->hasPath) source->hasPath = false;
-            }
+    for (auto v : vertexSet)
+        v->visited = false;
+
+    q.emplace(vector<Vertex*> {source},0);
+    while(!q.empty()){
+        auto pair = q.front();
+        q.pop();
+        pair.first.back()->setVisited(true);
+
+        if(pair.second > min) break;
+
+        if(pair.first.back() == dest){
+            if(pair.second < min) paths.clear();
+            min = pair.second;
+            paths.push_back(pair.first);
+            continue;
         }
-        //cout << endl;
+
+        for (auto e : pair.first.back()->getAdj()){
+            if(e.getDest()->isVisited()) continue;
+            auto newTrip = pair.first;
+            newTrip.push_back(e.getDest());
+            q.emplace(newTrip,pair.second+1);
+        }
+
+
     }
-    aux.pop_back();
-    source->setProcessing(false);
+
+    return paths;
 }
 
 // Coordinates
@@ -175,6 +215,19 @@ vector<Airport> Graph::getAirportsInCoordinates(double lat, double longi) const 
 }
 
 // Airport
+int Graph::getNumberOfFlights(const Airport& airport) const {
+    int numFlights = 0;
+    for (auto v : vertexSet) {
+        if (airport.getCode() == v->getAirport().getCode()) {
+            for (const auto& edge : v->getAdj()) {
+                numFlights += edge.getAirline().size();
+            }
+            break;
+        }
+    }
+    return numFlights;
+}
+
 vector<Airport> Graph::getReachableDestinations(const Airport& source, int maxStops) const {
     vector<Airport> reachableDestinations;
     Vertex* sourceVertex = findVertex(source);
@@ -205,13 +258,15 @@ void Graph::dfsReachableDestinations(Vertex* v, int stopsLeft, vector<Airport>& 
 }
 
 vector<Airline> Graph::getAirlines(const Airport& airport) {
-    vector<Airline> airs;
+    set<Airline> airs;
     auto v = findVertex(airport);
     for (const auto& vtx : v->getAdj()) {
-        auto it = find(airs.begin(), airs.end(), vtx.getAirline());
-        if (it == airs.end()) airs.push_back(vtx.getAirline());
+        for (auto a : vtx.getAirline()) {
+            airs.insert(a);
+        }
     }
-    return airs;
+    vector<Airline> vc(airs.begin(), airs.end());
+    return vc;
 }
 
 // Airline
@@ -220,8 +275,10 @@ int Graph::getNumberOfFlights(const Airline& airline) const {
     int numFlights = 0;
     for (auto v : vertexSet) {
         for (const auto& edge : v->getAdj()) {
-            if (edge.getAirline() == airline) {
-                numFlights++;
+            for (const auto& a : edge.getAirline()) {
+                if (a == airline) {
+                    numFlights++;
+                }
             }
         }
     }
@@ -232,8 +289,12 @@ vector<Airport> Graph::getNumberOfDestinations(const Airline& airline) const {
     vector<Airport> uniqueDestinations;
     for (auto v : vertexSet) {
         for (const auto& edge : v->getAdj()) {
-            if (edge.getAirline() == airline && find(uniqueDestinations.begin(), uniqueDestinations.end(), edge.getDest()->getAirport()) == uniqueDestinations.end()) {
-                uniqueDestinations.push_back(edge.getDest()->getAirport());
+            for (const auto& a : edge.getAirline()) {
+                if (a == airline) {
+                    if (find(uniqueDestinations.begin(), uniqueDestinations.end(), edge.getDest()->getAirport()) == uniqueDestinations.end()) {
+                        uniqueDestinations.push_back(edge.getDest()->getAirport());
+                    }
+                }
             }
         }
     }
@@ -246,7 +307,9 @@ int Graph::getNumberOfFlightsInCity(const string& city, const string& country) c
     int numFlights = 0;
     for (const Vertex* v : getVertexSet()) {
         if (v->getAirport().getCity() == city && v->getAirport().getCountry() == country) {
-            numFlights = v->getAdj().size();
+            for (const auto& edge : v->getAdj()) {
+                numFlights += edge.getAirline().size();
+            }
             break;
         }
     }
@@ -278,7 +341,9 @@ int Graph::getNumberOfAirlinesInCity(const string& city, const string& country) 
     for (auto v : getVertexSet()) {
         if (v->getAirport().getCity() == city && v->getAirport().getCountry() == country) {
             for (const auto& edge : v->getAdj()) {
-                uniqueAirlines.insert(edge.getAirline());
+                for (auto a : edge.getAirline()) {
+                    uniqueAirlines.insert(a);
+                }
             }
         }
     }
@@ -315,7 +380,9 @@ int Graph::getNumberOfFlightsInCountry(const string& country) const {
     int numFlights = 0;
     for (auto v : getVertexSet()) {
         if (v->getAirport().getCountry() == country) {
-            numFlights += v->getAdj().size();
+            for (const auto& edge : v->getAdj()) {
+                numFlights += edge.getAirline().size();
+            }
         }
     }
     return numFlights;
@@ -336,7 +403,9 @@ int Graph::getNumberOfAirlinesInCountry(const string& country) const {
     for (auto v : getVertexSet()) {
         for (const auto& edge : v->getAdj()) {
             if (edge.getDest()->getAirport().getCountry() == country) {
-                uniqueAirlines.insert(edge.getAirline());
+                for (auto a : edge.getAirline()) {
+                    uniqueAirlines.insert(a);
+                }
             }
         }
     }
@@ -382,7 +451,9 @@ vector<Airport> Graph::getReachableDestinationsInCountry(const string& country, 
 int Graph::getTotalNumberOfFlights() const {
     int numFlights = 0;
     for (auto v : getVertexSet()) {
-        numFlights += v->getAdj().size();
+        for (const auto& edge : v->getAdj()) {
+            numFlights += edge.getAirline().size();
+        }
     }
     return numFlights;
 }
@@ -395,7 +466,9 @@ int Graph::getTotalNumberOfAirlines() const {
     set<Airline> uniqueAirlines;
     for (auto v : getVertexSet()) {
         for (const auto& edge : v->getAdj()) {
-            uniqueAirlines.insert(edge.getAirline());
+            for (auto a : edge.getAirline()) {
+                uniqueAirlines.insert(a);
+            }
         }
     }
     return uniqueAirlines.size();
@@ -470,7 +543,7 @@ void Graph::findMaxStopsTrip() {
 vector<pair<Airport, int>> Graph::getTopKAirports(int k) const {
     vector<pair<Airport, int>> airportFlights;
     for (auto vertex : getVertexSet()) {
-        int numFlights = vertex->getAdj().size();
+        int numFlights = getNumberOfFlights(vertex->getAirport());
         airportFlights.emplace_back(vertex->getAirport(), numFlights);
     }
     auto comp = [](const auto& a, const auto& b) {
@@ -488,7 +561,9 @@ vector<pair<Airport, int>> Graph::getTopKAirports(int k) const {
 
 Vertex::Vertex(Airport in): airport(in) {}
 
-Edge::Edge(Vertex *d, Airline airline_): dest(d), airline(airline_) {}
+Edge::Edge(Vertex *d, Airline airline_): dest(d) {
+    airline.insert(airline_);
+}
 
 vector<Vertex * > Graph::getVertexSet() const {
     return vertexSet;
@@ -496,10 +571,6 @@ vector<Vertex * > Graph::getVertexSet() const {
 
 Airport Vertex::getAirport() const {
     return airport;
-}
-
-void Vertex::setAirport(Airport in) {
-    airport = in;
 }
 
 bool Vertex::isProcessing() const {
@@ -514,17 +585,10 @@ Vertex *Edge::getDest() const {
     return dest;
 }
 
-void Edge::setDest(Vertex *d) {
-    Edge::dest = d;
-}
-
-Airline Edge::getAirline() const {
+set<Airline> Edge::getAirline() const {
     return airline;
 }
 
-void Edge::setAirline(Airline airline_) {
-    airline = std::move(airline_);
-}
 
 /*
  * Auxiliary function to find a vertex with a given content.
@@ -538,14 +602,6 @@ Vertex * Graph::findVertex(const Airport& in) const {
 
 bool Vertex::isVisited() const {
     return visited;
-}
-
-int Vertex::getIndegree() const {
-    return indegree;
-}
-
-void Vertex::setIndegree(int indegree_) {
-    Vertex::indegree = indegree_;
 }
 
 int Vertex::getNum() const {
@@ -570,10 +626,6 @@ void Vertex::setVisited(bool v) {
 
 const vector<Edge> &Vertex::getAdj() const {
     return adj;
-}
-
-void Vertex::setAdj(const vector<Edge> &adj_) {
-    Vertex::adj = adj_;
 }
 
 
@@ -607,22 +659,19 @@ bool Graph::addEdge(const string &sourc, const string &dest, Airline airline_) {
  * with a given destination vertex (d) and edge weight (w).
  */
 void Vertex::addEdge(Vertex *d, Airline airline_) {
-    adj.push_back(Edge(d, std::move(airline_)));
+    bool t = false;
+    for (Edge& i : adj) {
+        if (i.getDest()->getAirport().getCode() == d->getAirport().getCode()) {
+            i.airline.insert(airline_);
+            t = true;
+            break;
+        }
+    }
+    if (!t) {
+        adj.emplace_back(d, std::move(airline_));
+    }
 }
 
-
-/*
- * Removes an edge from a graph (this).
- * The edge is identified by the source (sourc) and destination (dest) contents.
- * Returns true if successful, and false if such edge does not exist.
- */
-bool Graph::removeEdge(const Airport &sourc, const Airport &dest) {
-    auto v1 = findVertex(sourc);
-    auto v2 = findVertex(dest);
-    if (v1 == nullptr || v2 == nullptr)
-        return false;
-    return v1->removeEdgeTo(v2);
-}
 
 /*
  * Auxiliary function to remove an outgoing edge (with a given destination (d))
@@ -654,151 +703,6 @@ bool Graph::removeVertex(const Airport& in) {
             return true;
         }
     return false;
-}
-
-
-/****************** DFS ********************/
-/*
- * Performs a depth-first search (dfs) traversal in a graph (this).
- * Returns a vector with the contents of the vertices by dfs order.
- * Follows the algorithm described in theoretical classes.
- */
-vector<Airport> Graph::dfs() const {
-    vector<Airport> res;
-    for (auto v : vertexSet)
-        v->visited = false;
-    for (auto v : vertexSet)
-        if (! v->visited)
-            dfsVisit(v, res);
-    return res;
-}
-
-/*
- * Auxiliary function that visits a vertex (v) and its adjacent, recursively.
- * Updates a parameter with the list of visited node contents.
- */
-void Graph::dfsVisit(Vertex *v, vector<Airport> & res) const {
-    v->visited = true;
-    res.push_back(v->airport);
-    for (auto & e : v->adj) {
-        auto w = e.dest;
-        if ( ! w->visited)
-            dfsVisit(w, res);
-    }
-}
-
-/****************** BFS ********************/
-/*
- * Performs a breadth-first search (bfs) in a graph (this), starting
- * from the vertex with the given source contents (source).
- * Returns a vector with the contents of the vertices by bfs order.
- */
-vector<Airport> Graph::bfs(const Airport & source) const {
-    vector<Airport> res;
-    auto s = findVertex(source);
-    if (s == nullptr)
-        return res;
-    for (auto v : vertexSet)
-        v->visited = false;
-    queue<Vertex *> q;
-    q.push(s);
-    s->visited = true;
-    while (!q.empty()) {
-        auto v = q.front();
-        q.pop();
-        res.push_back(v->airport);
-        for (auto & e : v->adj) {
-            auto w = e.dest;
-            if ( ! w->visited ) {
-                q.push(w);
-                w->visited = true;
-            }
-        }
-    }
-    return res;
-}
-
-
-/****************** isDAG  ********************/
-/*
- * Performs a depth-first search in a graph (this), to determine if the graph
- * is acyclic (acyclic directed graph or DAG).
- * During the search, a cycle is found if an edge connects to a vertex
- * that is being processed in the stack of recursive calls (see theoretical classes).
- * Returns true if the graph is acyclic, and false otherwise.
- */
-
-bool Graph::isDAG() const {
-    for (auto v : vertexSet) {
-        v->visited = false;
-        v->processing = false;
-    }
-    for (auto v : vertexSet)
-        if (! v->visited)
-            if ( ! dfsIsDAG(v) )
-                return false;
-    return true;
-}
-
-/**
- * Auxiliary function that visits a vertex (v) and its adjacent, recursively.
- * Returns false (not acyclic) if an edge to a vertex in the stack is found.
- */
-bool Graph::dfsIsDAG(Vertex *v) const {
-    v->visited = true;
-    v->processing = true;
-    for (auto & e : v->adj) {
-        auto w = e.dest;
-        if (w->processing)
-            return false;
-        if (! w->visited)
-            if (! dfsIsDAG(w))
-                return false;
-    }
-    v->processing = false;
-    return true;
-}
-
-
-/****************** topsort ********************/
-
-vector<Airport> Graph::topsort() const {
-    vector<Airport> res;
-    queue<Vertex*> aux;
-
-    // Set In-degree
-    for (Vertex* v : vertexSet) {
-        int c = 0;
-        for (auto vtx : vertexSet) {
-            for (auto edge : vtx->getAdj()) {
-                if (edge.getDest() == v) {
-                    c++;
-                    continue;
-                }
-            }
-        }
-        v->setIndegree(c);
-        if (v->getIndegree() == 0) aux.push(v);
-    }
-
-    // Topological Sort
-    while (!aux.empty()) {
-        Vertex* u = aux.front();
-        aux.pop();
-        res.push_back(u->getAirport());
-
-        for (Edge edge : u->getAdj()) {
-            edge.getDest()->setIndegree(edge.getDest()->getIndegree() - 1);
-            if (edge.getDest()->getIndegree() == 0) {
-                aux.push(edge.getDest());
-            }
-        }
-    }
-
-    if (res.size() != vertexSet.size()) {
-        res.clear();
-    }
-    return res;
 }
 
 void Graph::clean() {

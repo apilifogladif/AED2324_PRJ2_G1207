@@ -68,25 +68,25 @@ void dfs_art(Graph *g, Vertex *v, stack<Airport> &s, vector<Airport> &res, int &
 // Best flight option
 
 vector<vector<Airport>> AuxiliarFunctions::bestFlightOp(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports) {
-    vector<vector<Airport>> aux;
+    vector<vector<Vertex*>> aux;
     vector<vector<Airport>> best;
-    bool first = true;
+    vector<Airport> aux2;
+
+
     for (const Airport& s : sourceAirports) {
         for (const Airport& d : destAirports) {
             aux = csvInfo::flightsGraph.pathAirport(s, d);
-            for (auto i : aux) {
-                if (first) {
-                    best.push_back(i);
-                    first = false;
+            for (const auto& a : aux){
+                for (auto b : a){
+                    auto c = b->getAirport();
+                    aux2.push_back(c);
                 }
-                else if (i.size() < best[0].size()) {
-                    best.clear();
-                    best.push_back(i);
+                if (!count(best.begin(),best.end(),aux2)) {
+                    best.push_back(aux2);
                 }
-                else if (i.size() == best[0].size()) {
-                    best.push_back(i);
-                }
+                aux2.clear();
             }
+
         }
     }
     return best;
@@ -94,25 +94,25 @@ vector<vector<Airport>> AuxiliarFunctions::bestFlightOp(const vector<Airport>& s
 
 vector<vector<Airport>>
 AuxiliarFunctions::filterVectorAirlines(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports, const vector<string>& airlines) {
-    vector<vector<Airport>> aux;
+    vector<vector<Vertex*>> aux;
     vector<vector<Airport>> best;
-    bool first = true;
+    vector<Airport> aux2;
+
+
     for (const Airport& s : sourceAirports) {
         for (const Airport& d : destAirports) {
             aux = csvInfo::flightsGraph.pathAirportRestrictAirlines(s, d, airlines);
-            for ( const auto& i : aux) {
-                if (first) {
-                    best.push_back(i);
-                    first = false;
+            for (const auto& a : aux){
+                for (auto b : a){
+                    auto c = b->getAirport();
+                    aux2.push_back(c);
                 }
-                else if (i.size() < best[0].size()) {
-                    best.clear();
-                    best.push_back(i);
+                if (!count(best.begin(),best.end(),aux2)) {
+                    best.push_back(aux2);
                 }
-                else if (i.size() == best[0].size()) {
-                    best.push_back(i);
-                }
+                aux2.clear();
             }
+
         }
     }
     return best;
@@ -120,25 +120,27 @@ AuxiliarFunctions::filterVectorAirlines(const vector<Airport>& sourceAirports, c
 
 vector<vector<Airport>>
 AuxiliarFunctions::filterNumAirlines(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports, int numAir) {
-    vector<vector<Airport>> aux;
+    vector<pair<vector<Vertex*>,int>> aux;
     vector<vector<Airport>> best;
-    bool first = true;
+    vector<Airport> aux2;
+
+
     for (const Airport& s : sourceAirports) {
         for (const Airport& d : destAirports) {
             aux = csvInfo::flightsGraph.pathAirportNumAirlines(s, d, numAir);
-            for ( const auto& i : aux) {
-                if (first) {
-                    best.push_back(i);
-                    first = false;
-                }
-                else if (i.size() < best[0].size()) {
-                    best.clear();
-                    best.push_back(i);
-                }
-                else if (i.size() == best[0].size()) {
-                    best.push_back(i);
+            for (const auto& a : aux) {
+                if (a.second <= numAir) {
+                    for (auto b : a.first) {
+                        auto c = b->getAirport();
+                        aux2.push_back(c);
+                    }
+                    if (!count(best.begin(),best.end(),aux2)) {
+                        best.push_back(aux2);
+                    }
+                    aux2.clear();
                 }
             }
+
         }
     }
     return best;

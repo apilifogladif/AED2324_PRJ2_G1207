@@ -1,4 +1,5 @@
 #include <map>
+#include <chrono>
 #include "AuxiliarFunctions.h"
 
 using namespace std;
@@ -483,7 +484,7 @@ void airportMenu() {
             switch (op) {
                 case 1 :
                     v = csvInfo::flightsGraph.findVertex(airport);
-                    cout << v->getAdj().size() << " flights out of the airport." << endl;
+                    cout << csvInfo::flightsGraph.getNumberOfFlights(airport) << " flights out of the airport." << endl;
                     over = true;
                     return;
                 case 2:
@@ -988,9 +989,10 @@ void getFlightMenu() {
                     o = true;
                     break;
                 case 2:
+                    getline(cin, code);
                     while (true) {
                         cout << "Enter the name of the airport: ";
-                        if (cin >> code) {
+                        if (getline(cin, code)) {
                             airport = verifyAirportName(code);
                             if (airport.getName() == code) {
                                 break;  // Input is valid, exit the loop
@@ -1177,9 +1179,10 @@ void getFlightMenu() {
                     o = true;
                     break;
                 case 2:
+                    getline(cin,Dcode);
                     while (true) {
                         cout << "Enter the name of the airport: ";
-                        if (cin >> Dcode) {
+                        if (getline(cin, Dcode)) {
                             Dairport = verifyAirportName(Dcode);
                             if (Dairport.getName() == Dcode) {
                                 break;  // Input is valid, exit the loop
@@ -1375,9 +1378,13 @@ void getFlightMenu() {
  * @return Program exit status.
  */
 int main() {
+    auto start = chrono::high_resolution_clock::now();
     csvInfo::createAirportsVector();
     csvInfo::createAirlinesVector();
     csvInfo::createFlightsGraph();
+    auto end = chrono::high_resolution_clock::now();
+    chrono::duration<double> dif = end - start;
+    cout << dif.count() << " seconds" << endl;
 
     menus.emplace("main");
     while (true) {

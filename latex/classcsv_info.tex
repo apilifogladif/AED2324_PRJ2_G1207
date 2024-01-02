@@ -1,0 +1,84 @@
+\doxysection{csv\+Info Class Reference}
+\hypertarget{classcsv_info}{}\label{classcsv_info}\index{csvInfo@{csvInfo}}
+
+
+Gets the info from the csv\textquotesingle{}s.  
+
+
+
+
+{\ttfamily \#include $<$csv\+Info.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classcsv_info_acf6ba247718573453cde38c1a9616081}\label{classcsv_info_acf6ba247718573453cde38c1a9616081} 
+{\bfseries csv\+Info} ()
+\begin{DoxyCompactList}\small\item\em Default constructor. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{classcsv_info_aba127f736f1ef288f3a388fa91a463a1}\label{classcsv_info_aba127f736f1ef288f3a388fa91a463a1} 
+static void {\bfseries create\+Airlines\+Vector} ()
+\begin{DoxyCompactList}\small\item\em Adds all airlines present in airlines.\+csv to a vector. \end{DoxyCompactList}\item 
+\Hypertarget{classcsv_info_aa521290be66b7931e1521634c4f51679}\label{classcsv_info_aa521290be66b7931e1521634c4f51679} 
+static void {\bfseries create\+Airports\+Vector} ()
+\begin{DoxyCompactList}\small\item\em Adds all airports present in airports.\+csv to a vector. \end{DoxyCompactList}\item 
+\Hypertarget{classcsv_info_a5bde4331b69de2b67118d79d3d1d3393}\label{classcsv_info_a5bde4331b69de2b67118d79d3d1d3393} 
+static void {\bfseries create\+Flights\+Graph} ()
+\begin{DoxyCompactList}\small\item\em Adds all flights present in flights.\+csv to a graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Static Public Attributes}
+\begin{DoxyCompactItemize}
+\item 
+static vector$<$ \mbox{\hyperlink{class_airline}{Airline}} $>$ \mbox{\hyperlink{classcsv_info_a97f3c18da2ff63acc7a334a69df0abef}{airlines\+Vector}}
+\item 
+static vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \mbox{\hyperlink{classcsv_info_a545f5297c919d26b3225fbe9b2a24d08}{airports\+Vector}}
+\item 
+static set$<$ string $>$ \mbox{\hyperlink{classcsv_info_a1f399a02b22d39d272b35e48b064e8c1}{cities\+Set}}
+\item 
+static set$<$ string $>$ \mbox{\hyperlink{classcsv_info_aba87a4fd04e583e4f6150371064fbc53}{countries\+Set}}
+\item 
+static \mbox{\hyperlink{class_graph}{Graph}} \mbox{\hyperlink{classcsv_info_a468276721d1cb984b8891e5265e2b5f3}{flights\+Graph}}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Gets the info from the csv\textquotesingle{}s. 
+
+\doxysubsection{Member Data Documentation}
+\Hypertarget{classcsv_info_a97f3c18da2ff63acc7a334a69df0abef}\label{classcsv_info_a97f3c18da2ff63acc7a334a69df0abef} 
+\index{csvInfo@{csvInfo}!airlinesVector@{airlinesVector}}
+\index{airlinesVector@{airlinesVector}!csvInfo@{csvInfo}}
+\doxysubsubsection{\texorpdfstring{airlinesVector}{airlinesVector}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_airline}{Airline}} $>$ csv\+Info\+::airlines\+Vector\hspace{0.3cm}{\ttfamily [static]}}
+
+Vector of all the airlines \Hypertarget{classcsv_info_a545f5297c919d26b3225fbe9b2a24d08}\label{classcsv_info_a545f5297c919d26b3225fbe9b2a24d08} 
+\index{csvInfo@{csvInfo}!airportsVector@{airportsVector}}
+\index{airportsVector@{airportsVector}!csvInfo@{csvInfo}}
+\doxysubsubsection{\texorpdfstring{airportsVector}{airportsVector}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ csv\+Info\+::airports\+Vector\hspace{0.3cm}{\ttfamily [static]}}
+
+Vector of all the airports \Hypertarget{classcsv_info_a1f399a02b22d39d272b35e48b064e8c1}\label{classcsv_info_a1f399a02b22d39d272b35e48b064e8c1} 
+\index{csvInfo@{csvInfo}!citiesSet@{citiesSet}}
+\index{citiesSet@{citiesSet}!csvInfo@{csvInfo}}
+\doxysubsubsection{\texorpdfstring{citiesSet}{citiesSet}}
+{\footnotesize\ttfamily set$<$ string $>$ csv\+Info\+::cities\+Set\hspace{0.3cm}{\ttfamily [static]}}
+
+Set of all the cities \Hypertarget{classcsv_info_aba87a4fd04e583e4f6150371064fbc53}\label{classcsv_info_aba87a4fd04e583e4f6150371064fbc53} 
+\index{csvInfo@{csvInfo}!countriesSet@{countriesSet}}
+\index{countriesSet@{countriesSet}!csvInfo@{csvInfo}}
+\doxysubsubsection{\texorpdfstring{countriesSet}{countriesSet}}
+{\footnotesize\ttfamily set$<$ string $>$ csv\+Info\+::countries\+Set\hspace{0.3cm}{\ttfamily [static]}}
+
+Set of all the countries \Hypertarget{classcsv_info_a468276721d1cb984b8891e5265e2b5f3}\label{classcsv_info_a468276721d1cb984b8891e5265e2b5f3} 
+\index{csvInfo@{csvInfo}!flightsGraph@{flightsGraph}}
+\index{flightsGraph@{flightsGraph}!csvInfo@{csvInfo}}
+\doxysubsubsection{\texorpdfstring{flightsGraph}{flightsGraph}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_graph}{Graph}} csv\+Info\+::flights\+Graph\hspace{0.3cm}{\ttfamily [static]}}
+
+\doxylink{class_graph}{Graph} of all the flights 
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+csv\+Info.\+h\item 
+csv\+Info.\+cpp\end{DoxyCompactItemize}

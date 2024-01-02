@@ -1,0 +1,89 @@
+\doxysection{Edge Class Reference}
+\hypertarget{class_edge}{}\label{class_edge}\index{Edge@{Edge}}
+
+
+Represents an \doxylink{class_edge}{Edge} connecting two vertices in the graph.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_edge_afaf1dd91559040657320b2d666d94543}{Edge}} (\mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*}d, \mbox{\hyperlink{class_airline}{Airline}} airline\+\_\+)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_edge}{Edge} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*} \mbox{\hyperlink{class_edge_a5cda44e9ba257b03963a1ac301371a59}{get\+Dest}} () const
+\begin{DoxyCompactList}\small\item\em Returns the destination vertex. \end{DoxyCompactList}\item 
+set$<$ \mbox{\hyperlink{class_airline}{Airline}} $>$ \mbox{\hyperlink{class_edge_ac3d2ba21a6e90b0bfc5d51e49229d3db}{get\+Airline}} () const
+\begin{DoxyCompactList}\small\item\em Returns the airline. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_edge_afab89afd724f1b07b1aaad6bdc61c47a}\label{class_edge_afab89afd724f1b07b1aaad6bdc61c47a} 
+class {\bfseries Graph}
+\item 
+\Hypertarget{class_edge_a1251d18f08324022e8e73506c3768f3c}\label{class_edge_a1251d18f08324022e8e73506c3768f3c} 
+class {\bfseries Vertex}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents an \doxylink{class_edge}{Edge} connecting two vertices in the graph. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_edge_afaf1dd91559040657320b2d666d94543}\label{class_edge_afaf1dd91559040657320b2d666d94543} 
+\index{Edge@{Edge}!Edge@{Edge}}
+\index{Edge@{Edge}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{Edge()}{Edge()}}
+{\footnotesize\ttfamily Edge\+::\+Edge (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{d,  }\item[{\mbox{\hyperlink{class_airline}{Airline}}}]{airline\+\_\+ }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_edge}{Edge} class. 
+
+Complexity\+: 0(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em d} & \+: Destination vertex. \\
+\hline
+{\em airline\+\_\+} & \+: \doxylink{class_airline}{Airline} associated with the edge. \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_edge_ac3d2ba21a6e90b0bfc5d51e49229d3db}\label{class_edge_ac3d2ba21a6e90b0bfc5d51e49229d3db} 
+\index{Edge@{Edge}!getAirline@{getAirline}}
+\index{getAirline@{getAirline}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getAirline()}{getAirline()}}
+{\footnotesize\ttfamily set$<$ \mbox{\hyperlink{class_airline}{Airline}} $>$ Edge\+::get\+Airline (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the airline. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_airline}{Airline} 
+\end{DoxyReturn}
+\Hypertarget{class_edge_a5cda44e9ba257b03963a1ac301371a59}\label{class_edge_a5cda44e9ba257b03963a1ac301371a59} 
+\index{Edge@{Edge}!getDest@{getDest}}
+\index{getDest@{getDest}!Edge@{Edge}}
+\doxysubsubsection{\texorpdfstring{getDest()}{getDest()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*} Edge\+::get\+Dest (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the destination vertex. 
+
+\begin{DoxyReturn}{Returns}
+Destination vertex 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}

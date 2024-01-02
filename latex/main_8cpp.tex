@@ -1,0 +1,381 @@
+\doxysection{main.\+cpp File Reference}
+\hypertarget{main_8cpp}{}\label{main_8cpp}\index{main.cpp@{main.cpp}}
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include $<$chrono$>$}\newline
+{\ttfamily \#include "{}Auxiliar\+Functions.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{main_8cpp_a853e05a89180f165c62d02605449ca25}{type\+Of\+Dest\+Vector}} (const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&vec\+Dest)
+\begin{DoxyCompactList}\small\item\em Menu to choose the type of destination. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_airport}{Airport}} \mbox{\hyperlink{main_8cpp_a279d844f44fd338f825e40fbcbb91217}{verify\+Airport\+Code}} (const string \&code)
+\begin{DoxyCompactList}\small\item\em Checks if the airport code has an airport associated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_airport}{Airport}} \mbox{\hyperlink{main_8cpp_a8cf9a36237b2d09fa669b44052a6c558}{verify\+Airport\+Name}} (const string \&name)
+\begin{DoxyCompactList}\small\item\em Checks if the airport name has an airport associated. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_airline}{Airline}} \mbox{\hyperlink{main_8cpp_ab53728b111475f49098aeff193f8939c}{verify\+Airline\+Code}} (const string \&code)
+\begin{DoxyCompactList}\small\item\em Checks if the airline code has an airline associated. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{main_8cpp_a0d5fa8c254146ee98b0dbf8be996c85e}{verify\+City}} (const string \&name, const string \&country)
+\begin{DoxyCompactList}\small\item\em Checks if the city exists in the airports vector. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{main_8cpp_a8f6168a1fbadadb1377d6e48ef971f24}{verify\+Country}} (const string \&name)
+\begin{DoxyCompactList}\small\item\em Checks if the country exists in the countries set. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{main_8cpp_a23bed87e0ae9a2d50b2a590640410761}{check\+Digit}} (string num)
+\begin{DoxyCompactList}\small\item\em Checks if given input is made of all digits. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a82aa826432a4be05cdb2dc19cc6fcb62}{clear\+Menus}} ()
+\begin{DoxyCompactList}\small\item\em Clears all the menus. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_acff04938ee2fd41d82f299db4f02b6bc}{choose\+Airlines}} ()
+\begin{DoxyCompactList}\small\item\em Menu to choose an \doxylink{class_airline}{Airline}. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_ac256753e72110a503a65552261a2ebc6}{choose\+Num\+Air}} ()
+\begin{DoxyCompactList}\small\item\em Menu to choose the number of Airlines. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_a81ee7b6488b9ab84ff542aecf73f900f}{filters}} ()
+\begin{DoxyCompactList}\small\item\em Menu to choose the type of filter. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_ab3002fe8e0074c9e2ecb5b835e5e819f}{main\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Main Menu. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_af4e15fcbb1321ba603ae2cecd6cd1c52}{get\+Info\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Menu to get information. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_aa1b116f3b21671bb9e3991d02ffe4be8}{destX}} ()
+\begin{DoxyCompactList}\small\item\em Gets the number of maximum of stops the user chooses. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a87934f5922bb1dc98fc9575959201c6d}{airport\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Menu to get information about an airport. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}{main}} ()
+\begin{DoxyCompactList}\small\item\em Main function to initialize data and run the program. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_af30a081f187276ed936315b164c5cd84}{get\+Flight\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Menu to get information about a flight. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a860ec00db5892828b905e6d813c8db4b}{airline\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Menu to get information about an airline. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_ace5c832760ee794deabb7e45f9897200}{city\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Menu to get information about an city. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_a113614567f2aa58b0e195879869dab1f}{country\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Menu to get information about a country. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{main_8cpp_aae87e5c793faf84dd799a2264a1dc04f}{global\+Menu}} ()
+\begin{DoxyCompactList}\small\item\em Menu to get global information. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Variables}
+\begin{DoxyCompactItemize}
+\item 
+map$<$ std\+::string, int $>$ \mbox{\hyperlink{main_8cpp_a658802b5fe2df9dca456b17b8dc4a91e}{m}}
+\item 
+\Hypertarget{main_8cpp_a1869ac8262fe8e90d8c927fe5ce516d2}\label{main_8cpp_a1869ac8262fe8e90d8c927fe5ce516d2} 
+stack$<$ string $>$ {\bfseries menus}
+\item 
+\Hypertarget{main_8cpp_add491d010713ee793630c031c2e9a7ce}\label{main_8cpp_add491d010713ee793630c031c2e9a7ce} 
+bool {\bfseries over} = false
+\item 
+\Hypertarget{main_8cpp_ac746fa6ad48d19984a159f14bec028a3}\label{main_8cpp_ac746fa6ad48d19984a159f14bec028a3} 
+bool {\bfseries quit} = false
+\item 
+\Hypertarget{main_8cpp_a880e442cc87d46a2a8126d95a344ceaf}\label{main_8cpp_a880e442cc87d46a2a8126d95a344ceaf} 
+\mbox{\hyperlink{class_airport}{Airport}} {\bfseries air\+\_\+}
+\item 
+\Hypertarget{main_8cpp_a5403fc796669fcd91d5f3e5f3075be58}\label{main_8cpp_a5403fc796669fcd91d5f3e5f3075be58} 
+vector$<$ string $>$ {\bfseries airlines}
+\item 
+\Hypertarget{main_8cpp_a46ce40417d2692ffb5fe7488b87d63fe}\label{main_8cpp_a46ce40417d2692ffb5fe7488b87d63fe} 
+int {\bfseries num\+Air}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{main_8cpp_a860ec00db5892828b905e6d813c8db4b}\label{main_8cpp_a860ec00db5892828b905e6d813c8db4b} 
+\index{main.cpp@{main.cpp}!airlineMenu@{airlineMenu}}
+\index{airlineMenu@{airlineMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{airlineMenu()}{airlineMenu()}}
+{\footnotesize\ttfamily void airline\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu to get information about an airline. 
+
+Complexity\+: O(n) \Hypertarget{main_8cpp_a87934f5922bb1dc98fc9575959201c6d}\label{main_8cpp_a87934f5922bb1dc98fc9575959201c6d} 
+\index{main.cpp@{main.cpp}!airportMenu@{airportMenu}}
+\index{airportMenu@{airportMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{airportMenu()}{airportMenu()}}
+{\footnotesize\ttfamily void airport\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu to get information about an airport. 
+
+Complexity\+: O(n) \Hypertarget{main_8cpp_a23bed87e0ae9a2d50b2a590640410761}\label{main_8cpp_a23bed87e0ae9a2d50b2a590640410761} 
+\index{main.cpp@{main.cpp}!checkDigit@{checkDigit}}
+\index{checkDigit@{checkDigit}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{checkDigit()}{checkDigit()}}
+{\footnotesize\ttfamily bool check\+Digit (\begin{DoxyParamCaption}\item[{string}]{num }\end{DoxyParamCaption})}
+
+
+
+Checks if given input is made of all digits. 
+
+Complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & \+: String to check \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True or False 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_acff04938ee2fd41d82f299db4f02b6bc}\label{main_8cpp_acff04938ee2fd41d82f299db4f02b6bc} 
+\index{main.cpp@{main.cpp}!chooseAirlines@{chooseAirlines}}
+\index{chooseAirlines@{chooseAirlines}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{chooseAirlines()}{chooseAirlines()}}
+{\footnotesize\ttfamily void choose\+Airlines (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu to choose an \doxylink{class_airline}{Airline}. 
+
+Complexity\+: O(n) \Hypertarget{main_8cpp_ac256753e72110a503a65552261a2ebc6}\label{main_8cpp_ac256753e72110a503a65552261a2ebc6} 
+\index{main.cpp@{main.cpp}!chooseNumAir@{chooseNumAir}}
+\index{chooseNumAir@{chooseNumAir}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{chooseNumAir()}{chooseNumAir()}}
+{\footnotesize\ttfamily void choose\+Num\+Air (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu to choose the number of Airlines. 
+
+Complexity\+: O(n) \Hypertarget{main_8cpp_ace5c832760ee794deabb7e45f9897200}\label{main_8cpp_ace5c832760ee794deabb7e45f9897200} 
+\index{main.cpp@{main.cpp}!cityMenu@{cityMenu}}
+\index{cityMenu@{cityMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{cityMenu()}{cityMenu()}}
+{\footnotesize\ttfamily void city\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu to get information about an city. 
+
+Complexity\+: O(n) \Hypertarget{main_8cpp_a82aa826432a4be05cdb2dc19cc6fcb62}\label{main_8cpp_a82aa826432a4be05cdb2dc19cc6fcb62} 
+\index{main.cpp@{main.cpp}!clearMenus@{clearMenus}}
+\index{clearMenus@{clearMenus}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{clearMenus()}{clearMenus()}}
+{\footnotesize\ttfamily void clear\+Menus (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Clears all the menus. 
+
+Complexity\+: O(n) \Hypertarget{main_8cpp_a113614567f2aa58b0e195879869dab1f}\label{main_8cpp_a113614567f2aa58b0e195879869dab1f} 
+\index{main.cpp@{main.cpp}!countryMenu@{countryMenu}}
+\index{countryMenu@{countryMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{countryMenu()}{countryMenu()}}
+{\footnotesize\ttfamily void country\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu to get information about a country. 
+
+Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}2) \Hypertarget{main_8cpp_aa1b116f3b21671bb9e3991d02ffe4be8}\label{main_8cpp_aa1b116f3b21671bb9e3991d02ffe4be8} 
+\index{main.cpp@{main.cpp}!destX@{destX}}
+\index{destX@{destX}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{destX()}{destX()}}
+{\footnotesize\ttfamily void destX (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Gets the number of maximum of stops the user chooses. 
+
+Complexity\+: O(n) \Hypertarget{main_8cpp_a81ee7b6488b9ab84ff542aecf73f900f}\label{main_8cpp_a81ee7b6488b9ab84ff542aecf73f900f} 
+\index{main.cpp@{main.cpp}!filters@{filters}}
+\index{filters@{filters}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{filters()}{filters()}}
+{\footnotesize\ttfamily int filters (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu to choose the type of filter. 
+
+Complexity\+: O(n)
+
+\begin{DoxyReturn}{Returns}
+An int depending on the menu the user chooses 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_af30a081f187276ed936315b164c5cd84}\label{main_8cpp_af30a081f187276ed936315b164c5cd84} 
+\index{main.cpp@{main.cpp}!getFlightMenu@{getFlightMenu}}
+\index{getFlightMenu@{getFlightMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getFlightMenu()}{getFlightMenu()}}
+{\footnotesize\ttfamily void get\+Flight\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu to get information about a flight. 
+
+Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}3) \Hypertarget{main_8cpp_af4e15fcbb1321ba603ae2cecd6cd1c52}\label{main_8cpp_af4e15fcbb1321ba603ae2cecd6cd1c52} 
+\index{main.cpp@{main.cpp}!getInfoMenu@{getInfoMenu}}
+\index{getInfoMenu@{getInfoMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{getInfoMenu()}{getInfoMenu()}}
+{\footnotesize\ttfamily void get\+Info\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu to get information. 
+
+Complexity\+: O(n) \Hypertarget{main_8cpp_aae87e5c793faf84dd799a2264a1dc04f}\label{main_8cpp_aae87e5c793faf84dd799a2264a1dc04f} 
+\index{main.cpp@{main.cpp}!globalMenu@{globalMenu}}
+\index{globalMenu@{globalMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{globalMenu()}{globalMenu()}}
+{\footnotesize\ttfamily void global\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Menu to get global information. 
+
+Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}2) \Hypertarget{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4}\label{main_8cpp_ae66f6b31b5ad750f1fe042a706a4e3d4} 
+\index{main.cpp@{main.cpp}!main@{main}}
+\index{main@{main}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{main()}{main()}}
+{\footnotesize\ttfamily int main (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main function to initialize data and run the program. 
+
+Complexity\+: O(n)
+
+\begin{DoxyReturn}{Returns}
+Program exit status. 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_ab3002fe8e0074c9e2ecb5b835e5e819f}\label{main_8cpp_ab3002fe8e0074c9e2ecb5b835e5e819f} 
+\index{main.cpp@{main.cpp}!mainMenu@{mainMenu}}
+\index{mainMenu@{mainMenu}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{mainMenu()}{mainMenu()}}
+{\footnotesize\ttfamily void main\+Menu (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption})}
+
+
+
+Main Menu. 
+
+Complexity\+: O(n) \Hypertarget{main_8cpp_a853e05a89180f165c62d02605449ca25}\label{main_8cpp_a853e05a89180f165c62d02605449ca25} 
+\index{main.cpp@{main.cpp}!typeOfDestVector@{typeOfDestVector}}
+\index{typeOfDestVector@{typeOfDestVector}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{typeOfDestVector()}{typeOfDestVector()}}
+{\footnotesize\ttfamily void type\+Of\+Dest\+Vector (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&}]{vec\+Dest }\end{DoxyParamCaption})}
+
+
+
+Menu to choose the type of destination. 
+
+Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}2)
+
+
+\begin{DoxyParams}{Parameters}
+{\em vec\+Dest} & \+: The destinations vector \\
+\hline
+\end{DoxyParams}
+\Hypertarget{main_8cpp_ab53728b111475f49098aeff193f8939c}\label{main_8cpp_ab53728b111475f49098aeff193f8939c} 
+\index{main.cpp@{main.cpp}!verifyAirlineCode@{verifyAirlineCode}}
+\index{verifyAirlineCode@{verifyAirlineCode}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{verifyAirlineCode()}{verifyAirlineCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_airline}{Airline}} verify\+Airline\+Code (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Checks if the airline code has an airline associated. 
+
+Complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & \+: \doxylink{class_airline}{Airline} code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The airline corresponding to the airline code given 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a279d844f44fd338f825e40fbcbb91217}\label{main_8cpp_a279d844f44fd338f825e40fbcbb91217} 
+\index{main.cpp@{main.cpp}!verifyAirportCode@{verifyAirportCode}}
+\index{verifyAirportCode@{verifyAirportCode}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{verifyAirportCode()}{verifyAirportCode()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_airport}{Airport}} verify\+Airport\+Code (\begin{DoxyParamCaption}\item[{const string \&}]{code }\end{DoxyParamCaption})}
+
+
+
+Checks if the airport code has an airport associated. 
+
+Complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em code} & \+: \doxylink{class_airport}{Airport} code \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The airport corresponding to the airport code 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a8cf9a36237b2d09fa669b44052a6c558}\label{main_8cpp_a8cf9a36237b2d09fa669b44052a6c558} 
+\index{main.cpp@{main.cpp}!verifyAirportName@{verifyAirportName}}
+\index{verifyAirportName@{verifyAirportName}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{verifyAirportName()}{verifyAirportName()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_airport}{Airport}} verify\+Airport\+Name (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Checks if the airport name has an airport associated. 
+
+Complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: \doxylink{class_airport}{Airport} name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+The airport corresponding to the airport name given 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a0d5fa8c254146ee98b0dbf8be996c85e}\label{main_8cpp_a0d5fa8c254146ee98b0dbf8be996c85e} 
+\index{main.cpp@{main.cpp}!verifyCity@{verifyCity}}
+\index{verifyCity@{verifyCity}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{verifyCity()}{verifyCity()}}
+{\footnotesize\ttfamily bool verify\+City (\begin{DoxyParamCaption}\item[{const string \&}]{name,  }\item[{const string \&}]{country }\end{DoxyParamCaption})}
+
+
+
+Checks if the city exists in the airports vector. 
+
+Complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: City name \\
+\hline
+{\em country} & \+: Country name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True or False 
+\end{DoxyReturn}
+\Hypertarget{main_8cpp_a8f6168a1fbadadb1377d6e48ef971f24}\label{main_8cpp_a8f6168a1fbadadb1377d6e48ef971f24} 
+\index{main.cpp@{main.cpp}!verifyCountry@{verifyCountry}}
+\index{verifyCountry@{verifyCountry}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{verifyCountry()}{verifyCountry()}}
+{\footnotesize\ttfamily bool verify\+Country (\begin{DoxyParamCaption}\item[{const string \&}]{name }\end{DoxyParamCaption})}
+
+
+
+Checks if the country exists in the countries set. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em name} & \+: Country name \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+True or False 
+\end{DoxyReturn}
+
+
+\doxysubsection{Variable Documentation}
+\Hypertarget{main_8cpp_a658802b5fe2df9dca456b17b8dc4a91e}\label{main_8cpp_a658802b5fe2df9dca456b17b8dc4a91e} 
+\index{main.cpp@{main.cpp}!m@{m}}
+\index{m@{m}!main.cpp@{main.cpp}}
+\doxysubsubsection{\texorpdfstring{m}{m}}
+{\footnotesize\ttfamily map$<$std\+::string, int$>$ m}
+
+{\bfseries Initial value\+:}
+\begin{DoxyCode}{0}
+\DoxyCodeLine{\{\{\textcolor{stringliteral}{"{}main"{}},\ 0\},\ \{\textcolor{stringliteral}{"{}getInfo"{}},\ 1\},\ \{\textcolor{stringliteral}{"{}bestFlight"{}},\ 2\},\ \{\textcolor{stringliteral}{"{}airportInfo"{}},\ 3\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}airlineInfo"{}},\ 4\},\ \{\textcolor{stringliteral}{"{}cityInfo"{}},\ 5\},\ \{\textcolor{stringliteral}{"{}countryInfo"{}},\ 6\},}
+\DoxyCodeLine{\ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \ \{\textcolor{stringliteral}{"{}globalInfo"{}},\ 7\},\ \{\textcolor{stringliteral}{"{}destX"{}},\ 8\}\}}
+
+\end{DoxyCode}

@@ -1,0 +1,124 @@
+\doxysection{Auxiliar\+Functions Class Reference}
+\hypertarget{class_auxiliar_functions}{}\label{class_auxiliar_functions}\index{AuxiliarFunctions@{AuxiliarFunctions}}
+
+
+Has some the auxiliar functions used.  
+
+
+
+
+{\ttfamily \#include $<$Auxiliar\+Functions.\+h$>$}
+
+\doxysubsubsection*{Static Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+static vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \mbox{\hyperlink{class_auxiliar_functions_a96a21439a18f8728abe10b97f6aed4dd}{articulation\+Points}} (\mbox{\hyperlink{class_graph}{Graph}} \texorpdfstring{$\ast$}{*}g)
+\begin{DoxyCompactList}\small\item\em Finds articulation points in the given graph using DFS (depth-\/first search). \end{DoxyCompactList}\item 
+static vector$<$ vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ $>$ \mbox{\hyperlink{class_auxiliar_functions_a5ddb9f2fe300f8c448baceeba583ce5d}{best\+Flight\+Op}} (const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&source\+Airports, const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&dest\+Airports)
+\begin{DoxyCompactList}\small\item\em Find the best flight options between source and destination airports. \end{DoxyCompactList}\item 
+static vector$<$ vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ $>$ \mbox{\hyperlink{class_auxiliar_functions_a6858fe4790d0a51ef20f4ef5bcd8f5ba}{filter\+Vector\+Airlines}} (const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&source\+Airports, const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&dest\+Airports, const vector$<$ string $>$ \&airlines)
+\begin{DoxyCompactList}\small\item\em Checks what is best path Calls the function that restricts the airline used. \end{DoxyCompactList}\item 
+static vector$<$ vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ $>$ \mbox{\hyperlink{class_auxiliar_functions_afb1cde0cafa5a569cb7038dac0966c1c}{filter\+Num\+Airlines}} (const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&source\+Airports, const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&dest\+Airports, int num\+Air)
+\begin{DoxyCompactList}\small\item\em Checks what is best path Calls the function that restricts the number of airlines used. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Has some the auxiliar functions used. 
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_auxiliar_functions_a96a21439a18f8728abe10b97f6aed4dd}\label{class_auxiliar_functions_a96a21439a18f8728abe10b97f6aed4dd} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!articulationPoints@{articulationPoints}}
+\index{articulationPoints@{articulationPoints}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{articulationPoints()}{articulationPoints()}}
+{\footnotesize\ttfamily vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ Auxiliar\+Functions\+::articulation\+Points (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}} \texorpdfstring{$\ast$}{*}}]{g }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Finds articulation points in the given graph using DFS (depth-\/first search). 
+
+Complexity\+: O(n)
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & \+: Pointer to the graph. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of unique airports representing articulation points. 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_a5ddb9f2fe300f8c448baceeba583ce5d}\label{class_auxiliar_functions_a5ddb9f2fe300f8c448baceeba583ce5d} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!bestFlightOp@{bestFlightOp}}
+\index{bestFlightOp@{bestFlightOp}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{bestFlightOp()}{bestFlightOp()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ $>$ Auxiliar\+Functions\+::best\+Flight\+Op (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&}]{source\+Airports,  }\item[{const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&}]{dest\+Airports }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Find the best flight options between source and destination airports. 
+
+Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}4)
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+Airports} & \+: Vector of source airports. \\
+\hline
+{\em dest\+Airports} & \+: Vector of destination airports. \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Vector of vectors representing the best flight paths. 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_afb1cde0cafa5a569cb7038dac0966c1c}\label{class_auxiliar_functions_afb1cde0cafa5a569cb7038dac0966c1c} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!filterNumAirlines@{filterNumAirlines}}
+\index{filterNumAirlines@{filterNumAirlines}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{filterNumAirlines()}{filterNumAirlines()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ $>$ Auxiliar\+Functions\+::filter\+Num\+Airlines (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&}]{source\+Airports,  }\item[{const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&}]{dest\+Airports,  }\item[{int}]{num\+Air }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks what is best path Calls the function that restricts the number of airlines used. 
+
+Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}3)
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+Airports} & \+: Source airports \\
+\hline
+{\em dest\+Airports} & \+: Destination airports \\
+\hline
+{\em num\+Air} & \+: Number of airlines allowed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Best path found 
+\end{DoxyReturn}
+\Hypertarget{class_auxiliar_functions_a6858fe4790d0a51ef20f4ef5bcd8f5ba}\label{class_auxiliar_functions_a6858fe4790d0a51ef20f4ef5bcd8f5ba} 
+\index{AuxiliarFunctions@{AuxiliarFunctions}!filterVectorAirlines@{filterVectorAirlines}}
+\index{filterVectorAirlines@{filterVectorAirlines}!AuxiliarFunctions@{AuxiliarFunctions}}
+\doxysubsubsection{\texorpdfstring{filterVectorAirlines()}{filterVectorAirlines()}}
+{\footnotesize\ttfamily vector$<$ vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ $>$ Auxiliar\+Functions\+::filter\+Vector\+Airlines (\begin{DoxyParamCaption}\item[{const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&}]{source\+Airports,  }\item[{const vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&}]{dest\+Airports,  }\item[{const vector$<$ string $>$ \&}]{airlines }\end{DoxyParamCaption})\hspace{0.3cm}{\ttfamily [static]}}
+
+
+
+Checks what is best path Calls the function that restricts the airline used. 
+
+Complexity\+: O(n\texorpdfstring{$^\wedge$}{\string^}4)
+
+
+\begin{DoxyParams}{Parameters}
+{\em source\+Airports} & \+: Source airports \\
+\hline
+{\em dest\+Airports} & \+: Destination airports \\
+\hline
+{\em airlines} & \+: Airlines allowed \\
+\hline
+\end{DoxyParams}
+\begin{DoxyReturn}{Returns}
+Best path found 
+\end{DoxyReturn}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Auxiliar\+Functions.\+h\item 
+Auxiliar\+Functions.\+cpp\end{DoxyCompactItemize}

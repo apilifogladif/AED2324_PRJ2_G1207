@@ -570,7 +570,7 @@ public:
      * @param NumAir : Number of airlines that can be used.
      * @return Vector of airports representing the path from source to destination.
      */
-    vector<pair<vector<Vertex*>,int>> pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir);
+    vector<vector<Vertex*>> pathAirportNumAirlines(const Airport& s, const Airport& d, int NumAir);
 
     /**
      * @brief Find the best paths using bfs
@@ -592,6 +592,8 @@ public:
      * @return Number of flights out the given airport
      */
     int getNumberOfFlights(const Airport &airport) const;
+
+    set<Airline> findAirlines(Vertex *vtx, Vertex *vtx2);
 };
 
 #endif /* GRAPH_H_ */

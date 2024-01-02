@@ -1,3 +1,4 @@
+#include <map>
 #include "AuxiliarFunctions.h"
 
 //=============================================================================
@@ -120,25 +121,37 @@ AuxiliarFunctions::filterVectorAirlines(const vector<Airport>& sourceAirports, c
 
 vector<vector<Airport>>
 AuxiliarFunctions::filterNumAirlines(const vector<Airport>& sourceAirports, const vector<Airport>& destAirports, int numAir) {
-    vector<pair<vector<Vertex*>,int>> aux;
+    vector<vector<Vertex*>> aux;
+    vector<vector<Vertex*>> min;
     vector<vector<Airport>> best;
     vector<Airport> aux2;
+    int m = INT_MAX;
 
 
     for (const Airport& s : sourceAirports) {
         for (const Airport& d : destAirports) {
             aux = csvInfo::flightsGraph.pathAirportNumAirlines(s, d, numAir);
+
             for (const auto& a : aux) {
-                if (a.second <= numAir) {
-                    for (auto b : a.first) {
-                        auto c = b->getAirport();
-                        aux2.push_back(c);
-                    }
-                    if (!count(best.begin(),best.end(),aux2)) {
-                        best.push_back(aux2);
-                    }
-                    aux2.clear();
+                if (a.size() < m) {
+                    min.clear();
+                    min.push_back(a);
+                    m = a.size();
                 }
+                else if (a.size() == m) {
+                    min.push_back(a);
+                }
+            }
+
+            for (const auto& a : min){
+                for (auto b : a){
+                    auto c = b->getAirport();
+                    aux2.push_back(c);
+                }
+                if (!count(best.begin(),best.end(),aux2)) {
+                    best.push_back(aux2);
+                }
+                aux2.clear();
             }
 
         }

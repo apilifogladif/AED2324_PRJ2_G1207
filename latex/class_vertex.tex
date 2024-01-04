@@ -1,0 +1,210 @@
+\doxysection{Vertex Class Reference}
+\hypertarget{class_vertex}{}\label{class_vertex}\index{Vertex@{Vertex}}
+
+
+Represents a \doxylink{class_vertex}{Vertex} in the graph.  
+
+
+
+
+{\ttfamily \#include $<$Graph.\+h$>$}
+
+\doxysubsubsection*{Public Member Functions}
+\begin{DoxyCompactItemize}
+\item 
+\mbox{\hyperlink{class_vertex_ae2f4457998996cf77127f3f5a2737c93}{Vertex}} (\mbox{\hyperlink{class_airport}{Airport}} in)
+\begin{DoxyCompactList}\small\item\em Constructor for \doxylink{class_vertex}{Vertex} class. \end{DoxyCompactList}\item 
+\mbox{\hyperlink{class_airport}{Airport}} \mbox{\hyperlink{class_vertex_a153f1b1bd628000561077efc4be2eaa4}{get\+Airport}} () const
+\begin{DoxyCompactList}\small\item\em Returns the \doxylink{class_airport}{Airport}. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_vertex_aa4bd82105b85ee53a917391f4811cd8a}{is\+Visited}} () const
+\begin{DoxyCompactList}\small\item\em Checks if an vertex was visited -\/ auxiliary field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vertex_a3c6d6c2254850a647d3a27007ef940f6}{set\+Visited}} (bool v)
+\begin{DoxyCompactList}\small\item\em Sets the visited to true or false -\/ auxiliary field. \end{DoxyCompactList}\item 
+bool \mbox{\hyperlink{class_vertex_a126e306f0534b99cd97aa864fdb243d4}{is\+Processing}} () const
+\begin{DoxyCompactList}\small\item\em Checks if an vertex is processing -\/ auxiliary field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vertex_a4427952db4781f61eb336fe5965da708}{set\+Processing}} (bool p)
+\begin{DoxyCompactList}\small\item\em Sets processing to true or false -\/ auxiliary field. \end{DoxyCompactList}\item 
+const vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ \& \mbox{\hyperlink{class_vertex_a25cb5b7136d1a53fcf2ccd437ea95641}{get\+Adj}} () const
+\item 
+int \mbox{\hyperlink{class_vertex_af65c843649e89097b38e8d108327c34a}{get\+Num}} () const
+\begin{DoxyCompactList}\small\item\em Returns the Number -\/ auxiliary field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vertex_aa691c9e7724f31dc397ba653eb061d34}{set\+Num}} (int num)
+\begin{DoxyCompactList}\small\item\em Sets num -\/ auxiliary field. \end{DoxyCompactList}\item 
+int \mbox{\hyperlink{class_vertex_a7acb7c0857c03cf23db677ad3618a04e}{get\+Low}} () const
+\begin{DoxyCompactList}\small\item\em Returns the low -\/ auxiliary field. \end{DoxyCompactList}\item 
+void \mbox{\hyperlink{class_vertex_a390911b126aee6bcf85a4b2e9921a421}{set\+Low}} (int low)
+\begin{DoxyCompactList}\small\item\em Sets low -\/ auxiliary field. \end{DoxyCompactList}\end{DoxyCompactItemize}
+\doxysubsubsection*{Friends}
+\begin{DoxyCompactItemize}
+\item 
+\Hypertarget{class_vertex_afab89afd724f1b07b1aaad6bdc61c47a}\label{class_vertex_afab89afd724f1b07b1aaad6bdc61c47a} 
+class {\bfseries Graph}
+\end{DoxyCompactItemize}
+
+
+\doxysubsection{Detailed Description}
+Represents a \doxylink{class_vertex}{Vertex} in the graph. 
+
+\doxysubsection{Constructor \& Destructor Documentation}
+\Hypertarget{class_vertex_ae2f4457998996cf77127f3f5a2737c93}\label{class_vertex_ae2f4457998996cf77127f3f5a2737c93} 
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\index{Vertex@{Vertex}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{Vertex()}{Vertex()}}
+{\footnotesize\ttfamily Vertex\+::\+Vertex (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_airport}{Airport}}}]{in }\end{DoxyParamCaption})}
+
+
+
+Constructor for \doxylink{class_vertex}{Vertex} class. 
+
+Complexity\+: O(1)
+
+
+\begin{DoxyParams}{Parameters}
+{\em in} & \doxylink{class_airport}{Airport} object to be associated with the vertex \\
+\hline
+\end{DoxyParams}
+
+
+\doxysubsection{Member Function Documentation}
+\Hypertarget{class_vertex_a25cb5b7136d1a53fcf2ccd437ea95641}\label{class_vertex_a25cb5b7136d1a53fcf2ccd437ea95641} 
+\index{Vertex@{Vertex}!getAdj@{getAdj}}
+\index{getAdj@{getAdj}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getAdj()}{getAdj()}}
+{\footnotesize\ttfamily const vector$<$ \mbox{\hyperlink{class_edge}{Edge}} $>$ \& Vertex\+::get\+Adj (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+Return the outgoing edges
+
+\begin{DoxyReturn}{Returns}
+Outgoing edges vector 
+\end{DoxyReturn}
+\Hypertarget{class_vertex_a153f1b1bd628000561077efc4be2eaa4}\label{class_vertex_a153f1b1bd628000561077efc4be2eaa4} 
+\index{Vertex@{Vertex}!getAirport@{getAirport}}
+\index{getAirport@{getAirport}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getAirport()}{getAirport()}}
+{\footnotesize\ttfamily \mbox{\hyperlink{class_airport}{Airport}} Vertex\+::get\+Airport (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the \doxylink{class_airport}{Airport}. 
+
+\begin{DoxyReturn}{Returns}
+\doxylink{class_airport}{Airport} 
+\end{DoxyReturn}
+\Hypertarget{class_vertex_a7acb7c0857c03cf23db677ad3618a04e}\label{class_vertex_a7acb7c0857c03cf23db677ad3618a04e} 
+\index{Vertex@{Vertex}!getLow@{getLow}}
+\index{getLow@{getLow}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getLow()}{getLow()}}
+{\footnotesize\ttfamily int Vertex\+::get\+Low (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the low -\/ auxiliary field. 
+
+\begin{DoxyReturn}{Returns}
+Low int 
+\end{DoxyReturn}
+\Hypertarget{class_vertex_af65c843649e89097b38e8d108327c34a}\label{class_vertex_af65c843649e89097b38e8d108327c34a} 
+\index{Vertex@{Vertex}!getNum@{getNum}}
+\index{getNum@{getNum}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{getNum()}{getNum()}}
+{\footnotesize\ttfamily int Vertex\+::get\+Num (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Returns the Number -\/ auxiliary field. 
+
+\begin{DoxyReturn}{Returns}
+Number 
+\end{DoxyReturn}
+\Hypertarget{class_vertex_a126e306f0534b99cd97aa864fdb243d4}\label{class_vertex_a126e306f0534b99cd97aa864fdb243d4} 
+\index{Vertex@{Vertex}!isProcessing@{isProcessing}}
+\index{isProcessing@{isProcessing}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{isProcessing()}{isProcessing()}}
+{\footnotesize\ttfamily bool Vertex\+::is\+Processing (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if an vertex is processing -\/ auxiliary field. 
+
+\begin{DoxyReturn}{Returns}
+True if it\textquotesingle{}s processing, false if not 
+\end{DoxyReturn}
+\Hypertarget{class_vertex_aa4bd82105b85ee53a917391f4811cd8a}\label{class_vertex_aa4bd82105b85ee53a917391f4811cd8a} 
+\index{Vertex@{Vertex}!isVisited@{isVisited}}
+\index{isVisited@{isVisited}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{isVisited()}{isVisited()}}
+{\footnotesize\ttfamily bool Vertex\+::is\+Visited (\begin{DoxyParamCaption}{ }\end{DoxyParamCaption}) const}
+
+
+
+Checks if an vertex was visited -\/ auxiliary field. 
+
+\begin{DoxyReturn}{Returns}
+True if is visited, false if not 
+\end{DoxyReturn}
+\Hypertarget{class_vertex_a390911b126aee6bcf85a4b2e9921a421}\label{class_vertex_a390911b126aee6bcf85a4b2e9921a421} 
+\index{Vertex@{Vertex}!setLow@{setLow}}
+\index{setLow@{setLow}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setLow()}{setLow()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Low (\begin{DoxyParamCaption}\item[{int}]{low }\end{DoxyParamCaption})}
+
+
+
+Sets low -\/ auxiliary field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em low} & \+: Low int \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vertex_aa691c9e7724f31dc397ba653eb061d34}\label{class_vertex_aa691c9e7724f31dc397ba653eb061d34} 
+\index{Vertex@{Vertex}!setNum@{setNum}}
+\index{setNum@{setNum}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setNum()}{setNum()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Num (\begin{DoxyParamCaption}\item[{int}]{num }\end{DoxyParamCaption})}
+
+
+
+Sets num -\/ auxiliary field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em num} & \+: Number \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vertex_a4427952db4781f61eb336fe5965da708}\label{class_vertex_a4427952db4781f61eb336fe5965da708} 
+\index{Vertex@{Vertex}!setProcessing@{setProcessing}}
+\index{setProcessing@{setProcessing}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setProcessing()}{setProcessing()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Processing (\begin{DoxyParamCaption}\item[{bool}]{p }\end{DoxyParamCaption})}
+
+
+
+Sets processing to true or false -\/ auxiliary field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \+: True or False \\
+\hline
+\end{DoxyParams}
+\Hypertarget{class_vertex_a3c6d6c2254850a647d3a27007ef940f6}\label{class_vertex_a3c6d6c2254850a647d3a27007ef940f6} 
+\index{Vertex@{Vertex}!setVisited@{setVisited}}
+\index{setVisited@{setVisited}!Vertex@{Vertex}}
+\doxysubsubsection{\texorpdfstring{setVisited()}{setVisited()}}
+{\footnotesize\ttfamily void Vertex\+::set\+Visited (\begin{DoxyParamCaption}\item[{bool}]{v }\end{DoxyParamCaption})}
+
+
+
+Sets the visited to true or false -\/ auxiliary field. 
+
+
+\begin{DoxyParams}{Parameters}
+{\em v} & \+: True or false \\
+\hline
+\end{DoxyParams}
+
+
+The documentation for this class was generated from the following files\+:\begin{DoxyCompactItemize}
+\item 
+Graph.\+h\item 
+Graph.\+cpp\end{DoxyCompactItemize}

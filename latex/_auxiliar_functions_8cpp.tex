@@ -1,0 +1,37 @@
+\doxysection{Auxiliar\+Functions.\+cpp File Reference}
+\hypertarget{_auxiliar_functions_8cpp}{}\label{_auxiliar_functions_8cpp}\index{AuxiliarFunctions.cpp@{AuxiliarFunctions.cpp}}
+{\ttfamily \#include $<$map$>$}\newline
+{\ttfamily \#include "{}Auxiliar\+Functions.\+h"{}}\newline
+\doxysubsubsection*{Functions}
+\begin{DoxyCompactItemize}
+\item 
+void \mbox{\hyperlink{_auxiliar_functions_8cpp_a7c21d0e9c57edadac69ce151e06bf63b}{dfs\+\_\+art}} (\mbox{\hyperlink{class_graph}{Graph}} \texorpdfstring{$\ast$}{*}g, \mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*}v, stack$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&s, vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&res, int \&i)
+\begin{DoxyCompactList}\small\item\em Perform depth-\/first search to find articulation points in the graph. \end{DoxyCompactList}\end{DoxyCompactItemize}
+
+
+\doxysubsection{Function Documentation}
+\Hypertarget{_auxiliar_functions_8cpp_a7c21d0e9c57edadac69ce151e06bf63b}\label{_auxiliar_functions_8cpp_a7c21d0e9c57edadac69ce151e06bf63b} 
+\index{AuxiliarFunctions.cpp@{AuxiliarFunctions.cpp}!dfs\_art@{dfs\_art}}
+\index{dfs\_art@{dfs\_art}!AuxiliarFunctions.cpp@{AuxiliarFunctions.cpp}}
+\doxysubsubsection{\texorpdfstring{dfs\_art()}{dfs\_art()}}
+{\footnotesize\ttfamily void dfs\+\_\+art (\begin{DoxyParamCaption}\item[{\mbox{\hyperlink{class_graph}{Graph}} \texorpdfstring{$\ast$}{*}}]{g,  }\item[{\mbox{\hyperlink{class_vertex}{Vertex}} \texorpdfstring{$\ast$}{*}}]{v,  }\item[{stack$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&}]{s,  }\item[{vector$<$ \mbox{\hyperlink{class_airport}{Airport}} $>$ \&}]{res,  }\item[{int \&}]{i }\end{DoxyParamCaption})}
+
+
+
+Perform depth-\/first search to find articulation points in the graph. 
+
+Complexity\+: O(v+e), being v the number of vertices in a graph and e the number of edges
+
+
+\begin{DoxyParams}{Parameters}
+{\em g} & \+: Pointer to the graph. \\
+\hline
+{\em v} & \+: Pointer to the current vertex. \\
+\hline
+{\em s} & \+: Reference to the stack used in DFS. \\
+\hline
+{\em res} & \+: Reference to the vector storing articulation points. \\
+\hline
+{\em i} & \+: Reference to the current index in DFS. \\
+\hline
+\end{DoxyParams}
